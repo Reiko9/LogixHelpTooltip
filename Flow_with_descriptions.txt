@@ -1,0 +1,682 @@
+
+FrooxEngine.LogiX.ProgramFlow.OnActivatedNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Activated</color> node fires an impulse when the node becomes active.
+Usage
+
+This node fires an impulse whenever the slot which contains the OnActivatedNode component becomes active in the world. 
+As such, if the containing slot is itself active, but is globally inactive due to an inactive parent, the node will fire when the inactive parent becomes active. 
+If, however, the slot containing the OnActivatedNode component is itself inactive the node will ignore all activation events for parent slots until it itself becomes active again. 
+This impulse fires for all users unless the OnlyHost input is True. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnDeactivatedNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Deactivated</color> node fires an impulse when the node becomes inactive.
+Usage
+
+This node fires an impulse whenever the slot which contains the OnDectivatedNode component becomes inactive in the world. 
+As such, even if the containing slot is itself active, but is globally inactivated due to an parent becoming inactivated, the node will fire. 
+If the slot containing the OnDectivatedNode component is itself inactive the node will ignore all deactivation events for parent slots until it itself becomes active again. 
+This impulse fires for all users unless the OnlyHost input is True.
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnDestroyNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Destroy</color> node fires an impulse as the node is destroyed.
+Usage
+
+The impulse from this node fires as it is destroyed, therefore any values or references held under the destroyed hierarchy are not available to nodes 
+activated by this impulse chain since they no longer exist. This impulse fires for all users unless the OnlyHost input is True. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnDestroyingNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Destroying</color> nodefires an impulse just before the node is destroyed.
+Usage
+
+The impulse from this node fires just before it is destroyed, therefore any values or references held under the hierarchy about to be destroyed are 
+still available to nodes activated by this impulse chain. The impulse fires for the user who triggered the destroy event. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnDuplicateNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Duplicate</color> node fires an impulse after it is created in a duplication event.
+Usage
+
+When an On Duplicate node is duplicated, only the newly created node fires an impulse. This includes duplication via the radial context menu, 
+duplicate button in the slot inspector panel, and the Duplicate Slot LogiX node. The impulse fires for the user who triggered the duplication event. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnLoadedNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Loaded</color> node fires an impulse whenever the node is loaded from a saved instance. The impulse fires once for the relevant user 
+(i.e. one who spawned the object etc).
+Usage
+
+Events which trigger this node include
+
+    Spawning from the inventory
+    Loading as part of a world opening
+    Re-loading due to an undo / redo action etc
+
+Note that this node does not check whether assets in its hierarchy have fully loaded.
+Examples
+
+The impulse from this node can be used to reliably save the user who spawns it's parent object from their inventory if the Loaded impulse chain writes the local user to a variable. 
+Alternatively, use the Allocating User node.
+
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.OnPasteNode:##################################################################################################################################
+
+{
+
+The <color=#00FF00>On Paste</color> node fires an impulse whenever the node is Pasted.
+Usage
+
+In the context of this node, 'pasting' is when an object is transferred from one world session to another. The impulse is fired for the user who pastes the object. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnSavingNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Saving</color> node fire an impulse when it is saved.
+Usage
+
+Saving events include saving the node as part of an object to a user's inventory or saving the current world state. The impulse fires for the user who triggered the save event. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.OnStartNode:##################################################################################################################################
+{
+
+The <color=#00FF00>On Start</color> node fires an impulse whenever the node is initialized. This happens locally for each user, 
+unless the Only Host input is set to True, in which case it will only fire for the Host User.
+Usage
+
+Events which trigger this node include
+
+    Spawning from the inventory
+    On world start
+    A new user joining the world
+    On duplication
+    Re-loading due to an undo / redo action etc
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.BooleanToggle:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Boolean Latch</color> node stores a Boolean value which can be set, reset or toggled by input impulses.
+Usage
+
+The Set impulse input changes the stored bool value to True when an impulse is received.
+
+
+The Reset impulse input changes the stored bool value to False when an impulse is received.
+
+
+The Toggle impulse input toggles the stored bool value when an impulse is received.
+
+
+The OnSet output fires an impulse whenever the stored bool is set to True as a result of an impulse received at Set or Toggle. An impulse will be fired if an impulse 
+is received at Set regardless of whether the stored value was actually changed.
+
+
+The OnReset output fires an impulse whenever the stored bool is set to False as a result of an impulse received at Reset or Toggle. An impulse will be fired 
+if an impulse is received at Reset regardless of whether the stored value was actually changed.
+
+
+The * output provides the value of the stored bool. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.DelayNode:##################################################################################################################################
+{
+
+The <color=#00FF00>Delay</color> node is used to fire an impulse from Impulse after Delay seconds have elapsed following an impulse received at Trigger.
+Usage
+
+The Delay input sets the number of seconds which must elapse before the delayed impulse is fired from Impulse. The default value is 0 which results in a delay of 1 frame update.
+
+
+The OnTrigger output fires an impulse immediately after an impulse is received at Trigger. This continues the impulse chain which arrived at Trigger.
+
+
+The delayed impulses do not continue the impulse chain which arrived at Trigger and any temporary values present will have been lost - if a temporary value must be stored 
+until the delayed impulse is fired use Delay With Value. Each impulse which arrives at Trigger sets up a separate delayed impulse and multiple can be queued at once with 
+different delay durations. If a user focuses a different world while they have delayed impulses queued, the delayed impulses will fire as normal. However, if a user with 
+delayed impulses leave the world entirely, their delayed impulses will never fire.
+Examples
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.DelayWithValueNode`1[T]:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Delay with value</color> node is used to fire an impulse from Impulse after Delay seconds have elapsed following an impulse received at Trigger. 
+Additionally a value can be stored over the delay.
+Usage
+
+The Delay input sets the number of seconds which must elapse before the delayed impulse is fired from Impulse. The default value is 0 which results in a delay of 1 frame update.
+
+
+The Value input value at the moment an impulse is received at Trigger is stored. When the node is spawned from the node browser this accepts a 'dummy' datatype, 
+however the node will overload to accept any specific input datatype when a wire is connected.
+
+
+The OnTrigger output fires an impulse immediately after an impulse is received at Trigger. This continues the impulse chain which arrived at Trigger. 
+If a user focuses a different world while they have delayed impulses queued, the delayed impulses will fire as normal. However, if a user with delayed 
+impulses leave the world entirely, their delayed impulses will never fire.
+
+
+The DelayedValue output provides the value at the Value input when the delayed impulse was queued. This is only available for the duration of the impulse chain started by Impulse.
+
+
+The delayed impulses do not continue the impulse chain which arrived at Trigger and any temporary values, other than that the single stored value will be lost. 
+Each impulse which arrives at Trigger sets up a separate delayed impulse with corresponding stored value and multiple can be queued at once with different delay 
+durations and stored values.
+
+}
+
+FrooxEngine.LogiX.ProgramFlow.DynamicImpulseReceiver:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Dynamic Impulse Receiver</color> node fires an impulse whenever a Dynamic Impulse Trigger is triggered and the receiver node is present under the 
+trigger's TargetHierarchy. This will only occur if the Tag string inputs of the trigger and receiver are identical.
+Usage
+
+Note that the tag system for dynamic impulse triggers / receivers is completely unrelated to slot tag properties. This node will only respond to Dynamic 
+Impulse Triggers - it ignores dynamic impulses from Dynamic Impulse Trigger With Value`1 nodes. 
+
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.DynamicImpulseReceiverWithValue`1[System.Boolean]:##################################################################################################################################
+{
+
+The <color=#00FF00>Dynamic Impulse Receiver With Value`1</color> node fires an impulse whenever a Dynamic Impulse Trigger With Value`1 is triggered and the receiver node is present 
+under the trigger's TargetHierarchy. This will only occur if the Tag string inputs of the trigger and receiver are identical. The Value output by the receiver node is equal to 
+the Value input of the trigger node at the moment it was triggered.
+Usage
+
+Note that the tag system for dynamic impulse triggers / receivers is completely unrelated to slot tag properties. This node will only respond to Dynamic Impulse Trigger With Value`1 
+nodes with identical Value datatypes - it ignores dynamic impulses from Dynamic Impulse Trigger nodes or Dynamic Impulse Trigger With Value`1 nodes with different Value datatypes. 
+The output Value is only equal to the Value input from the trigger for the duration of the impulse chain started from the receiver Impulse output.
+
+When spawning this node from the node browswer there is a selection of possible datatypes for this node. See this tutorial by ProbablePrime for how to create receiver nodes 
+for other data types.
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.DynamicImpulseTrigger:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Dynamic Impulse Trigger</color> node sends a dynamic impulse when impulse is received at Run which triggers any Dynamic Impulse Receiver nodes present under
+ the input TargetHierarchy 
+whose Tag input matches that on the Dynamic Impulse Trigger.
+Usage
+
+The ExcludeDisabled input determines whether Dynamic Impulse Receiver nodes present on inactive slots will be triggered. Default is False, meaning that all valid receivers may
+ be triggered.
+
+
+The OnTriggered output fires an impulse after any impulse chains triggered from Dynamic Impulse Receivers have completed. This continues the impulse chain which arrived at Run
+
+
+Note that the tag system for dynamic impulse triggers / receivers is completely unrelated to slot tag properties. When an impulse is received at Run, this node starts a 
+descending search for any Dynamic Impulse Receiver nodes present under the TargetHierarchy. All such receiver nodes with Tag inputs matching the trigger Tag will fire an impulse. 
+Note that Dynamic Impulse Receiver With Value`1 nodes will be ignored. The hierarchy search is highly efficient, however it is best to set the input TargetHierarchy as close to 
+the intended target node as possible to minimize performance costs. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.DynamicImpulseTriggerWithValue`1[System.Boolean]:##################################################################################################################################
+{
+
+The <color=#00FF00>Dynamic Impulse Trigger With Value`1</color> node sends a dynamic impulse when an impulse is received at Run which triggers any Dynamic 
+Impulse Receiver nodes (with the same Value datatype) present under the input TargetHierarchy whose Tag input matches that on the Dynamic Impulse Trigger With Value`1.
+Usage
+
+The ExcludeDisabled input determines whether Dynamic Impulse Receiver With Value`1 nodes present on inactive slots will be triggered. Default is False, meaning that 
+all valid receivers may be triggered.
+
+
+The OnTriggered output fires an impulse after any impulse chains triggered from Dynamic Impulse Receiver With Value`1 nodes have completed. This continues the impulse 
+chain which arrived at Run
+
+
+Note that the tag system for dynamic impulse triggers / receivers is completely unrelated to slot tag properties. When an impulse is received at Run, this node starts 
+a descending search for any Dynamic Impulse Receiver With Value`1 nodes present under the TargetHierarchy whose Value datatype matches that of the trigger. 
+All such receiver nodes with Tag inputs matching the trigger Tag will fire an impulse. Note that Dynamic Impulse Receiver nodes will be ignored. The hierarchy 
+search is highly efficient, however it is best to set the input TargetHierarchy as close to the intended target node as possible to minimize performance costs. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.FireOnChange`1[T]:##################################################################################################################################
+{
+
+The <color=#00FF00>Fire On Change</color> node fires an impulse whenever the input Value changes.
+Usage
+
+The Value input has a 'dummy' datatype when the node is spawned from the node browser. The node will overload to any given datatype if a wire of that type is connected to Value.
+
+The second input to this node, OnlyForUser, exists to control which users fire the impulse when the Condition is met/changed. Its handling is as follows:
+
+    If a User is specified in the OnlyForUser only fire for this user.
+    If a User is not specified BUT the Node exists parented to a User then fire for the user it is parented to. This usually happens on avatars.
+    Otherwise fire for all users.
+
+Do not use Local User with this node. Use Local Fire On Change instead.
+
+It is recommended to specify a user at OnlyForUser to ensure that the user for whom the impulse fires is predictable.
+
+Note that this node will only fire one impulse in the event that Value changes multiple times within a single impulse chain. 
+Similarly this node will not fire an impulse if the Value is changed and then reset to the previous value within a single impulse chain. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.FireOnFalse:##################################################################################################################################
+{
+
+The <color=#00FF00>Fire On False</color> node node fires a single impulse whenever the input Condition becomes False.
+Usage
+
+After an impulse has been fired, the Condition must first be reset to True before any additional impulses can be fired. When the node is spawned from the node 
+browser Condition is False by default, however no impulse is fired as a result.
+
+The second input to this node, OnlyForUser, exists to control which users fire the impulse when the Condition is met/changed. Its handling is as follows:
+
+    If a User is specified in the OnlyForUser only fire for this user.
+    If a User is not specified BUT the Node exists parented to a User then fire for the user it is parented to. This usually happens on avatars.
+    Otherwise fire for all users.
+
+Do not use Local User with this node. Use Local Fire On False instead.
+
+It is recommended to specify a user at OnlyForUser to ensure that the user for whom the impulse fires is predictable.
+
+Note that this node will only fire one impulse in the event that Condition becomes False multiple times within a single impulse chain. Similarly this node will not 
+fire an impulse if the Condition becomes False and then reset to True within a single impulse chain. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.FireOnTrue:##################################################################################################################################
+{
+
+The <color=#00FF00>Fire On True</color> node fires a single impulse whenever the input Condition becomes True.
+Usage
+
+After an impulse has been fired, the Condition must first be reset to False before any additional impulses can be fired.
+
+The second input to this node, OnlyForUser, exists to control which users fire the impulse when the Condition is met/changed. Its handling is as follows:
+
+    If a User is specified in the OnlyForUser only fire for this user.
+    If a User is not specified BUT the Node exists parented to a User then fire for the user it is parented to. This usually happens on avatars.
+    Otherwise fire for all users.
+
+Do not use Local User with this node. Use Local Fire On True instead.
+
+It is recommended to specify a user at OnlyForUser to ensure that the user for whom the impulse fires is predictable.
+
+Note that this node will only fire one impulse in the event that Condition becomes True multiple times within a single impulse chain. Similarly this node will not fire 
+an impulse if the Condition becomes True and then reset to False within a single impulse chain.
+
+
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.FireWhileTrue:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Fire While True</color> node fires an impulse every frame while the input Condition is True.
+Usage
+
+The FiringUser input determines for which users impulses will fire: if a valid user value is present, impulses will only fire for that user. If no FiringUser is provided, 
+or Local User is used, impulses will fire for all users. If an explicit null value provided, no impulses will fire at all.
+
+
+It is recommended to specify the FiringUser to minimize redundant impulses and to keep behavior predictable.
+Examples
+
+This will continue firing until the condition is no longer True. 
+
+}
+
+FrooxEngine.LogiX.ProgramFlow.ForNode:##################################################################################################################################
+
+{
+
+The <color=#00FF00>For</color> node is used to fire impulses from the LoopIteration output a specific number of times when an impulse is received at Run.
+Usage
+
+The Count input determines how many times impulses will be fired from the LoopIteration output. Default is 0. Note that this is evaluated immediately after the LoopStart 
+impulse chain has completed, just before any impulses are fired from LoopIteration.
+
+
+The Reverse input controls whether the Iteration output value is incremented or decremented each LoopIteration. Default is False, meaning Iteration is incremented each iteration.
+
+
+The LoopStart output fires an impulse once after an impulse is received at Run. The impulse chain will complete before any impulses are fired from LoopIteration.
+
+
+The LoopIteration output fires impulses sequentially until the total number which have been fired is equal to the Count input. Each impulse chain started from LoopIteration 
+completes before the following one is fired.
+
+
+The LoopEnd output fires an impulse once the final impulse chain started from LoopIteration has ended.
+
+
+The Iteration output value is either incremented or decremented each time a new impulse is fired from LoopIteration, depending on the value of Reverse. If Reverse is False, 
+Iteration is incremented each time an impulse is fired from LoopIteration starting with the value 0, during the first iteration, and ending with Count - 1 on the final iteration. 
+If Reverse is True, the Iteration value is Count - 1 on the first iteration and decremented each time down to 0 on the final iteration.
+
+
+Note that all impulse chains started from this node effectively continue the one which arrived at Run, meaning that any temporary values from previous nodes are still available. 
+All iterations from LoopIteration complete within a single frame update and therefore this can produce framerate hitches if an excessively demanding computation is performed.
+ There is a failsafe which will put this node into an error state (node visual turns red) if a frame is delayed excessively - this helps prevent complete freezes. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.IfNode:##################################################################################################################################
+{
+
+The <color=#00FF00>If</color> node fires an impulse from one of two outputs dependent on the Condition when an impulse is received at Run.
+Usage
+
+Upon receiving an impulse at Run, an impulse is fired from True if Condition is True or from False if Condition is False. The default Condition value is False. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.ImpulseDemultiplexer:##################################################################################################################################
+{
+
+The <color=#00FF00>Impulse Demultiplexer</color> node fires an impulse from OnTriggered whenever an impulse is received at any Trigger input. It also indicates which input was 
+triggered via the Index value.
+Usage
+
+The Index output value corresponds to the index of the input which was triggered. Neos uses zero-based indexing meaning that the top input being triggered corresponds to Index = 0. 
+This value is only available for the duration of the impulse chain fired from OnTriggered. Default value is 0.
+
+
+The number of Trigger inputs can be changed with the + or - buttons.
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.ImpulseMultiplexer:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Impulse Multiplexer</color> node fires an impulse from the output which matches the value of the input Index when an impulse is received at Trigger.
+Usage
+
+An impulse is only fired if there is a corresponding output for the Index, e.g. no impulse will be fired if the Index is -1 when an impulse is 
+received at Trigger. Neos uses zero indexing, hence the topmost output will fire an impulse when Index is zero. The number of outputs can be changed with the + and - buttons. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.LocalFireOnChange`1[T]:##################################################################################################################################
+{
+
+The <color=#00FF00>Local Fire On Change`1</color> node fires an impulse independently for each user whenever the input Value changes locally for them.
+Usage
+
+The Value input has a 'dummy' datatype when the node is spawned from the node browser. The node will overload to any given datatype if a wire of that type is connected to Value. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.LocalFireOnFalse:##################################################################################################################################
+{
+
+The <color=#00FF00>Local Fire On False</color> node fires an impulse independently for each user whenever the input Condition locally becomes False for them.
+Usage
+
+Note that the initial default value is false, however the node does not fire an impulse when it is first created. Hence the input value 
+must become True at least once before this node will fire.
+
+There are a few mechanisms which can cause values in NeosVR to be different for different users; if there were 3 users in a session (A, B, and C) 
+and the Condition became False for A and B (but not C), impulses would be fired for both A and B (but not C). If later the Condition also became False for C and 
+impulse would fire only for C. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.LocalFireOnTrue:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Local Fire On True</color> node fires an impulse independently for each user whenever the input Condition locally becomes True for them.
+Usage
+
+Note that the initial default value is False.
+
+There are a few mechanisms which can cause values in NeosVR to be different for different users; if there were 3 users in a session (A, B, and C) 
+and the Condition became True for A and B (but not C), impulses would be fired for both A and B (but not C). If later the Condition also became True for C 
+and impulse would fire only for C. 
+
+}
+
+FrooxEngine.LogiX.ProgramFlow.LocalImpulseTimeout:##################################################################################################################################
+{
+
+The <color=#00FF00>Local Impulse Timeout</color> node can be used to filter the rate of impulses passing along an impulse chain.
+Usage
+
+When an impulse is first received at Trigger, an impulse is fired from Pulse which continues the impulse chain. No further impulses will be fired from Pulse, no matter how many 
+arrive at Trigger. Until either an impulse is received at Reset or a number of seconds has elapsed greater than or equal to TimeoutSeconds. The duration to wait is fixed at the 
+moment that an impulse is fired from Pulse. As such, if the TimeoutSeconds value is changed after the timeout begins, no further impulses will fire from Pulse until enough seconds 
+have elapsed greater than or equal to the previous value of TimeoutSeconds (or an impulse is received at Reset).
+
+As the node name implies, timeouts and resets are local for each user. Meaning one user may fire an impulse from Pulse and initate a timeout for any impulses owned by them, 
+but another user would be capable of triggering an impulse from Pulse and initating their own timeout immediately afterwards. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.LocalLeakyImpulseBucket:##################################################################################################################################
+
+{
+
+
+The <color=#00FF00>Local Leaky Impulse Bucket</color> node can be used as a buffer to store multiple impulses and release them at a constant rate. This node operates 
+according to the Leaky bucket algorithm.
+Usage
+
+Trigger is the impulse source for the bucket. Reset will remove all remaining impulses from the bucket. Interval is a configurable time interval which affects how often 
+impulses are poured out of the bucket. MaximumCapacity is the maximum number of impulses that can be stored in the bucket. Pulse fires whenever the specified time interval 
+has elapsed if there are impulses remaining. Overflow fires whenever an impulse is received through Trigger while the bucket is full. CurrentCapacity is the current number 
+of impulses in the bucket. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.OnePerFrame:##################################################################################################################################
+{
+
+The <color=#00FF00>One Per Frame</color> node fires an impulse from Pulse when it receives an impulse at Trigger. 
+No further impulses are fired from Pulse, however many may arrive at Trigger, until the next frame update.
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.PulseRandom:##################################################################################################################################
+{
+
+The <color=#00FF00>Pulse Random</color> node fires an impulse from one random output when an impulse is received at Trigger.
+Usage
+
+The number of outputs can be changed using the + / - buttons on the node visual. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.SequenceImpulse:##################################################################################################################################
+{
+
+The <color=#00FF00>Sequence</color> node fires an impulse from each output sequentially when an impulse is received at Trigger.
+Usage
+
+Impulses are fired from outputs in numerically ascending order [0], [1] etc.. Successive output impulses are only fired when the chain initiated by the preceding one has completed. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.TimerNode:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Timer</color> node fires impulses from Pulse separated by the number of seconds specified by the Interval input.
+Contents
+
+    1 Usage
+        1.1 User Handling
+    2 Examples
+    3 Node Menu
+
+Usage
+
+Each frame update, this node checks whether a number of seconds greater than or equal to the Interval input have elapsed. If they have, an impulse is fired owned by the UpdatingUser. If no UpdatingUser is provided, the default owner is the world host. If a null UpdatingUser is provided, the node will not fire at all.
+User Handling
+
+It is NOT recommended to use Local User with this node. When Local User is used, it will fire impulses for all users in the session. This is similar to the guidance for Fire On True etc. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.UpdateNode:##################################################################################################################################
+{
+
+The <color=#00FF00>Update</color> node fires an impulse from Update every frame.
+Usage
+
+Impulses are fired owned by the UpdatingUser. This defaults to the world host if no UpdatingUser is provided. If a null user value is explicitly provided the node will not fire impulses.
+
+Due to the frequency that this node fires impulses, one should be careful to ensure that impulses are filtered such that downstream LogiX is only evaluated when absolutely necessary. Unnecessary use of this node has the potential to incur significant performance penalties and there are almost always better alternatives. 
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.UpdatesDelayNode:##################################################################################################################################
+{
+
+The <color=#00FF00>Update</color>Updates Delay</color> node is used to fire an impulse from Impulse after a number of frame updates greater than or equal to Updates have completed following an impulse received at Trigger.
+Usage
+
+The Updates input sets the number of frame updates which must complete before the delayed impulse is fired from Impulse. The default value is 1.
+
+
+The OnTrigger output fires an impulse immediately after an impulse is received at Trigger. This continues the impulse chain which arrived at Trigger.
+
+
+The delayed impulses do not continue the impulse chain which arrived at Trigger and any temporary values present will have been lost - if a temporary value must be stored until the delayed impulse is fired use Updates Delay With Value. Each impulse which arrives at Trigger sets up a separate delayed impulse and multiple can be queued at once with different delay durations.
+
+
+}
+
+
+
+FrooxEngine.LogiX.ProgramFlow.UpdatesDelayWithValueNode`1[T]:##################################################################################################################################
+{
+
+The <color=#00FF00>Updates Delay with value</color> node is used to fire an impulse from Impulse after a number of frame updates greater than or equal to Updates have completed following an impulse received at Trigger. Additionally a value can be stored over the delay.
+Usage
+
+The Updates input sets the number of frame updats which must complete before the delayed impulse is fired from Impulse. The default value is 1.
+
+
+The Value input value at the moment an impulse is received at Trigger is stored. When the node is spawned from the node browser this accepts a 'dummy' datatype, however the node will overload to accept any specific input datatype when a wire is connected.
+
+
+The OnTrigger output fires an impulse immediately after an impulse is received at Trigger. This continues the impulse chain which arrived at Trigger.
+
+
+The DelayedValue output provides the value at the Value input when the delayed impulse was queued. This is only available for the duration of the impulse chain started by Impulse.
+
+
+The delayed impulses do not continue the impulse chain which arrived at Trigger and any temporary values, other than that the single stored value will be lost. Each impulse which arrives at Trigger sets up a separate delayed impulse with corresponding stored value and multiple can be queued at once with different delay durations and stored values. 
+
+}
+
+
+FrooxEngine.LogiX.ProgramFlow.WhileNode:##################################################################################################################################
+{
+
+The <color=#00FF00>While</color> node is used to fire impulses from the LoopIteration output until the Condition becomes True after an impulse is received at Run.
+Usage
+
+The LoopStart output fires an impulse once after an impulse is received at Run. The impulse chain will complete before any impulses are fired from LoopIteration.
+
+
+The LoopIteration output fires impulses sequentially until the Condition becomes True. Each impulse chain started from LoopIteration completes before the following one is fired.
+
+
+The LoopEnd output fires an impulse once the final impulse chain started from LoopIteration has ended.
+
+
+Note that all impulse chains started from this node effectively continue the one which arrived at Run, meaning that any temporary values from previous nodes are still available. All iterations from LoopIteration complete within a single frame update and therefore this can produce framerate hitches if an excessively demanding computation is performed. There is a failsafe which will put this node into an error state (node visual turns red) if a frame is delayed excessively - this helps prevent complete freezes.
+Examples
+
+The While node is useful when looping and the required number of iterations cannot be determined in advance. If similar looping behavior is required, but the number of required iterations can be fixed, use the For node instead. 
+
+
+}
+
+
+
+
+
+
+
+

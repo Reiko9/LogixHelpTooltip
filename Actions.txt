@@ -1,0 +1,298 @@
+FrooxEngine.LogiX.Actions.DecrementFloatNode:#############################################################################
+{
+The <color=#00FF00>--</color> node reduces the referenced <b>Target</b> value by one when it receives an impulse at <b>Decrement</b>.
+Usage
+
+The <b>OnDone</b> output fires an impulse when the <b>Target</b> value has been decremented. 
+An impulse will not fire if there is no valid <b>Target</b>. This impulse continues the impulse chain which arrived at <b>Decrement<b>.
+
+This node differs from the -1 node under Operators since it only makes changes when it receives an impulse. 
+This makes it useful for decrementing a target value (e.g. one stored in a variable node or component e.g. a ValueField) 
+in a way which is saved and synchronized across all users. 
+If the aim is to decrement a value locally as part of a LogiX calculation the -1 node is likely the better choice. 
+}
+
+FrooxEngine.LogiX.Actions.IncrementFloatNode:#############################################################################
+{
+The <color=#00FF00>++</color> node increases the referenced Target value by one when it receives an impulse at Increment.
+Usage
+
+The OnDone output fires an impulse when the Target value has been incremented. 
+An impulse will not fire if there is no valid Target. This impulse continues the impulse chain which arrived at Increment.
+
+
+This node differs from the +1 node under Operators since it only makes changes when it receives an impulse. 
+This makes it useful for incrementing a target value (e.g. one stored in a variable node or component e.g. a ValueField) 
+in a way which is saved and synchronized across all users. 
+If the aim is to increment a value locally as part of a LogiX calculation the +1 node is likely the better choice. 
+}
+
+
+FrooxEngine.LogiX.Actions.DriveValueNode`1[T]:############################################################################
+{
+The <color=#00FF00><b>Drive</b></color> node will start driving the referenced DriveTarget with the input Source value when an impulse is received at StartDrive. 
+The drive can be stopped by an impulse received at StopDrive.
+
+Usage:
+
+The Source input has a 'dummy' datatype when the node is spawned from the node browser. However, the node will overload to the correct value type when a suitable wire is connected.
+
+
+The OnStartDrive output fires an impulse whenever an impulse arrives at the StartDrive input. This continues the impulse chain which arrived at StartDrive.
+
+
+The OnStopDrive output fires an impulse whenever an impulse arrives at the StopDrive input. This continues the impulse chain which arrived at StopDrive.
+
+
+The OnHook fires an impulse whenever the DriveTarget is driven with the Source value and another source (e.g. a Write node or ButtonValueSet component) 
+attempts (but is not able) to overwrite the value.
+
+
+The IsDriving output is True while the DriveTarget is driven with the Source value, otherwise False.
+
+
+The HookedValue output provides the value which another source attempted to set the DriveTarget to when an impulse is fired from OnHook. 
+The value is only available for the duration of the impulse chain started from OnHook.
+
+
+Note that, when an impulse is received at StartDrive the drive target will become driven by the Source value regardless of whether it was 
+already driven by some other source i.e. control of the target value is overridden. 
+}
+
+
+FrooxEngine.LogiX.Actions.DrivePlaybackNode:############################################################################
+{
+
+The <color=#00FF00><b>Drive Playback node</b></color> can be used to directly control the rate of playback of the DriveTarget. 
+Since this is a drive, it is possible to localise the speed of playback, or even whether the clip is played at all, for differnt users. 
+
+Inputs
+
+When an impulse is received at StartDrive, the node will start driving the playback state of the DriveTarget. 
+This gives exclusive control over the playback state to the Drive Playback node. Control will be taken over if the DriveTarget was previously driven by another source.
+
+
+When an impulse is received at StopDrive, the node will stop driving the playback state of the DriveTarget. Playback will continue in the same state as it was just before driving stopped.
+
+
+The ForceResync input will force the normalised position of the DriveTarget to the NormalizedPosition input value when an impulse is received.
+
+
+The NormalizedPosition input controls the rate/state of playback. Default is 0.
+
+
+The MaximumPositionError value is the maximum number of seconds that the DriveTarget playback position can deviate from the absolute playback position corresponding to 
+NormalizedPosition input. The normalized playback position will be reset to the NormalizedPosition if the absolute playback position error is greater than MaximumPositionError. 
+Default is 0.
+
+
+The Speed input scales the rate of playback relative to the rate of change of the NormalizedPosition input, i.e. rate of normalized position change in the DriveTarget 
+is equal to rate of change of NormalizedPosition multiplied by the Speed. If this has a value of 1, the default, the rate of change of DriveTarget playback normalized 
+position is equal to the rate of change of NormalizedPosition. At higher, lower, or negative values the DriveTarget normalized playback position will start to deviate 
+from the NormalizedPosition, resulting in altered playback speed, until the absolute playback position error is greater than the MaximumPositionError.
+
+
+The Play input controls whether the DriveTarget playback position changes if NormalizedPosition is changing. Default is False.
+
+
+The Loop input controls whether playback will restart from the beginning if the DriveTarget's normalized position is greater than or equal to 1. Default is False.
+Outputs
+
+The OnStartDrive output fires an impulse when an impulse is received at StartDrive. This continues the impulse chain which arrived at StartDrive.
+
+
+The OnStopDrive output fires an impulse when an impulse is received at StopDrive. This continues the impulse chain which arrived at StopDrive.
+
+
+The IsDriving output is True if the DriveTarget's playback is being driven by the Drive Playback node, otherwise False. 
+
+}
+
+
+FrooxEngine.LogiX.Animation.Tweening.TweenValueNode`1[T]:###########################################################################
+{
+
+The <color=#00FF00><b>Tween</b></color> node is used to interpolate the value of Target starting at From, and ending at To over Duration seconds when an impulse is received at Tween.
+Usage
+
+When an impulse is received at Tween a [Tween (Component)|Tween]] component is created which drives the referenced Target value over the duration.
+
+The To value determines the final value reached at the end of the Duration.
+
+
+The From value determines the initial value at the start of the Duration.
+
+
+The Duration input determines how long the transition from From to To takes in seconds. Default is 1.
+
+
+The CurvePreset determines the shape of the interpolated values. Default is Smooth.
+
+
+The OnStarted output fires an impulse when tweening of the Target begins as a result of an impulse received at Tween. An impulse will not be fired if there is no valid Target. 
+This impulse continues the impulse chain which arrived at Tween.
+
+
+The OnDone output fires an impulse when tweening of the Target has finished. This does not continue the impulse chain which arrived at Tween.
+
+
+Note that only one tween operation for the Target can be active at any time. Currently target value changes work via sequential writes to the value which may not appear smooth 
+depending on framerates and network latency. Similar, potentially smoother, effects can be achieved with e.g. the various Lerp nodes under Category:LogiX:Math 
+
+
+}
+
+
+FrooxEngine.LogiX.Actions.WriteValueNode`1[T]:####################################################################################
+{
+
+The <color=#00FF00><b>Write</b></color> node overwrites the referenced Target value with the input Value when an impulse is received at Write.
+Usage
+
+When spawned from the node browser, the Value input has a dummy datatype. This will overload to match the input data type when a valid input is connected. 
+The input type and that of the referenced Target must match.
+
+
+The OnDone output fires an impulse when the Target value has been successfully overwritten after an impulse was received at Write or the Target value 
+is driven by a system which allows an attempted written variable to be hooked (e.g. Drive node, ValueCopy component, etc.). This impulse continues the 
+impulse chain which arrived at Write.
+
+
+The OnFail output fires an impulse when the Target value could not be set, e.g. if the Target value is driven from another source which does not allow 
+hooking of the written value, or if there is no valid Target. This impulse continues the impulse chain which arrived at Write.
+
+
+Changing the value of a Variable node, Component field etc. via a Write node results in a datamodel change which will then be synchronised to other 
+users in the session. Note that changes are only synchronised at the end of every update so, if multiple writes to the same target are performed by a 
+single client within an update, only the final value will be sent. Additionally, no changes will be broadcast if the value is reset to the value it held 
+at the beginning of an update. Due to this synchronisation process, it is inadvisable to write to a value very regularly (e.g. every update) unless absolutely 
+necessary. It is generally better to use the Drive system instead for continuously changing values to avoid unnecessary network traffic. Source.
+
+Generally, with a Write/Write Latch node, one can only write to component or slot fields which are value-typed (e.g. bools, ints, strings, floats), 
+whereas reference-typed fields (e.g. slot, user, IAssetProvider<AudioClip> etc.) require Write Ref. However, it is possible to write to reference-typed 
+LogiX variable nodes using a Write/Write Latch node where it isn't possible to do so with Write Ref. It is also possible to write to reference-typed fields 
+using Write/Write Latch if the input SetValue and ResetValue are RefIDs, rather than reference datatypes - it is generally not recommended to work with raw RefIDs though. 
+
+}
+
+FrooxEngine.LogiX.WriteLatch`1[T]:##################################################################################################
+{
+
+The <color=#00FF00><b>Write Latch</b></color> node node overwrites the referenced Target value with the input SetValue or ResetValue when an impulse is received at Set or Reset respectively.
+Usage
+
+When spawned from the node browser, the SetValue and ResetValue inputs have a dummy datatype. This will overload to match the input data type when a valid input is connected. 
+The type of these two inputs and that of the referenced Target must match.
+
+
+The OnSet output fires an impulse after an impulse is received at Set. This occurs regardless of whether there is a valid Target or whether any Target was actually written to. 
+This continues the impulse chain which arrived at Set.
+
+
+The OnReset output fires an impulse after an impulse is received at Reset. This occurs regardless of whether there is a valid Target or whether any Target was actually 
+written to. This continues the impulse chain which arrived at Reset.
+
+
+Changing the value of a Variable node, Component field etc. via a Write Latch node results in a datamodel change which will then be synchronised to other users in the session. 
+Note that changes are only synchronised at the end of every update so, if multiple writes to the same target are performed by a single client within an update, only the final value 
+will be sent. Additionally, no changes will be broadcast if the value is reset to the value it held at the beginning of an update. Due to this synchronisation process, 
+it is inadvisable to write to a value very regularly (e.g. every update) unless absolutely necessary. It is generally better to use the Drive system instead for continuously 
+changing values to avoid unnecessary network traffic. Source.
+
+Generally, with a Write/Write Latch node, one can only write to component or slot fields which are value-typed (e.g. bools, ints, strings, floats), whereas reference-typed fields 
+(e.g. slot, user, IAssetProvider<AudioClip> etc.) require Write Ref. However, it is possible to write to reference-typed LogiX variable nodes using a Write/Write Latch node where 
+it isn't possible to do so with Write Ref. It is also possible to write to reference-typed fields using Write/Write Latch if the input SetValue and ResetValue are RefIDs, 
+rather than reference datatypes - it is generally not recommended to work with raw RefIDs though.
+Examples
+
+These two images illustrate comparable LogiX setups using either one Write Latch node or two Write nodes. Note that the presence of the OnFail impulse output and different 
+behaviour of OnDone and OnFail compared with OnSet and OnReset means that the two setups are not exactly identical. 
+
+}
+
+
+FrooxEngine.LogiX.Actions.WriteReferenceNode`1[T]:#####################################################################################
+{
+
+The <color=#00FF00><b>Write Ref</b></color> node overwrites the Reference with a reference to the input Target when an impulse is received at Write.
+Usage
+
+When spawned from the node browser, the Target input has a general IWorldElement datatype. It is recommended to overload the node to the 
+required datatype by first connecting the Reference output to the target field before connecting an input to Target. This is because any reference type 
+can be cast to IWorldElement which is not, generally, the datatype of the intendend target field.
+
+
+The OnDone output fires an impulse when the Reference target value has been successfully overwritten after an impulse was received at Write or 
+the Reference target value is driven by a system which allows an attempted written variable to be hooked (e.g. ReferenceCopy component, etc.). 
+This impulse continues the impulse chain which arrived at Write.
+
+
+The OnFail output fires an impulse when the Reference target value could not be set, e.g. if the Reference target value is driven from another source 
+which does not allow hooking of the written value, or if there is no valid Reference target. This impulse continues the impulse chain which arrived at Write.
+
+
+Changing the value of a Component field etc. via a Write Ref node results in a datamodel change which will then be synchronised to other users in the session. 
+Note that changes are only synchronised at the end of every update so, if multiple writes to the same target are performed by a single client within an update, 
+only the final value will be sent. Additionally, no changes will be broadcast if the value is reset to the value it held at the beginning of an update. 
+Due to this synchronisation process, to avoid unnecessary network traffic it is inadvisable to write to a target very regularly (e.g. every update) unless absolutely necessary . Source.
+
+Generally one should write to component or slot fields which are reference-typed (e.g. slot, user, IAssetProvider<AudioClip> etc.) 
+using Write Ref. However, it is not possible to write to reference-typed LogiX variable nodes using a Write Ref node whereas it is 
+possible to do so with Write/Write Latch. It is also possible to write to reference-typed fields using Write/Write Latch if the inputs are RefIDs, 
+rather than reference datatypes. However, it is generally not recommended to work with raw RefIDs though - better to use Write Ref with the correct datatypes. 
+
+}
+
+
+FrooxEngine.LogiX.Actions.WriteRefLatch`1[T]:##########################################################################################
+{
+
+The <color=#00FF00><b>Write Ref Latch</b></color> node node overwrites the target reference with the input SetReference or ResetReference 
+when an impulse is received at Set or Reset respectively.
+Usage
+
+When spawned from the node browser, the SetReference and ResetReference have a IWorldElement datatype. This will overload to match the input reference 
+type when a valid input is connected. The type of these two inputs and that of the referenced Target must match.
+
+
+The OnSet output fires an impulse after an impulse is received at Set. This occurs regardless of whether there is a valid Target or whether any 
+Target was actually written to. This continues the impulse chain which arrived at Set.
+
+
+The OnReset output fires an impulse after an impulse is received at Reset. This occurs regardless of whether there is a valid Target or 
+whether any Target was actually written to. This continues the impulse chain which arrived at Reset. 
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,842 @@
+
+FrooxEngine.LogiX.Operators.All_Bool2
+{Basically an AND gate for Boolean Vectors... Boolean vectors a bundle of Boolean values in a single wire
+ IF ALL boolean values in wire are True, then the output is True}
+
+FrooxEngine.LogiX.Operators.Any_Bool2
+{Basically an OR gate for Boolean Vectors... Boolean vectors a bundle of Boolean values in a single wire
+IF ANY boolean values in the wire are True, then the output is True}
+
+FrooxEngine.LogiX.Operators.None_Bool2
+{Basically a NOR gate for Boolean Vectors... Boolean vectors a bundle of Boolean values in a single wire
+If NO boolean values in the wire are True, then the output is True}
+
+FrooxEngine.LogiX.Operators.PackNullable`1:#######################################################################################################
+FrooxEngine.LogiX.Operators.UnpackNullable`1
+{
+<color=#00FF00>Pack</color> / <color=#00FF00>Unpack</color> nullable allow you to create and extract nullable types which are normal value types 
+(such as int), with the ability of becoming null. These aren't useful in user made creations but are sometimes used in existing components 
+(such as AvatarRenderSettings)
+}
+
+
+
+FrooxEngine.LogiX.Operators.Parse:##############################
+{
+parses a string into the respective value
+}
+
+
+FrooxEngine.LogiX.Operators.Sub_Float:##################################################################################################################################
+{
+The <color=#00FF00>-</color> node subtracts the value of input B from input A.
+Usage
+
+Note that this node takes a float datatype by default, however it can cast to handle various different numeric datatypes if an appropriate wire is connected. 
+If there are more than 3 inputs the naming of inputs changes to Operands.[0], Operands.[1] ... etc. In that case, all inputs are subtracted from Operands.[0]. 
+}
+
+
+FrooxEngine.LogiX.Operators.NOT_Int:##################################################################################################################################
+{
+
+The <color=#00FF00>!</color> node performs the logical NOT operation on input A. 
+
+Usage:
+When spawned from the node browser, this node accepts an int datatype by default, but it is more commonly used to work with Boolean values (True/False) 
+where it inverts whatever input it receives — True becomes False / False becomes True. This node will accept some numeric datatypes, in which case it performs 
+the operation in a bitwise manner. 
+
+The most common use of the node as a boolean operator simply inverts the value it receives. True becomes False, and False becomes True. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.NotEquals_Float:##################################################################################################################################
+{
+The <color=#00FF00>!=</color> node checks whether inputs A and B are not equal, outputting True if they are not equal and False if they are equal. 
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept 
+a wide variety of value and reference datatypes if an appropriate wire is connected to one of the inputs. 
+}
+
+
+FrooxEngine.LogiX.Operators.Mod_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>%</color> node divides A by B and outputs the remainder.
+Usage
+
+The top input is the number to divide, the bottom what we are dividing by. Returns the remainder of division. 
+
+We can use the Modulo node to determine whether a number is even or odd. To do this, divide the number by 2. 0 indicates even and 1 indicates odd. 
+
+}
+
+FrooxEngine.LogiX.Operators.AND_Int:##################################################################################################################################
+{
+
+The <color=#00FF00>&</color> node performs the logical AND operation on inputs A and B.
+Usage
+
+When spawned from the node browser, this node accepts the int datatype by default, but it is more commonly used to work with Boolean values (True/False). 
+The outputs will be True if, and only if, all inputs are True - otherwise it will output False. This node will accept some numeric datatypes, in which case 
+it performs the operation in a bitwise manner. 
+}
+
+
+FrooxEngine.LogiX.Operators.Conditional_Float:##################################################################################################################################
+{
+The <color=#00FF00>?:</color> node outputs either the OnTrue or OnFalse input values depending on the value of the Condition input. 
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to use 
+other value or reference types if an appropriate wire is connected. This operator is commonly referred to as the 'ternary' or 'conditional' operator. 
+}
+
+
+FrooxEngine.LogiX.Operators.NullCoalesce`1[T]:##################################################################################################################################
+{
+The <color=#00FF00>??</color> node outputs the value of the first input which is not null.
+Usage
+
+When spawned from the node browser, this node accepts the object datatype by default. However, this node can be overloaded to use various reference 
+types if an appropriate wire is connected. Inputs are checked for not-null values in order: A, then B (or Operands.[0], Operands.[1], Operands.[2] ... 
+etc. if more than 2 inputs are present). Output will be null if all inputs are also null. This operator can be referred to as the 'null-coalescing' operator. 
+}
+
+
+FrooxEngine.LogiX.Operators.XOR_Int:##################################################################################################################################
+{
+The <color=#00FF00>^</color> node performs the logical exclusive OR (XOR) operation on inputs A and B.
+Usage
+
+When spawned from the node browser, this node accepts the int datatype by default, but it is more commonly used to work with Boolean values (True/False).
+
+If any inputs are toggled the output will also toggle. This node will accept some numeric datatypes, in which case it performs the operation in a bitwise manner. 
+}
+
+
+FrooxEngine.LogiX.Operators.OR_Int:##################################################################################################################################
+{
+The <color=#00FF00>|</color> node performs the logical inclusive OR operation on inputs A and B.
+Usage
+
+When spawned from the node browser, this node accepts the int datatype by default, but it is more commonly used to work with Boolean values (True/False) as shown in the image.
+
+The output will be True if any of inputs are True — otherwise it will output False. This node will accept some numeric datatypes, in which case it performs the operation 
+in a bitwise manner. 
+}
+
+
+FrooxEngine.LogiX.Operators.Magnitude_Float2:##################################################################################################################################
+{
+<color=#00FF00>Magnitude</color> (LogiX node)
+Get distance by float from center(Coordinate 0.0.0) of parent object with root(√) calculate. 
+
+Get actual distance value from center(0.0.0) point if parent object is world. 
+}
+
+
+FrooxEngine.LogiX.Operators.SqrMagnitude_Float2:##################################################################################################################################
+{
+<color=#00FF00>Magnitude Squared</color> (LogiX node)
+Get distance by float from center(Coordinate 0.0.0) of parent without root(√) calculate. It's equal to Magnitude(|V|) after root calculate 
+Usage
+
+Get approximity distance value from center of parent. 
+}
+
+
+FrooxEngine.LogiX.Operators.Add_Float:##################################################################################################################################
+{
+The <color=#00FF00>+</color> node outputs the sum of all input values.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept different numeric 
+value types if an appropriate wire is connected to an input. This node can also be overloaded to accept the string datatype, in which case it outputs 
+all inputs concatenated together. 
+}
+
+
+FrooxEngine.LogiX.Operators.PlusMinus_Float:##################################################################################################################################
+{
+The <color=#00FF00>+/-</color> node
+Usage
+
+Adds and subtracts the two floats at the same time. Top output adds the 2 floats together. Bottom output subtracts the 2 floats from each other. 
+}
+
+FrooxEngine.LogiX.Operators.Inc_Float:##################################################################################################################################
+{
+The <color=#00FF00>+1</color> node outputs the value of input A increased by 1.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept various numeric value 
+types if an appropriate wire is connected to the input. 
+}
+
+FrooxEngine.LogiX.Operators.LessThan_Float:##################################################################################################################################
+{
+The < node checks whether input A is less than B.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. 
+However, this node can be overloaded to accept various numeric value types if an appropriate wire is connected to the input. 
+This node outputs True if input A is less than input B, otherwise False. 
+}
+
+FrooxEngine.LogiX.Operators.ShiftLeft_Int:##################################################################################################################################
+{
+
+<color=#00FF00>Left Shift</color>
+The << node outputs an integer that has had its binary value arithmetically shifted X units to the left. 
+}
+
+
+FrooxEngine.LogiX.Operators.Equals_Float:##################################################################################################################################s
+{
+
+The <color=#00FF00>==</color> node checks whether inputs A and B are equal, outputting True if they are equal and False if they are not equal.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to 
+accept a wide variety of value and reference datatypes if an appropriate wire is connected to one of the inputs. 
+
+}
+
+FrooxEngine.LogiX.Operators.GreaterThan_Float:##################################################################################################################################s
+{
+
+<color=#00FF00>Greater Than</color>
+The > node checks whether input A is greater than B.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded 
+to accept various numeric value types if an appropriate wire is connected to the input. This node outputs True if input A is greater than input B, otherwise False. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.ShiftRight_Int:##################################################################################################################################s
+{
+<color=#00FF00>Right Shift</color>
+
+The >> node outputs an integer that has had its binary value arithmetically shifted X units to the right.
+}
+
+
+FrooxEngine.LogiX.Operators.Mul_Float:##################################################################################################################################s
+{
+
+The <color=#00FF00>×</color> node multiplies the input values by each other and outputs the product.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept 
+different numeric value types if an appropriate wire is connected to an input. If vector datatypes are connected, e.g. float3 values, 
+the multiplication is calculated element-wise. For example, if inputs A and B are [1,2,3] and [4,5,6] are connected the output will be [4,10,18].
+
+This node can be overloaded to accept some mixtures of datatypes. For example if a vector value (e.g. a float3, RGBA color value etc.) 
+is connected to the A input a scalar value (e.g. float) can be connected to the B input. The output will be a vector with the same number 
+of dimensions as A with all elements multiplied by B.
+
+Another useful combination of datatypes allows strings to be repeated a defined number of times and concatenated together. To do this, 
+connect the string to be repeated to input A and an integer (int) with the number of times the string should be repeated to input B. See below for an example.
+
+Note that, if the number of inputs is increased above 2, it is no longer possible to perform operations with mixed datatypes.
+Examples
+
+Given the inputs "A" and 3 would result in the output string "AAA" 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.MulDeltaTime_Float:##################################################################################################################################s
+{
+The <color=#00FF00>×dT</color> node multiplies the input value by the duration of the previous frame update (in seconds).
+
+}
+
+FrooxEngine.LogiX.Operators.Div_Float:##################################################################################################################################s
+{
+The <color=#00FF00>÷</color> node divides the A input by the B input, and returns the result.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept different numeric value 
+types if an appropriate wire is connected to an input. With most datatypes connected, this node performs floating point division. Notably in this mode 0 ÷ 0 
+outputs the special numeric value NaN. Any non-zero number divided by zero results in the special value Infinity. If integer (int) datatypes are connected, 
+this node performs integer division and outputs the quotient of the result (if the remainder is required instead use % (LogiX node)).
+
+If vector datatypes are connected, e.g. float3 values, the division is calculated element-wise. For example, if inputs A and B are [10,15,20] and [2,3,4] are 
+connected the output will be [5,5,5].
+
+This node can be overloaded to accept some mixtures of datatypes. For example if a vector value (e.g. a float3, RGBA color value etc.) is connected to the 
+A input a scalar value (e.g. float) can be connected to the B input. The output will be a vector with the same number of dimensions as A with all elements divided by B. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.DivDeltaTime_Float:##################################################################################################################################
+{
+The <color=#00FF00>÷dT</color> node divides the input value by the duration of the previous frame update (in seconds).
+Usage
+
+This node can be very useful for detemining changes (e.g. speeds) in units per second by normalising other instantaneous values. 
+An example would be to connect the Character Linear Velocity (LogiX node) output to this node to get a result in metres per second.
+}
+
+
+FrooxEngine.LogiX.Operators.Approximately_Float:##################################################################################################################################
+{
+The <color=#00FF00>≈</color> nodechecks whether inputs A and B are approximately equal. If they are within the margin of error specified by the Epsilon input this node 
+outputs True, otherwise False.
+Usage
+
+Due to the fact that decimal numbers often cannot be precisely encoded in binary it is unreliable to use the == (LogiX node) to attempt to test whether two floating point 
+numbers are exactly equal. This node can be used in this situation to check whether two floating point numbers are approximately equal. Note that the output can 
+sometimes be counterinuitive, again due to the inability to precisely encode decimal numbers in binary. For example, 0 and 0.5 are reported as not equal with an 
+Epsilon of 0.5. However 0.4 and 0.9, where the difference is again 0.5, are reported as equal with the same Epsilon value.
+
+This node can be overloaded to accept vector inputs at A and B (e.g. float 3). In that case equality comparisons are performed element-wise using the same Epsilon value for each.
+
+Other nodes which can often be used in place of this node are ≤ or ≥. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.SmallerOrEqual_Float:##################################################################################################################################
+{
+
+The ≤ node checks whether input A is less than or equal to B.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, 
+this node can be overloaded to accept various numeric value types if an appropriate wire is connected to the input. 
+This node outputs True if input A is less than or equal to input B, otherwise False. 
+
+
+}
+
+
+FrooxEngine.LogiX.Operators.GreaterOrEqual_Float:##################################################################################################################################
+{
+
+The ≥ node checks whether input A is greater than or equal to B.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept various numeric value types 
+if an appropriate wire is connected to the input. This node outputs True if input A is greater than or equal to input B, otherwise False.
+
+}
+
+
+FrooxEngine.LogiX.Operators.Angle_Float2:##################################################################################################################################
+
+{
+
+The <color=#00FF00>°</color> node outputs the smallest angle between A and B in degrees.
+Usage
+
+When spawned from the node browser, this node accepts the float2 datatype by default. However, this node can be overloaded to accept different numeric vector value types 
+if an appropriate wire is connected to an input. Note that if an integer (int) vector is connected the output is still a float.
+
+Default values for A and B are [0,0], resulting in a default output of 90. Output is always in the range 0 to 180 inclusive. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Dot_Float2:##################################################################################################################################
+
+{
+
+The <color=#00FF00>·</color> node calculates the dot (or scalar) product of input vectors A and B.
+Usage
+
+When spawned from the node browser, this node accepts the float2 datatype by default. However, this node can be overloaded to accept different numeric vector 
+value types if an appropriate wire is connected to an input. Note that if an integer (int) vector is connected the output is still a float.
+Examples
+
+The vector dot product has a very useful property: if the input vectors are pointing in approximately the same direction the sign of the output is positive. 
+Similarly the sign will be negative if the vectors point in approximately opposite directions. The value is zero if the vectors are exactly at right angles to each other. 
+
+}
+
+
+FrooxEngine.LogiX.Math.ZeroOne:##################################################################################################################################
+{
+The <color=#00FF00>0 1</color> node can be used to convert a Boolean value to a float.
+Usage
+
+For the Boolean input True the output is 1, for False the output is 0.
+Examples
+
+This is commonly used to convert a bool to a float for driving blendshapes. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Dec_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>-1</color> node subtracts 1 from the value of input A.
+Usage
+
+By default this node accepts the float datatype, however it can cast to accept other numeric datatypes if an appropriate one is connected. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Reciprocal_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>1/x</color> node outputs the reciprocal of X — or 1 divided by the input X.
+Usage
+
+By default this node accepts the float datatype, however it can be overloaded to accept various numeric value types if an appropriate wire is connected. 
+If a vector datatype is connected (e.g. float3), the output will have the same number of dimensions with each element of the output being 1 divided by the 
+corresponding element of the input. Note that for integer (int and related) datatypes this node performs integer division. This results in an invalid output 
+which causes errors if the input is 0, output of 1 if the input is 1, and output of 0 for any other value. 
+
+}
+
+FrooxEngine.LogiX.Operators.OneMinus_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>1-x</color> node outputs the value of X subtracted from 1.
+Usage
+
+By default this node accepts the float datatype, however it can be overloaded to accept various numeric value types if an appropriate wire is connected. 
+If a vector datatype is connected (e.g. float3), the output will have the same number of dimensions with each element of the output being the corresponding element substracted from 1. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Inverse_Float2x2:##################################################################################################################################
+{
+
+The <color=#00FF00>A^-1</color> node outputs the inverse matrix of the input matrix A.
+Usage
+
+When spawned from the node browser, this node accepts the float2x2 datatype by default. However, this node can be overloaded to accept 
+3x3 or 4x4 float matrices (as well as double type matrices) if appropriate wire is connected to an input. Note that not all input matrices are 
+guaranteed to be invertible, the output will be a zero matrix in the case that it is not. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Cross_Float3:##################################################################################################################################
+{
+
+The <color=#00FF00>Cross</color> node calculates the cross (or vector) product of input 3-dimensional vectors A and B.
+Usage
+
+When spawned from the node browser, this node accepts the float3 datatype by default. 
+However, this node can be overloaded to accept the double3 datatype if an appropriate wire is connected. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Determinant_Float2x2:##################################################################################################################################
+{
+
+The <color=#00FF00>Determinant</color> node calculates the determinant of the input matrix.
+Usage
+
+When spawned from the node browser, this node accepts the float2x2 datatype by default. 
+However, this node can be overloaded to accept 3x3 or 4x4 float matrices (as well as double type matrices) 
+if appropriate wire is connected to an input. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Distance_Float:##################################################################################################################################
+{
+Get distance by float between two object. 
+}
+
+
+FrooxEngine.LogiX.Operators.FilterInvalid_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>Filter Invalid</color> node outputs the input Value unless it contains the special NaN or Infinity values, in which case it outputs the Fallback input.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept float2/3/4/Q (or double typed variants) 
+if an appropriate wire is connected to the input. Note that for vector input types the full Fallback value will be output if any of the input vector components is NaN/Infinity. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.GetType:##################################################################################################################################
+{
+
+The <color=#00FF00>Get Type</color> node outputs the name of datatype of the input connection wire.
+Usage
+
+This node can be useful for determining what the datatype of an unfamiliar wire or connection point. Particularly useful with component index cards. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.IsInfinity_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>IsInfinity</color> node outputs True if the input value has the special numeric value Infinity, otherwise False.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to accept float2/3/4/Q 
+(or double typed variants) if an appropriate wire is connected to the input. Note that for vector input types the output is True if any component of the input Value is Infinity. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.IsNaN_Float:##################################################################################################################################
+
+{
+
+The <color=#00FF00>IsNaN</color> node outputs True if the input value has the special numeric value NaN, otherwise False.
+Usage
+
+When spawned from the node browser, this node accepts the float datatype by default. However, this node can be overloaded to 
+accept float2/3/4/Q (or double typed variants) if an appropriate wire is connected to the input. Note that for vector input types the 
+output is True if any component of the input Value is NaN. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.IsNullNode`1[T]:##################################################################################################################################
+{
+
+The <color=#00FF00>IsNull</color> node outputs True if the input reference datatype is null, otherwise False.
+Usage
+
+When spawned from the node browser, this node accepts the object datatype by default. However, this node can be overloaded to accept any reference datatype if an appropriate 
+wire is connected.
+
+The NotNull (LogiX node) works in the opposite way.
+Examples
+
+Using a String as an example. The string being empty outputs as True
+
+When it's no longer empty, it'll output Fales
+}
+
+
+
+FrooxEngine.LogiX.Operators.Mask_Float2:##################################################################################################################################
+{
+Mask
+Filtered value from Input data by bool switch. 
+Bool(True/False) type input switches make output. If switch is set to all "True" then output data is equal by first input parameter.
+
+[1, 2] is True side and [3, 4] is False side. Top switch is True. So getting top data(1) from True side. And bottom switch is set to False this is get bottom data(4) from False side. 
+}
+
+
+FrooxEngine.LogiX.Operators.MatrixElement_Float2x2:##################################################################################################################################
+{
+
+The <color=#00FF00>Matrix Element</color> outputs the value of the matrix element at the input Row and Column coordinates.
+Usage
+
+When spawned from the node browser, this node accepts the float2x2 datatype by default. 
+However, this node can be overloaded to accept 3x3 or 4x4 float matrices (as well as double type matrices) if 
+appropriate wire is connected to an input. Note that the output will be zero if one attempts to access an element which is out of range for the input matrix. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Negate_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>-n</color> node outputs the value of input A multiplied by -1.
+Usage
+
+By default this node accepts the float datatype, however it can be overloaded to accept various numeric 
+(including some vector and matrix) value types if an appropriate wire is connected. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.NAND_Int:##################################################################################################################################
+{
+
+The <color=#00FF00>NAND</color> node performs the logical NAND operation on inputs A and B.
+
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.NOR_Int:##################################################################################################################################
+
+{
+
+The <color=#00FF00>NOR</color> node performs the logical NOR operation on inputs A and B.
+Usage
+
+When spawned from the node browser, this node accepts the Bool datatype by default. The outputs will be True if, and only if, all inputs are False. Otherwise, it will output False. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Normalized_Float2:##################################################################################################################################
+{
+
+The <color=#00FF00>Normalized</color> node outputs a normalized version of the input vector. A normalized vector is a vector that has been divided by its 
+magnitude such that the new vector has a magnitude of 1. Mathematically, this is equal to the input vector divided by the square root of the dot product of the input vector with itself.
+Usage
+
+When spawned from the node browser, this node accepts the float2 datatype by default. However, this node can be overloaded to accept different numeric value types 
+if an appropriate wire is connected to an input.
+Examples
+
+Passing the vector [2, 2] as an input into the Normalized node would return the vector [1/sqrt(2), 1/sqrt(2)]. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.NotNullNode`1[T]:##################################################################################################################################
+
+{
+
+The <color=#00FF00>NotNull</color> node outputs True if the input reference datatype is not null, otherwise False.
+Usage
+
+When spawned from the node browser, this node accepts the object datatype by default. However, this node can be overloaded to accept any reference datatype if an appropriate wire is connected.
+
+The IsNull (LogiX node) works in the opposite way. 
+
+
+}
+
+
+FrooxEngine.LogiX.Operators.PackColumns_Float2x2:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Pack Columns</color> node outputs a matrix formed via the joining of two or more input columns. The columns are joined from left to right in order 
+of the input they are assigned to. The column inserted into the first input will become the leftmost column, and the column inserted into the last input will become the rightmost column. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Construct_Color:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Pack rgba</color> node constructs a color from red, green, blue, and alpha channel float inputs.
+
+Use the Unpack xyzw node to unpack a color to its red, green, blue, and alpha channel components. 
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.PackRows_Float2x2:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Pack Rows Float2x2</color> node outputs a matrix formed via the joining of two or more input rows. The rows are joined from top to bottom in order of the input they are assigned to. The row inserted into the first input will become the topmost row, and the row inserted into the last input will become the bottommost row.
+Usage
+
+When spawned from the node browser, this node accepts the float2 datatype by default. However, this node can be overloaded to accept different numeric value types if an appropriate wire is connected to an input. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Construct_Float2{Combines 2 like values into one vector.}
+
+FrooxEngine.LogiX.Operators.Construct_Float3:##################################################################################################################################
+{
+
+Constructs a 3 composited data type from three individual inputs(Equal data types). Unconnected inputs will act as a default data by individual data types. 
+
+Usage
+
+This node can make every 3 composited data. But, Input data type is must same each other.
+Examples
+
+In this example Float3s are analagous to Vector3s in several other game engines. They are useful for representing several types of values, particularly 
+Cartesian coordinates and Euler angle rotations. By using the Pack XYZ node, float3s can be constructed directly, allowing for manipulation of properties such as object transforms. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Construct_Float4:##################################################################################################################################
+{
+
+The Pack xyzw node constructs a 4-dimensional vector from four overrideable inputs.
+
+(Note Quaternions use xyzw format and this is a way of building them)
+}
+
+
+FrooxEngine.LogiX.Operators.Project_Float2:##################################################################################################################################
+{
+
+The <color=#00FF00>Project</color> node projects vector A onto vector B and returns a new vector representing that projection. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Reflect_Float3:##################################################################################################################################
+{
+
+The <color=#00FF00>Reflect</color> node outputs vector A reflected over the axis formed by vector B.
+
+}
+
+FrooxEngine.LogiX.Operators.RotateLeft_Int:##################################################################################################################################
+
+{
+
+The <color=#00FF00>ROL</color> node outputs an integer that has had its binary value circularly shifted X units to the left. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.RotateRight_Int:##################################################################################################################################
+
+{
+
+The <color=#00FF00>ROR</color> node outputs an integer that has had its binary value circularly shifted X units to the right.
+
+}
+
+
+FrooxEngine.LogiX.Operators.ToString_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>To String Float</color> node evalutes the inputs to determine an output as a type string.
+Usage
+
+This node determines the string value of the first V input and spits out a string output.
+
+Format provides the node with a pre-determined case of how to format the given input.
+
+This node can be overriden with any type and accepts objects and gives a cleaned up output when given an object as input.
+Examples
+
+If given input V is of type color and you give it a Red value; it's stringed output is [1; 0; 0; 1]. This is the internal object printed out in it's string form. 
+This should not be used for comparison as it is prone to break.
+
+If given a type that it doesn't directly parse (Example here is a Slot) it'll print out clean versions of the Object type.
+
+
+If given a slot it'll print out:
+
+Slot: Slotname The slot's name itself.
+
+Parent: Slotname The name of it's parent.
+
+
+If given a bool it'll print out true or false depending on the input.
+
+If format is provided as 0.00000 and a float input. The print out will display a float as 1.23456 If format is provided as 0.0 and a float4 input. The print out will display a float4 as [1.1; 2.2; 3.3; 4.4] 
+
+}
+
+
+FrooxEngine.LogiX.Operators.Transpose_Float2x2:##################################################################################################################################
+{
+
+The <color=#00FF00>Transpose</color> node outputs a transposed version of the input matrix.
+
+
+}
+
+
+FrooxEngine.LogiX.Operators.UnpackColumns_Float2x2:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Unpack Columns</color> node unpacks a matrix into a set of columns.
+
+}
+
+FrooxEngine.LogiX.Operators.UnpackRows_Float2x2:##################################################################################################################################
+
+{
+
+The <color=#00FF00>Unpack Rows</color> node unpacks a matrix into a set of rows.
+
+
+}
+
+
+FrooxEngine.LogiX.Operators.Deconstruct_Float2:##################################################################################################################################
+
+{
+
+<color=#00FF00>Unpack xy</color>
+
+Splits a vector with 2 components into its constituent parts. 
+
+}
+
+FrooxEngine.LogiX.Operators.Deconstruct_Float3:##################################################################################################################################
+
+{
+
+<color=#00FF00>Unpack xyz</color>
+
+Splits a vector with 3 components into its constituent parts. 
+
+
+}
+
+FrooxEngine.LogiX.Operators.Deconstruct_Float4:##################################################################################################################################
+{
+
+<color=#00FF00>Unpack xyzw</color>
+
+Splits a vector with 4 components into its constituent parts. 
+
+(NOTE a Method of obtaining the values of a Quaternion aka the true rotation data from an objects interface panel)
+
+}
+
+
+
+FrooxEngine.LogiX.Operators.Square_Float:##################################################################################################################################
+
+{
+
+<color=#00FF00>X²</color>
+
+Squares an input value. Mathematically speaking, this is the same as multiplying the input by itself. 
+
+
+}
+
+FrooxEngine.LogiX.Operators.Cube_Float:##################################################################################################################################
+{
+
+The <color=#00FF00>X³</color> outputs the value of input X cubed.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept some numeric value 
+types if an appropriate wire is connected the input. X³ is equal to X times X times X. 
+
+}
+
+
+FrooxEngine.LogiX.Operators.XNOR_Int:##################################################################################################################################
+{
+
+The <color=#00FF00>XNOR</color> node performs the logical exclusive NOR (XNOR) operation on inputs A and B.
+
+
+}
+
+
+
+
+
