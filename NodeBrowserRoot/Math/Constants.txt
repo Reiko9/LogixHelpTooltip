@@ -1,0 +1,63 @@
+FrooxEngine.LogiX.Input.DegToRadConstant:#####################################################
+{
+
+The Deg -&gt; Rad node 
+
+outputs an approximation to the conversion factor used to convert angles in Degrees to angles in Radians.
+
+Usage
+
+To convert a value from Degrees to Radians simply multiply by this conversion factor. 
+
+}
+
+
+FrooxEngine.LogiX.Input.e_Node:#################################################################
+{
+The <color=#00FF00>e</color> node outputs an approximation to the mathematical constant e. 
+}
+
+
+FrooxEngine.LogiX.Input.RadToDegConstant:########################################################
+{
+The Rad -&gt; Deg node 
+
+outputs an approximation to the conversion factor used to convert angles in Radians to angles in Degrees.
+
+Usage
+
+To convert a value from Radians to Degrees simply multiply by this conversion factor. 
+}
+
+
+FrooxEngine.LogiX.Input.PiNode:###################################################################
+{
+The <color=#00FF00>π</color> node outputs an approximation to the mathematical constant π. 
+}
+
+
+
+FrooxEngine.LogiX.Input.HalfPiNode:################################################################
+{
+The <color=#00FF00>π/2</color> node outputs an approximation to the mathematical constant π divided by 2. 
+}
+
+
+
+FrooxEngine.LogiX.Input.TauNode:#####################################################################
+{
+The <color=#00FF00>τ</color> node outputs an approximation to the mathematical constant τ which is equal to π multiplied by 2.
+}
+
+
+
+FrooxEngine.LogiX.Input.Phi_Node:#####################################################################
+{
+The Φ node outputs an approximation to the mathematical Golden Ratio. 
+}
+
+
+
+
+
+
