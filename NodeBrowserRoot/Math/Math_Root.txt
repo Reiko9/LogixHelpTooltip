@@ -1,1 +1,477 @@
+Root of Math folder:
+
+FrooxEngine.LogiX.Math.Abs:######################################################
+{
+The <color=#00FF00>Abs</color> node takes a numeric input and outputs the non-negative value of that input. The outputted value is known as the absolute value.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Acos:#################################################
+{
+The <color=#00FF00>Acos</color> node takes an input value in radians and outputs the inverse cosine of that value.
+
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+FrooxEngine.LogiX.Math.Asin:###########################################
+{
+The <color=#00FF00>Asin</color> node takes an input value in radians and outputs the inverse sin of that value.
+
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+}
+
+
+FrooxEngine.LogiX.Math.Atan:#####################################
+{
+The <color=#00FF00>Atan</color> node takes an input value as a tangent and outputs the arc tangent of that value.
+
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Atan2:#####################################
+{
+The <color=#00FF00>Atan2</color> node takes inputs Y, and X, and outputs the result of the 2 input arctangent function.
+
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+Atan2 can be used to calculate the radians that a direction is from the positive x axis on a 2d plane. Put simply, it tells you how far around a circle the point at [x, y] is.
+}
+
+
+
+FrooxEngine.LogiX.Math.Avg:#######################################
+{
+The <color=#00FF00>Avg</color> node takes an arbitrary number of input values and outputs the average (AKA the 'mean') of all of those values.
+
+The average of the inputs is defined as the sum of the inputs, divided by the number of inputs.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+FrooxEngine.LogiX.Math.Ceil:######################################
+{
+The <color=#00FF00>Ceil</color> node (short for 'ceiling') takes a numeric input and outputs that input rounded up to the next whole number.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+When providing this node with a whole number input, the output will remain unchanged. 
+}
+
+
+FrooxEngine.LogiX.Math.CeilToInt:##################################
+{
+The <color=#00FF00>Ceil To Int</color> node functions identically to Ceil_(LogiX_node), performing a ceiling function. this node takes a numeric input and outputs that input rounded up to the next whole number as an integer.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+When providing this node with a whole number input, the output will remain unchanged. 
+}
+
+
+FrooxEngine.LogiX.Math.Clamp:######################################
+{
+The <color=#00FF00>Clamp</color> node takes 3 numeric inputs and outputs the Value input clamped between the Min and Max inputs.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Clamp01:#####################################
+{
+The <color=#00FF00>Clamp01</color> node functions identically to Clamp_(LogiX_node) with the exception of the Min and Max inputs being fixed at 0 and 1 respectively.
+
+The output will be the Value input clamped between 0 and 1.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+
+FrooxEngine.LogiX.Math.ConstantLerp:################################
+{
+The <color=#00FF00>Constant Lerp</color> node outputs a value that approaches the target input at a constant rate based on the speed input.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+The speed input refers to units per second. This means that if you have a target of 10, a speed of 2, and you start at 0, you will reach the target in 5 seconds.
+
+When spawned, whether from the node browser or through duplication, the node's output is the value of its target. 
+}
+
+
+
+
+FrooxEngine.LogiX.Math.Quaternions.ConstantSlerp:###################
+{
+The <color=#00FF00>Constant Slerp</color> node functions identically to the Constant_Lerp_(LogiX_node) node but uses spherical interpolation, which is better suited for rotations.
+Usage
+
+When spawned from the node browser, this node accepts FloatQ data.
+
+The speed input refers to degrees per second.
+
+When spawned, whether from the node browser or through duplication, the node's output is the value of its target. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Cos:##########################################
+{
+The <color=#00FF00>Cos</color> node takes an input value in radians and outputs the cosine of that value.
+
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+
+FrooxEngine.LogiX.Math.CosineLerp:###################################
+{
+The <color=#00FF00>Cosine Lerp</color> node outputs the value that is interpolated between A and B with the Lerp input mapped to a cosine curve. This results in a smoother interpolation than the Lerp node provides.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+}
+
+
+
+FrooxEngine.LogiX.Math.CubicLerp:#####################################
+{
+The <color=#00FF00>Cubic Lerp</color> node outputs the value that is interpolated between From and To with the Lerp input mapped to a spline curve which can be contorted by paired tangent inputs (From Tangent and To Tangent). This results in a much more customizable interpolation than any other current interpolation method in LogiX, with the added work of having to define tangents.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. This node does not officially support FloatQ datatype. Attempting to interpolate a FloatQ by first converting it to an Euler angle may yield unexpected results.
+
+Each input point defined has an associated tangent, this tangent is used to define the 'velocity' at that point. This means that if you were interpolating from point A to point B the instantaneous velocity of a point at A (The start of the interpolation) would perfectly match the tangent input associated with A and would end up matching the associated tangent of B once it reaches it. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Exp:###########################################
+{
+The <color=#00FF00>Exp</color> node takes a numeric input and outputs the result of the exponential function. The exponential function is defined as eⁿ where e is Euler's number.
+
+
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+
+
+FrooxEngine.LogiX.Math.Floor:##########################################
+{
+The <color=#00FF00>Floor</color> node takes a numeric input and outputs that input rounded down to the next whole number. More information can be found on the wiki page for Floor And Ceiling Functions.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+When providing this node with a whole number input, the output will remain unchanged.
+
+}
+
+
+
+FrooxEngine.LogiX.Math.FloorToInt:#####################################
+{
+The <color=#00FF00>Floor To Int</color> node functions identically to Floor_(LogiX_node), performing a floor function. This node takes a numeric input and outputs that input rounded down to the next whole number as an integer.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function.
+
+When providing this node with a whole number input, the output will remain unchanged.
+
+}
+
+
+FrooxEngine.LogiX.Math.GreatestCommonDivisor:############################
+{
+The <color=#00FF00>Greatest Common Divisor</color> Int node
+(the largest positive integer that divides each of the integers) --- Wikipedia
+}
+
+
+FrooxEngine.LogiX.Math.InverseLerp:#######################################
+{
+The <color=#00FF00>Inverse Lerp</color> node returns how far along the Value input is to getting to the To input from the From input. This can be quite difficult to intuitively grasp so here's a helpful tutorial!
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+
+FrooxEngine.LogiX.Math.IsBetween:##########################################
+{
+The <color=#00FF00>Is Between</color> node takes 3 inputs and returns true if the 'Value' input is between the 'Min' and 'Max' inputs. It also returns true if the 'Value' input is equal to either the 'Min' or 'Max' inputs.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+
+
+FrooxEngine.LogiX.Math.LeastCommonMultiple:#################################
+{
+The <color=#00FF00>Least Common Multiple</color> Int node
+
+(is the smallest positive integer that is divisible by both a and b.[1][2] Since division of integers by zero is undefined, this definition has meaning only if a and b are both different from zero.[3] However, some authors define lcm(a,0) as 0 for all a, since 0 is the only common multiple of a and 0. ) --- Wikipedia
+}
+
+
+FrooxEngine.LogiX.Math.Lerp:#################################################
+{
+The <color=#00FF00>Lerp</color> node takes 3 inputs and returns the linearly interpolated value between the 'From' and 'To' inputs by the 'Lerp' input.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+
+FrooxEngine.LogiX.Math.Log:###################################################
+{
+The <color=#00FF00>Log</color> node outputs the natural logarithm of N. 
+}
+
+
+
+FrooxEngine.LogiX.Math.LogN:###################################################
+{
+The <color=#00FF00>Log N</color> node outputs the logarithm of N according to a specified base. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Log10:###################################################
+{
+The <color=#00FF00>Log10</color> node outputs the base-10 logarithm of N.
+}
+
+
+FrooxEngine.LogiX.Math.Max:######################################################
+{
+The <color=#00FF00>Max</color> node takes a series of numeric inputs and outputs the highest value in that series. When a multi-dimensional value is inputted the node will output the highest value in each dimension separately from the inputs.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+FrooxEngine.LogiX.Math.Min:#######################################################
+{
+The <color=#00FF00>Min</color> node takes a series of numeric inputs and outputs the lowest value in that series. When a multi-dimensional value is inputted the node will output the lowest value in each dimension separately from the inputs.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
+
+
+FrooxEngine.LogiX.Math.MultiLerp:##################################################
+{
+The <color=#00FF00>Multi Lerp</color> node is the same as Lerp_(LogiX_node) but takes an arbitrary number of inputs.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input.
+
+The Lerp range is equal to the number of input points minus one. This means that if you have 5 input points then you will reach the final value once the Lerp input is 4. This is because the node functions by interpolating between the individual inputs 2 at a time, essentially working like a regular Lerp_(LogiX_node) in the process.
+
+Suppose you have 3 inputs now, to interpolate between the first 2 inputs, you would need to supply a Lerp value which is between 0 and 1. Similarly, to interpolate between the second and third input, you will need to supply a Lerp value which is between 1 and 2. 
+}
+
+
+FrooxEngine.LogiX.Math.MultiSlerp:################################################
+{
+The <color=#00FF00>Multi Slerp</color> node behaves identically to the Slerp_(LogiX_node) but accepts an arbitrary number of inputs. 
+}
+
+
+
+FrooxEngine.LogiX.Math.NthRoot:####################################################
+{
+The <color=#00FF00>Nth</color> Root node outputs the Nth root of the input value. 
+}
+
+
+
+FrooxEngine.LogiX.Math.PingPong:###################################################
+{
+The <color=#00FF00>Ping Pong</color> Float node
+
+(Smooth transition incrementation and decrementation between 2 states forming a triangle waveform as the input value increases.
+
+(Basically the output value "Ping Pongs" up and down in value as the input value increases))
+}
+
+
+FrooxEngine.LogiX.Math.Pow:#########################################################
+{
+The <color=#00FF00>Pow</color> node outputs a number N raised to a specified power.
+}
+
+
+FrooxEngine.LogiX.Math.Remap:#######################################################
+{
+The <color=#00FF00>Remap</color> node linearly maps one numerical interval to another interval.
+Usage
+Examples
+
+An input interval of [-1, 1], an output interval of [0, 1], and an input value of -0.5 would result in the output 0.25. This is because -0.5 represents a fourth of the difference between -1 and 1 and is thus remapped to a fourth of the difference between 0 and 1. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Remap11_01:##################################################
+{
+The <color=#00FF00>Remap -1..1 to 0..1</color> node linearly maps the numerical interval [-1, 1] to the interval [0, 1]. This is commonly used for remapping trigonometric functions onto an exclusively positive interval. This node behaves similarly to the Remap node but includes the aforementioned intervals by default. 
+}
+
+
+FrooxEngine.LogiX.Math.Repeat:#######################################################
+{
+The <color=#00FF00>Repeat</color> node in the Math category takes two arguments, N and Length and outputs the result of the following calculation
+
+    N - floor(N/Length) * Length
+
+so that the output goes between 0 and Length in a repeating fashion, as described in Usage. 
+
+Usage
+
+This node repeats values between 0 and Length, as N is increased. When N is 0, the output is 0, and then the output increases with N, until N reaches the value Length, and it goes to 0, and repeats this pattern for ever. This pattern looks like a positive-valued sawtooth wave as shown below, for a value of Length=2.2 
+
+
+Note: This node behaves in the same way as Modulus operator (denotes %) in other programming languages, like Python. LogiX uses the different definition of % which C# uses, and therefore offers the Repeat node when the above behaviour is desired.
+
+The Repeat01 (LogiX node) is equivalent to this node, where Length is set to 1. 
+
+}
+
+
+FrooxEngine.LogiX.Math.Repeat01:#######################################################
+{
+The <color=#00FF00>Repeat01</color> node in the Math category takes one argument Value, and does the same operation as the Repeat (LogiX node) where N is set to Value and Length is set to 1, that is it outputs
+
+    Value - floor(Value)
+
+This means that the output goes between 0 and 1 in a repeating fashion, as described in Usage.
+
+Usage
+
+This node repeats values between 0 and 1, as N is increased. When N is 0, the output is 0, and then the output equals N as N increases, until N reaches the value 1, and the output goes to 0, and repeats this pattern for ever. This pattern looks like a positive-valued sawtooth wave as shown below, 
+}
+
+
+
+FrooxEngine.LogiX.Math.Round:##########################################################
+{
+The <color=#00FF00>Round</color> node outputs the value N rounded to the nearest integer. Note that this node returns an float instead of an integer. Because floating-point errors can occur when using floats, this node may offer less precision and reliability than would otherwise be attainable with the Round To Int node. 
+}
+
+
+FrooxEngine.LogiX.Math.RoundToInt:#####################################################
+{
+The <color=#00FF00>Round To Int</color> node outputs the value N rounded to the nearest integer. Note that this node returns an integer instead of a rounded float. Because floating-point errors can occur when using floats, this node can offer greater precision and reliability than would otherwise be attainable with the Round node. 
+}
+
+
+
+FrooxEngine.LogiX.Math.SigmoidNode:#####################################################
+{
+The <color=#00FF00>Sigmoid</color> node returns the output of the Sigmoid function according to E[Clarification needed] and a specified power.
+
+(The sigmoid function forms an S shaped graph, which means as x approaches infinity, the probability becomes 1, and as x approaches negative infinity, the probability becomes 0. The model sets a threshold that decides what range of probability is mapped to which binary variable.) --- educative.io
+
+}
+
+FrooxEngine.LogiX.Math.Sign:############################################################
+{
+The <color=#00FF00>Sign</color> Float node 
+}
+
+
+FrooxEngine.LogiX.Math.SimplexNoise:#####################################################
+{
+The <color=#00FF00>Simplex Noise</color> node outputs simplex noise according to a specified 1D input coordinate. 
+}
+
+
+FrooxEngine.LogiX.Math.Sin:###############################################################
+{
+The <color=#00FF00>Sin</color> node takes an input value in radians and outputs the sine of that value.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. The datatype must support decimal places due to the nature of the function. 
+}
+
+
+FrooxEngine.LogiX.Math.Slerp:##############################################################
+{
+The <color=#00FF00>Slerp</color> node performs a spherical linear interpolation between two floatQs. This is useful for interpolating rotation accurately using quaternions. 
+}
+
+
+FrooxEngine.LogiX.Math.SmoothLerp:#########################################################
+{
+The <color=#00FF00>Smooth Lerp</color> node smoothly interpolates from it's current value to a specified target value at a given speed. 
+
+Usage
+
+When spawned, the Smooth Lerp node's default data type is float. This can be overloaded to accept the float2, float3, float4, and Color data types by plugging the desired data types into the Target input.
+
+Using a floatQ data type will automatically change the node into a Smooth Slerp logix node, which cannot normally be accessed inside of the Node Browser.
+
+When spawned, whether from the node browser or through duplication, the node's output is the value of its target.
+
+Common uses of this node include:
+
+    Smooth translations of an object's Position or Scale over time.
+    Smooth transitions of one color to another over time.
+}
+
+
+
+FrooxEngine.LogiX.Math.Sqrt:###############################################################
+{
+The <color=#00FF00>Sqrt</color> node takes a Float input and then outputs the calculated square root.
+}
+
+
+
+FrooxEngine.LogiX.Math.Tan:################################################################
+{
+The <color=#00FF00>Tan</color> node returns the output of the tangent function according to an input in radians. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Delta:##############################################################
+{
+The △ node takes an input and will output the delta or difference in value per frame of the given input.
+Usage
+
+When spawned from the node browser, this node accepts float data by default. However, this node can be overloaded to accept a wide variety of numeric datatypes if an appropriate wire is connected to the input. 
+}
 
