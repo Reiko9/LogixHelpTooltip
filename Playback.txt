@@ -1,0 +1,278 @@
+
+FrooxEngine.LogiX.Playback.PlaybackReadState:##########################################################
+{
+The <color=#00FF00>Playback state</color> node outputs several pieces of information about the current playback state 
+of the Source clip.
+
+Usage
+
+The IsPlaying output is True if the Source is being played, otherwise False. Equivalent to Is Playing (LogiX node).
+
+
+The Loop output is True if the Source is set to be looped when playback finishes, otherwise False. Equivalent to Is Looped (LogiX node).
+
+
+The Position output provides the playback position (or progress) of the Source in seconds with microsecond precision. Equivalent to Position (LogiX node).
+
+
+The NormalizedPosition output provides the playback length of the Source in seconds with microsecond precision. Equivalent to Clip Length (LogiX node).
+
+
+The Speed output provides the playback speed of the Source. Equivalent to Speed (LogiX node).
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+
+
+
+
+FrooxEngine.LogiX.Playback.PlaybackPlay:###############################################################
+{
+The <color=#00FF00>Play</color> node (re)starts playback of the Target from the beginning when an impulse is received at Play.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Play and the playback of the Target (re)starts. 
+Note that this output will not fire if there is no valid Target referenced.
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackWait:##############################################################
+{
+The <color=#00FF00>Wait</color> node waits for playback of the Target to finish after an impulse is received at Wait. 
+When playback finishes an impulse is fired from OnFinishedWaiting
+
+Usage
+
+The OnWaitBegin output fires an impulse after an impulse is received at Wait. Note that this output will not fire if there is no valid Target referenced.
+
+
+The OnFinishedWaiting output fires an impulse when playback of the Target stops after an impulse is received at Wait. Both pauses and full playback stops 
+will cause this output to fire. If the Target is looped, this output will not fire an impulse if playback reaches the end and loops back from the start, 
+however an impulse will still be fired when playback eventually finishes. The playback speed of the Target becoming 0 does not cause this output to fire.
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackPlayAndWait:##################################################
+{
+The <color=#00FF00>Play & Wait</color> node (re)starts playback of the Target from the beginning for all users when an impulse is received at Play. 
+This is similar to Play (LogiX node), however the impulse outputs are different.
+
+Usage
+
+The OnStarted output fires an impulse after an impulse is received at Play and the playback of the Target (re)starts. Note that this output will 
+not fire if there is no valid Target referenced.
+
+
+The OnFinishedPlaying output fires an impulse for all users when playback of the Target stops after it was (re)started by this node. Both pauses and 
+full playback stops will cause this output to fire. If the Target is looped, this output will not fire an impulse if playback reaches the end and 
+loops back from the start, however an impulse will still be fired when playback eventually finishes. The playback speed of the Target becoming 0 
+does not cause this output to fire. Note that this output will not fire if playback of the Target is started by another node unless playback was 
+initially started by Play & Wait and playback was merely restarted by another source before finally finishing.
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackPause:#######################################################
+{
+The <color=#00FF00>Pause</color> node pauses playback of the Target when an impulse is received at Pause.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Pause and the Target has been paused. An impulse is fired regardless of whether 
+the Target was playing when the incoming impulse was received. Note that this output will not fire if there is no valid Target referenced.
+
+When playback of a Target is paused, the playback position is maintained. Playback can be restarted from the pause point with Resume (LogiX node), 
+though consider also Pause/Resume (LogiX node).
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackStop:#######################################################
+{
+The <color=#00FF00>Stop</color> node stops playback of the Target and sets the playback position to 0.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Stop and the playback of the Target stops. An impulse will be fire whether or 
+not the Target was actually playing. Note that this output will not fire if there is no valid Target referenced.
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackResume:#####################################################
+{
+The <color=#00FF00>Resume</color> node starts playback of the Target from the current playback position when an impulse is received at Resume.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Pause and playback of the Target has resumed. An impulse is fired regardless 
+of whether the Target was playing when the incoming impulse was received. Note that this output will not fire if there is no valid Target referenced.
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackPauseResume:########################################################
+{
+The <color=#00FF00>Pause/Resume</color> node toggles the playback state of the Target when an impulse is received at Pause/Resume.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Pause and the playback state of the Target has been changed. Note that this output 
+will not fire if there is no valid Target referenced.
+
+Impulses recieved at Pause/Resume will always change the Target playback state regardless of how it reached that state. e.g. The Target is playing and 
+is paused by a Pause/Resume. Playback is then resumed by a Resume (LogiX node). Further impulses at PauseResume will again pause playback despite the 
+fact that playback was previously resumed by a difference source.
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackPropertiesNode // abstract
+FrooxEngine.LogiX.Playback.PlaybackPropertiesOperatorNode`1[T] // abstract
+
+FrooxEngine.LogiX.Playback.PlaybackIsPlaying:#############################################################
+{
+The <color=#00FF00>Is Playing</color> node outputs True if the Source clip is being played, otherwise False.
+
+Usage
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. Note that the output will still be 
+True if the Source is being played even if it is not visible / audible (e.g. the relevant slot or component is disabled or deactivated, playback 
+speed is set to 0 etc).
+}
+FrooxEngine.LogiX.Playback.PlaybackIsLooped:#############################################################
+{
+The <color=#00FF00>Is Looped</color> node reports the looped status of the Source clip.
+
+Usage
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. The looped status of a clip determines 
+whether playback ends if the end of the clip is reached or restarts at the beginning. The looped status of a clip may be modified using the Set Loop 
+(LogiX node) or via the world Inspector. 
+}
+FrooxEngine.LogiX.Playback.PlaybackPosition:############################################################
+{
+The <color=#00FF00>Position</color> node outputs the playback position (progress) of the Source clip in seconds with microsecond precision.
+Usage
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackNormalizedPosition:#################################################
+{
+The <color=#00FF00>Normalized Position</color> node outputs the current playback position, or playback progress, of the Source scaled by the clip length.
+
+Usage
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. The output float is always in the 
+range 0 - 1 inclusive. 
+}
+FrooxEngine.LogiX.Playback.PlaybackSpeed:##############################################################
+{
+The <color=#00FF00>Speed</color> node outputs the playback speed of the Source.
+
+Usage
+
+Note that this will not necessarily, or normally, be zero if the Source is not being played - playback speed is set independently of whether the clip is 
+being played.
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackClipLength:#########################################################
+{
+The <color=#00FF00>Clip Length</color> node outputs the length of the Source clip in seconds with microsecond precision.
+Usage
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackSetter // abstract
+FrooxEngine.LogiX.Playback.PlaybackSetLoop:############################################################
+{
+The <color=#00FF00>Set Loop</color> node sets the looped status (whether playback stops or restarts when the end of the clip is reached) of the Target 
+to the value of the Loop input.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set and the looped status of the Target has been set. An impulse is fired 
+regardless of whether the looped status of the Target was changed by this action. Note that this output will not fire if there is no valid 
+Target referenced.
+
+
+The looped status of a Target can be changed during playback without interrupting it. However, if playback has already looped at least once, 
+using Set Loop with input Loop as False will stop playback and the playback position is set to the end of the clip.
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackSetPosition:########################################################
+{
+The <color=#00FF00>Set Position</color> node sets the playback position (in seconds) of the Target to the input Position.
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set and the playback position of the Target has been set. 
+An impulse is fired regardless of whether the playback position of the Target was changed by this action. 
+Note that this output will not fire if there is no valid Target referenced.
+
+
+The playback position of a Target can be changed during playback without interrupting it and playback continues from the new position. 
+However if the input Position is less than or equal to 0 playback restarts. Similarly, if Position is greater than or equal to the clip length, 
+playback stops with the playback position set to the value of the clip length (or restarts if the looped status is True).
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+FrooxEngine.LogiX.Playback.PlaybackSetNormalizedPosition:##############################################
+{
+The <color=#00FF00>Set Normalized Position</color> node sets the playback position of the Target such that the normalized playback position 
+equals the NormalizedPosition input.
+
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set and the playback position of the Target has been set. 
+An impulse is fired regardless of whether the playback position of the Target was changed by this action. 
+Note that this output will not fire if there is no valid Target referenced.
+
+
+The NormalizedPosition input is effectively clamped to the range 0 - 1 inclusive. This can be interpreted as a fractional position 
+along the playback, i.e. if NormalizedPosition is 0.5 the playback position will be set exactly half-way along the clip.
+
+
+The playback position of a Target can be changed during playback without interrupting it and playback continues from the new position. 
+However if the input NormalizedPosition is less than or equal to 0 playback restarts. Similarly, if NormalizedPosition is greater than 
+or equal to 1, playback stops with the playback position set to the value of the clip length.
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider.
+}
+FrooxEngine.LogiX.Playback.PlaybackSetSpeed:#########################################################
+{
+The <color=#00FF00>Set Speed</color> node sets the playback speed of the Target to the input Speed value.
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set and the playback speed of the Target has been set. 
+An impulse is fired regardless of whether the playback speed of the Target was changed by this action. Note that this output 
+will not fire if there is no valid Target referenced.
+
+
+The Speed input defaults to 0 which appears to pause playback, however this is not recognised as a pause or stop event . 
+A Speed value of 1 results in the standard clip playback speed. Values in the range 0 - 1 exclusive results in slowed playback. 
+Values above 1 result in faster playback. Values below 0 result in reversed playback. Special float values NaN or Infinity behave the same as 0.
+
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
+
+FrooxEngine.LogiX.Playback.PlaybackShiftPosition:#####################################################
+{
+The <color=#00FF00>Shift Position</color> node changes playback position of the Target by a number of seconds equal the Delta input.
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set and the playback position of the Target has been set. 
+An impulse is fired regardless of whether the playback position of the Target was changed by this action. 
+Note that this output will not fire if there is no valid Target referenced.
+
+
+The playback position of a Target can be changed during playback without interrupting it and playback continues from the new position. 
+However playback restarts if the resulting position is less than or equal to 0. Similarly, playback stops if the resulting position 
+would be greater than or equal the clip length. Position shifts for looped clips do not wrap around.
+
+Components which can be referenced as an IPlayable include Animator, AudioClipPlayer, and VideoTextureProvider. 
+}
