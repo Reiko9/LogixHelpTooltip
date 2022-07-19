@@ -1,0 +1,168 @@
+FrooxEngine.LogiX.Color.ColorHue:################################################################
+{
+Generates a color using hue from a float value ranging from 0 to 1. (0 is 0 degrees 1 is 360 degrees)
+
+If the provided value is above 1 or below 0 it will be looped similarly to how the repeat node works.
+}
+
+
+FrooxEngine.LogiX.Color.HSV_ToColor:################################################################
+FrooxEngine.LogiX.Color.HSL_ToColor
+{
+Converts 3 float values into a color using either the HSV or HSL format, inputs should be ranging from 0 to 1.
+
+If you would like to learn more about the HSV and HSL formats you can look it up online.
+}
+
+FrooxEngine.LogiX.Color.ColorSetRed:################################################################
+FrooxEngine.LogiX.Color.ColorSetGreen
+FrooxEngine.LogiX.Color.ColorSetBlue
+FrooxEngine.LogiX.Color.ColorSetAlpha
+FrooxEngine.LogiX.Color.ColorSetHue
+FrooxEngine.LogiX.Color.ColorSetSaturation
+FrooxEngine.LogiX.Color.ColorSetValue
+{
+Sets a certain channel of a color to the provided value.
+}
+
+FrooxEngine.LogiX.Color.ColorMulRed:################################################################
+FrooxEngine.LogiX.Color.ColorMulGreen
+FrooxEngine.LogiX.Color.ColorMulBlue
+FrooxEngine.LogiX.Color.ColorMulRGB
+FrooxEngine.LogiX.Color.ColorMulAlpha
+FrooxEngine.LogiX.Color.ColorMulHue
+FrooxEngine.LogiX.Color.ColorMulSaturation
+FrooxEngine.LogiX.Color.ColorMulValue
+{
+Multiplies a certain channel of a color by the provided value.
+}
+
+FrooxEngine.LogiX.Color.ColorAddRed:################################################################
+FrooxEngine.LogiX.Color.ColorAddGreen
+FrooxEngine.LogiX.Color.ColorAddBlue
+FrooxEngine.LogiX.Color.ColorAddRedHDR
+FrooxEngine.LogiX.Color.ColorAddGreenHDR
+FrooxEngine.LogiX.Color.ColorAddBlueHDR
+FrooxEngine.LogiX.Color.ColorAddAlpha
+FrooxEngine.LogiX.Color.ColorAddHue
+FrooxEngine.LogiX.Color.ColorAddSaturation
+FrooxEngine.LogiX.Color.ColorAddValue
+FrooxEngine.LogiX.Color.ColorAddValueHDR
+{
+Adds the provided value to a certain channel of the color.
+
+HDR Variants of these nodes do nothing, except for Add Value which will clamp the RGB values between 0 and 1 while the HDR variant ignores this restriction.
+}
+
+FrooxEngine.LogiX.Color.ColorLuminance:################################################################
+{
+Calculates the luminance of a color.
+
+This is done by multiplying the red channel by 0.2126, the green channel by 0.7152 and the blue channel by 0.0722 and adding the 3 resulting values together.
+}
+FrooxEngine.LogiX.Color.ColorAlphaBlend:################################################################
+// TODO Add better descirption here
+{
+Determines how 2 colors would be combined in an alpha blend environment.
+}
+FrooxEngine.LogiX.Color.ColorAdditiveBlend:################################################################
+{
+Determines how 2 colors would be combined in an additive environment.
+
+This is done by adding the RGBA values together, then limiting the alpha channel to not exceed 1, this limitation is not applied in the negative direction.
+}
+FrooxEngine.LogiX.Color.ColorMultiplicativeBlend:################################################################
+{
+Determines how 2 colors would be combined in a multiplicative environment.
+
+This is done by multiplying each channel together.
+}
+FrooxEngine.LogiX.Color.ColorSoftAdditiveBlend:################################################################
+{
+Determines how 2 colors would be combined in a soft additive environment.
+
+Assuming that the first input is labelled A and the 2nd one B the formula for this operation goes as follows:
+((1 - B.rgb) * A.rgb) + B.rgb
+The alpha channel is simply added together, but limited to not exceed 1.
+}
+FrooxEngine.LogiX.Color.BlackBodyColor:################################################################
+{
+Determines what color a blackbody would be under a certain amount of temperature (in Kelvin).
+}
+
+FrooxEngine.LogiX.Color.ColorToHSL:################################################################
+{
+The <color=#00FF00>To HSL</color> takes an input color C and decomposes it into the 
+corresponding H (hue), S (saturation) and L (lightness) values.
+
+Usage
+
+HSL format is an alternative way to specify colors in the RBG colorspace - see HSL and HSV.
+
+
+Note that the default input is [0,0,0,0] which gives default output of H = NaN, S = 0 and V = 0. Values of [0,0,0,*] or [1,1,1,*] give NaN as the H output which has the potential to cause unexpected behavior with downstream calculations etc. 
+}
+
+
+
+FrooxEngine.LogiX.Color.ColorToHSV:################################################################
+{
+The <color=#00FF00>To HSV</color> takes an input color C and decomposes it into the 
+corresponding H (hue), S (saturation) and V (value) values.
+
+Usage
+
+HSV format is an alternative way to specify colors in the RBG colorspace - see HSL and HSV.
+
+
+Note that the default input is [0,0,0,0] which gives default output of H = NaN, S = 0 and L = 0. 
+Values of [0,0,0,*] or [1,1,1,*] give NaN as the H output which has the potential to cause unexpected behavior with downstream calculations etc. 
+}
+
+
+
+FrooxEngine.LogiX.Color.ColorFromHexCode:##########################################################
+{
+The <color=#00FF00>Color From Hex Code</color> node outputs a color corresponding to the input HexCode.
+Usage
+
+Hexadecimal color codes are commonly used to specify RGB(A) colors in text format, particularly for 
+usage on webpages and rich text.
+
+
+The input HexCode string can include, but does not require, a leading #. If there are only 3 hex values 
+(i.e. only RGB is specified) the output alpha value is 1.
+
+
+The Parsed output indicates whether the HexCode can be successfully parsed to a color.
+
+
+The default output color is [0,0,0,0] which corresponds to completely transparent black. 
+This is output whenever the input cannot be parsed as a valid HexCode. 
+}
+
+
+FrooxEngine.LogiX.Color.ColorToHexCode:##############################################################
+{
+The <color=#00FF00>Color To Hex Code</color> node outputs a hexadecimal code corresponding to the input RGB(A) Color.
+Usage
+
+Default Color output is #000000 which corresponds to black.
+
+
+If IncludeAlpha is True (False by default) a trailing fourth pair of hexadecimal values is added which encodes the alpha input value.
+
+
+If ShortForm is True (false by Default) the output corresponding to each of R, G and B (and alpha if IncludeAlpha is True) is scaled and rounded so as to be represented as a single hexadecimal digit.
+
+
+The Prefix input is prepended to the output string (# by default). 
+}
+
+
+FrooxEngine.LogiX.Color.InvertColor:################################################################
+{
+The <color=#00FF00>Invert</color> node inverts the RGB channels of the input color.
+}
+
+
