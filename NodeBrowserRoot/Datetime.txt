@@ -1,0 +1,75 @@
+Math.Time.DatetimeMillisecondNode
+Math.Time.DatetimeSecondNode
+Math.Time.DatetimeMinuteNode
+Math.Time.DatetimeHourNode
+Math.Time.DatetimeDayNode
+Math.Time.DatetimeMonthNode
+Math.Time.DatetimeYearNode
+Math.Time.DatetimeTicksNode
+Math.Time.DatetimeDayOfWeekNode
+Math.Time.DatetimeDayOfYearNode
+{
+Extracts a specific unit (such as days or seconds) from a DateTime.
+}
+Math.Time.TimespanTicksNode
+Math.Time.TimespanMillisecondsNode
+Math.Time.TimespanSecondsNode
+Math.Time.TimespanMinutesNode
+Math.Time.TimespanHoursNode
+Math.Time.TimespanDaysNode
+Math.Time.TimespanTotalMillisecondsNode
+Math.Time.TimespanTotalSecondsNode
+Math.Time.TimespanTotalMinutesNode
+Math.Time.TimespanTotalHoursNode
+Math.Time.TimespanTotalDaysNode
+{
+Extracts a specific unit (such as days or seconds) from a TimeSpan.
+}
+Math.Time.ConstructDateTime
+{
+Creates a DateTime from a bunch of inputs such as days or seconds.
+Also allows changing the "Kind" which can be either "Unspecified", "Utc" or "Local", this will change how the DateTime is displayed to other users.
+}
+Math.Time.DatetimeKindNode
+{
+Gets the kind of a DateTime.
+The kind can be either "Unspecified", "Utc" or "Local", this will change how the DateTime is displayed to other users.
+}
+Math.Time.SetDatetimeKindNode
+{
+Changes the kind of a DateTime.
+The kind can be either "Unspecified", "Utc" or "Local", this will change how the DateTime is displayed to other users.
+}
+Math.Time.FromUnixSeconds
+Math.Time.FromUnixMilliseconds
+{
+Converts unix (mili)seconds into a DateTime.
+
+Unix time is time since January 1st 1970.
+}
+Math.Time.ToUnixSeconds
+Math.Time.ToUnixMilliseconds
+{
+Converts a DateTime into unix (mili)seconds.
+
+Unix time is time since January 1st 1970.
+}
+Math.Time.ToUniversalTime
+{
+Converts a DateTime to use the Utc kind, which means each user will see it the same way.
+}
+Math.Time.ToLocalTime
+{
+Converts a DateTim to use the Local kind, which means each user will see it in their own timezone.
+}
+
+
+Math.Time.LocalTimeOffset
+Math.Time.UserTimeOffset
+{
+Provides the time zone offset of a certain user.
+}
+Math.Time.UserTime
+{
+Provides the time for a certain user, for example if it's 8 AM in the plugged in user's timezone it will say 8 AM for everyone else too.
+}

@@ -1,0 +1,26 @@
+Math.Time.TimespanTicksNode
+Math.Time.TimespanMillisecondsNode
+Math.Time.TimespanSecondsNode
+Math.Time.TimespanMinutesNode
+Math.Time.TimespanHoursNode
+Math.Time.TimespanDaysNode
+Math.Time.TimespanTotalMillisecondsNode
+Math.Time.TimespanTotalSecondsNode
+Math.Time.TimespanTotalMinutesNode
+Math.Time.TimespanTotalHoursNode
+Math.Time.TimespanTotalDaysNode
+{
+Extracts a specific unit (such as days or seconds) from a TimeSpan.
+}
+
+
+Math.Time.TimeSpanFromDays
+Math.Time.TimeSpanFromHours
+Math.Time.TimeSpanFromMinutes
+Math.Time.TimeSpanFromSeconds
+Math.Time.TimeSpanFromMilliseconds
+Math.Time.TimeSpanFromTicks
+{
+Converts a number (of seconds or days or whatever the node says) into a TimeSpan.
+}
+
