@@ -1,0 +1,182 @@
+FrooxEngine.LogiX.Assets.AttachAsset`1
+FrooxEngine.LogiX.Assets.SampleAnimationTrack`1
+
+
+
+FrooxEngine.LogiX.Assets.AttachAudioClip:###############################################################
+{
+The  <color=#00FF00>Attach Audio Clip</color> node creates an AudioClipProvider component on the Target slot and fills the component's URL field with the input URL.
+Usage
+
+If the GetExisting input is True this will not produce components which are exact duplicates of existing ones currently under the slot (i.e. the existing component's URL field is identical to the node's URL input).
+
+
+The newly attached StaticAudioClip component is available from the AttachedProvider output for the duration of the impulse chain started by OnAttached. 
+}
+
+
+FrooxEngine.LogiX.Assets.AttachMesh:####################################################################
+{
+The <color=#00FF00>Attach Mesh</color> node creates a StaticMesh component under the Target slot and fills the component's URL field with the input URL.
+Usage
+
+If the GetExisting input is True this will not produce components which are exact duplicates of existing ones currently under the slot (i.e. the existing component's URL field is identical to the node's URL input).
+
+
+The newly attached StaticMesh component is available from the AttachedProvider output for the duration of the impulse chain started by OnAttached. 
+}
+
+
+
+FrooxEngine.LogiX.Assets.AttachSprite:##################################################################
+{
+The <color=#00FF00>Attach Sprite</color> node creates a StaticTexture2D component on the Target slot and fills the component's URL field with the input URL. A SpriteProvider component is also created whose Texture field is filled with a reference to the newly created StaticTexture2D component.
+Usage
+
+If the GetExisting input is True this will not produce components which are exact duplicates of existing ones currently under the slot (i.e. the existing component's URL field is identical to the node's URL input). The input URL should be for a 2D image asset.
+
+
+The newly attached SpriteProvider component is available from the AttachedProvider output for the duration of the impulse chain started by OnAttached. 
+}
+
+
+
+
+FrooxEngine.LogiX.Assets.AttachTexture2D:###############################################################
+{
+The <color=#00FF00>Attach Texture2D</color> node creates a StaticTexture2D component under the Target slot and fills the component's URL field with the input URL.
+Usage
+
+If the GetExisting input is True this will not produce components which are exact duplicates of existing ones currently under the slot (i.e. the existing component's URL field is identical to the node's URL input).
+
+
+The newly attached StaticTexture2D component is available from the AttachedProvider output for the duration of the impulse chain started by OnAttached. 
+}
+
+
+
+FrooxEngine.LogiX.Assets.BakeMeshes:###################################################################
+{
+The <color=#00FF00>Bake Meshes</color> node creates a new single mesh as a combination of all meshes under the Root input slot's hierarchy. Specific behaviour depends significantly on the input values, see Usage.
+Usage
+
+When an impulse is received at Bake, and with all default bool inputs, this node creates a new slot whose name is the name of the original Root input slot with " - Baked" appended. This slot contains MeshRenderer, Grabbable, and MeshCollider components. The MeshRenderer and MeshCollider components' Mesh field is filled with a reference to the newly baked mesh. This is a combination of all meshes previously referenced by enabled MeshRenderer/SkinnedMeshRenderer components under any active slots under the input Root slot's hierarchy. The MeshRenderer component contains references to the materials previously present on the individual meshes; if these are subsequently changed, the changes only affect the part of the baked mesh which was originally affected by the changed material.
+
+
+If the IncludeInactive input is True (False by default) the baked mesh will also include any meshes on inactive slots under the input Root slot's hierarchy. Inactive meshes will be visible in the final baked mesh.
+
+
+If the Undoable input is True (False by default), the baking event can be undone using the Undo button on the radial context menu.
+
+
+If the DestroyOriginal input is False (True by default) the original Root input slot (and all of its children) is not destroyed after baking.
+
+
+It is recommended to take care with the Undoable and DestroyOriginal options, by default this node will destroy the Root slot, along with its children, in an event which cannot be undone!. It is also important to consider the number of triangles which the eventual baked mesh will contain - MeshColliders for high-poly meshes can impose a significant performance cost. 
+}
+
+
+FrooxEngine.LogiX.Assets.FindAnimationTrackIndex:#######################################################
+{
+The <color=#00FF00>Find Animation Track Index</color> node finds the index of an animation track based on the input node and property names. 
+}
+
+
+
+
+FrooxEngine.LogiX.Assets.FormatLocaleString:############################################################
+{
+The <color=#00FF00>Format Locale String</color> node displays a given key's localized text according to the provided locale.
+}
+
+
+
+FrooxEngine.LogiX.Assets.GetTexture2D_Pixel:############################################################
+{
+The <color=#00FF00>Get Texture 2D Pixel</color> node returns the color of a pixel by locating it on the input 2D texture according to the specified position. This node is distinct from from the Sample Texture2D UV node as it accepts an int2 instead of an float2; this ensures the sampling remains constrained to individual pixels rather than being interpolated across pixels.
+Usage
+
+Texture is the texture you want to sample a pixel from. Position is the 2D coordinate (starting from the bottom left of the texture) of the pixel you want to return the color value of.
+
+}
+
+
+
+FrooxEngine.LogiX.Assets.GetTexture3D_Pixel:###########################################################
+{
+The <color=#00FF00>Get Texture 3D Pixel</color> node returns the color of a pixel by locating it on the input 3D texture according to the specified position. This node is distinct from from the Sample Texture3D UVW node as it accepts an int3 instead of an float3; this ensures the sampling remains constrained to individual pixels rather than being interpolated across pixels.
+Usage
+
+Texture is the texture you want to sample a pixel from. Position is the 3D coordinate (starting from the bottom left of the texture) of the pixel you want to return the color value of.
+
+}
+
+
+
+FrooxEngine.LogiX.Assets.LocaleMessageCount:###########################################################
+{
+The <color=#00FF00>Locale Message Count</color> node outputs the number of messages for the input locale.
+
+Usage
+
+Locale is the locale you want to get the message count of. Count is the message count of the locale. 
+}
+
+
+
+
+FrooxEngine.LogiX.Assets.SampleTexture2D_UV:###########################################################
+{
+The <color=#00FF00>Sample Texture2D UV</color> node samples the color of a pixel by locating it on the input 2D texture according to the specified position in UV space. This node is distinct from from the Get Texture 2D Pixel node as it accepts a float2 instead of an int2; this lets the sampling be interpolated across pixels rather than being constrained to individual pixels.
+Usage
+
+Texture is the texture you want to sample a pixel from. Position is the coordinate of the point you want to sample in UV space, where the components of the input float2 range from 0.0 to 1.0. WrapMode defines whether the texture should wrap around UV space.
+
+}
+
+
+
+FrooxEngine.LogiX.Assets.SampleTexture3D_UVW:##########################################################
+{
+The <color=#00FF00>Sample Texture3D UVW</color> node samples the color of a pixel by locating it on the input 3D texture according to the specified position in UVW space. This node is distinct from from the Get Texture 3D Pixel node as it accepts a float3 instead of an int3; this lets the sampling be interpolated across pixels rather than being constrained to individual pixels.
+Usage
+
+Texture is the texture you want to sample a pixel from. Position is the coordinate of the point you want to sample in UVW space, where the components of the input float3 range from 0.0 to 1.0.
+
+}
+
+
+
+FrooxEngine.LogiX.Assets.Texture2D_Format:#############################################################
+{
+The <color=#00FF00>Texture 2D Format</color> node provides specific information about the input texture.
+
+Usage
+
+Texture is the input texture you want to use. Size is the texture's width and height. Format is the formatting type of the texture. MipMapCount is the number of mip maps the texture is using. 
+}
+
+
+
+FrooxEngine.LogiX.Assets.Texture3D_Format:#############################################################
+{
+The <color=#00FF00>Texture 3D Format</color> node provides specific information about the input 3D texture.
+
+Usage
+
+Texture is the input texture you want to use. Size is the size of the texture. Format is the formatting type of the texture.
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
