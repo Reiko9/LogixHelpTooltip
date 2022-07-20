@@ -1,0 +1,19 @@
+FrooxEngine.LogiX.Operators.EnumToInt`1:########################################################
+{
+The <color=#00FF00>Enum To Int`1</color> LogiX node converts an Enum to an integer. Typically such Enum values are properties on components.
+Usage
+
+Use this node to convert an Enum to an integer. In general, it is not a good idea to rely on the specific numeric value of an Enum. However, the integer can be used to encode the Enum for storage.
+}
+
+
+
+FrooxEngine.LogiX.Operators.IntToEnum`1:##########################################################
+{
+The <color=#00FF00>Int To Enum`1</color> LogiX node converts an integer into an Enum. Typically such enumerated values are properties on components.
+Usage
+
+Use this node to convert an integer to an Enum. In general, it is not a good idea to rely on the specific numeric value of an Enum. However, the integer can be used to encode the Enum for storage.
+
+}
+
