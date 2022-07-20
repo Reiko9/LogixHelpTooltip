@@ -1,0 +1,280 @@
+Avatar Folder Root:
+
+FrooxEngine.LogiX.Avatar.BodyNodeSlot:##################################################################
+{
+The <color=#00FF00>Body Node Slot</color> node outputs the NodeSlot slot corresponding to the input Node on the avatar of the Source user.
+Usage
+
+The Source input defaults to the local user - meaning that the NodeSlot output would be different on each user's client.
+
+
+In the case of the default Node input, or if there is no corresponding slot for the input on the Source user's avatar, the NodeSlot output is null. 
+}
+
+
+FrooxEngine.LogiX.Avatar.DefaultUserScale:##############################################################
+{
+The <color=#00FF00>Default User Scale</color> node gets the input user's default scale. 
+}
+
+
+
+FrooxEngine.LogiX.Avatar.EquipAvatar:###################################################################
+{
+The <color=#00FF00>Equip Avatar</color> node equips the avatar given by the AvatarRoot input for the input User when an impulse is received. 
+
+Usage
+
+This node equips the avatar for the user without moving the user - this behavior is akin to equipping an avatar from the inventory directly instead of equipping an avatar spawned into the world. If DestroyOld is True the user's previously equipped avatar is destroyed once the new avatar is equipped. 
+}
+
+
+FrooxEngine.LogiX.Avatar.FingerPose:####################################################################
+{
+The <color=#00FF00>Finger Pose</color> node.
+
+Usage
+
+Allows you to pull the transform without the scale of the fingers. 
+}
+
+
+FrooxEngine.LogiX.Avatar.NearestUserHand:###############################################################
+{
+The color=#00FF00>Nearest User Hand</color> node.
+
+
+Usage
+
+Allows you to get the nearest hand slot and which hand it is to the references slot and if there is nothing in the references slot it uses itself as the references. 
+}
+
+FrooxEngine.LogiX.Avatar.NearestUserHead:###############################################################
+{
+The <color=#00FF00>Nearest User Head</color> node.
+
+
+Usage
+
+Allows you to get the nearest head slot on an occupied avatar to the center of the referenced slot. If there is nothing in the reference slot the node will use itself as the reference. Operates very similar to Nearest User Hand (LogiX node) except for finding a head instead of hand.
+}
+
+
+FrooxEngine.LogiX.Avatar.UserFingerPoseSource:##########################################################
+{
+The <color=#00FF00>User Finger Pose Source</color> node.
+
+Usage
+
+Allows you to get the IFingerPoseSource from a user. 
+
+}
+
+
+######/Anchors############
+
+FrooxEngine.LogiX.Avatar.AnchorEvents:##################################################################
+{
+The <color=#00FF00>Anchor Events</color> node fires an impulse from OnAnchored when a user enters the referenced input AvatarAnchor and fires an impulse from OnReleased when a user exits the anchor.
+
+
+Usage
+
+A reference to the user either entering or exiting the anchor is available for the duration of the impulse chain triggered from OnAnchored or OnReleased. 
+}
+
+
+
+FrooxEngine.LogiX.Avatar.AnchorLocomotionData:#########################################################
+{
+The <color=#00FF00>Anchor Locomotion Data</color> node.
+
+
+Usage
+
+LocomotionUpdate is an impulse that fires every time one of the values is updated. It also returns the user inputs on the anchor. 
+}
+
+
+FrooxEngine.LogiX.Avatar.AnchorUser:###################################################################
+{
+The <color=#00FF00>Anchor User node</color> anchors the input User at the input Anchor when an impulse is received at DoAnchor. 
+
+Usage
+
+Allows you to put a user on an Anchor. 
+}
+
+
+
+
+FrooxEngine.LogiX.Avatar.AnchoredUser:#################################################################
+{
+The <color=#00FF00>Anchored User</color> node outputs a reference to the user anchored at the referenced input Anchor.
+
+Usage
+
+Default output if a user is not anchored at Anchor is null. 
+}
+
+
+FrooxEngine.LogiX.Avatar.GetUserAnchor:################################################################
+{
+The <color=#00FF00>Get User Anchor</color> node outputs a reference to the anchor at which the input User is anchored.
+
+Usage
+
+Default output if the User is not anchored is null. 
+}
+
+
+FrooxEngine.LogiX.Avatar.IsUserAnchored:###############################################################
+{
+The <color=#00FF00>Is User Anchored</color> node outputs a boolean value depending on whether the input User is anchored.
+
+
+Usage
+
+Allows you to check if a user is in an Anchored. 
+}
+
+
+
+FrooxEngine.LogiX.Avatar.ReleaseUser:##################################################################
+{
+The <color=#00FF00>Release User</color> node releases a user from the referenced Anchor when an impulse is received at DoRelease.
+
+Usage
+
+An impulse will not be fired from OnReleased unless a user was released as a result of an impulse at DoRelease. 
+}
+
+
+
+#########/BodyNode#################
+
+FrooxEngine.LogiX.Utility.BodyNodeChirality:###########################################################
+{
+The <color=#00FF00>Chirality</color> node outputs the chirality value (Left/Right) of the input Node.
+Usage
+
+For body nodes which do not have a chirality (e.g. Hips) the output is -1. 
+}
+
+
+
+FrooxEngine.LogiX.Utility.ComposeFinger:###############################################################
+{
+The <color=#00FF00>Compose Finger</color> node output the BodyNode corresponding to the input Finger, Segment, and Chirality values.
+
+Usage
+
+Default values for Finger, Segment, and Chirality are Thumb, Metacarpal, and Left respectively. Therefore the default output value is LeftThumb_Metacarpal. 
+}
+
+
+FrooxEngine.LogiX.Utility.FingerNodeIndex:#############################################################
+{
+The <color=#00FF00>Finger Node Index</color> node outputs the integer value corresponding to the input Node regardless of it's chirality.
+Usage
+
+Node to int mappings are:
+
+    Thumb_Metacarpal - 0
+    Thumb_Proximal - 1
+    Thumb_Distal - 2
+    Thumb_Tip - 3
+    IndexFinger_Metacarpal - 4
+    IndexFinger_Proximal - 5
+    IndexFinger_Intermediate - 6
+    IndexFinger_Distal -7
+    IndexFinger_Tip - 8
+    MiddleFinger_Metacarpal - 9
+    MiddleFinger_Proximal - 10
+    MiddleFinger_Intermediate - 11
+    MiddleFinger_Distal - 12
+    MiddleFinger_Tip - 13
+    RingFinger_Metacarpal - 14
+    RingFinger_Proximal - 15
+    RingFinger_Intermediate - 16
+    RingFinger_Distal - 17
+    RingFinger_Tip - 18
+    Pinky_Metacarpal - 19
+    Pinky_Proximal - 20
+    Pinky_Intermediate - 21
+    Pinky_Distal - 22
+    Pinky_Tip - 23
+
+To convert these int values into their BodyNode Enum equivalents, add 19 for Left side or 48 for right side. 
+}
+
+
+FrooxEngine.LogiX.Utility.GetFingerSegmentType:########################################################
+{
+The <color=#00FF00>Finger Segment</color> node outputs the finger segment name for the given Node.
+Usage
+
+Possible output values, if the input Node is a finger, are: Metacarpal, Proximal, Intermediate, Distal, or Tip.
+
+The value is -1 for all Node values which are not fingers.
+
+}
+
+
+
+FrooxEngine.LogiX.Utility.GetFingerType:###############################################################
+{
+The <color=#00FF00>Finger Type</color> node outputs the finger type value for the input Node.
+Usage
+
+Possible output values, if the input Node is a finger, are: Thumb, Index, Middle, Ring, or Pinky.
+
+The value is -1 for all Node values which are not fingers. 
+}
+
+
+FrooxEngine.LogiX.Utility.GetBodyNodeSide:#############################################################
+{
+The <color=#00FF00>Get Side</color> node outputs the BodyNode value corresponding to the input Node with the specified Side.
+Usage
+
+For any input Node which has a chirality, this outputs either that Node value or the corresponding one with the opposite chirality depending on the input Side. If the input Node has no chirality the output is NONE.
+
+For example, with the input Node LeftController and Side Left the output will be LeftController. However, with the input Node LeftController and Side Right the output will be RightController 
+}
+
+
+
+
+FrooxEngine.LogiX.Utility.IsBodyNodeEye:###############################################################
+{
+The <color=#00FF00>Is Eye</color> node outputs True if the input Node is either LeftEye or RightEye, otherwise False. 
+}
+
+
+
+FrooxEngine.LogiX.Utility.GetBodyNodeOtherSide:########################################################
+{
+The <color=#00FF00>Other Side</color> node outputs the BodyNode corresponding to the Node with opposite chirality.
+
+Usage
+
+For example, if Node is LeftController, the output is RightController. For input Node values without a chirality the output is NONE. 
+}
+
+
+FrooxEngine.LogiX.Utility.RelativeBodyNode:############################################################
+{
+The <color=#00FF00>Relative Body Node</color> node outputs the Root BodyNode unless the Node is an Eye, Palm, or Finger node.
+
+Usage
+
+If the input Node is an Eye the output is Head. If it is either a Palm or Finger the output is the Hand of the same chirality. If the input is NONE, so is the output. 
+}
+
+
+
+
+
+
+
