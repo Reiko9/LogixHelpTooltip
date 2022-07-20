@@ -1,0 +1,106 @@
+FrooxEngine.LogiX.Math.Quaternions.ToAxisAngle_:######################################################
+{
+The <color=#00FF00>Axis Angle</color> LogiX node converts a rotation represented as an axis-angle to the native quaternion representation. The first input is the axis about which to rotate, and the second input is the angle in degrees to rotate clockwise (positive) or counterclockwise (negative) about the axis by.
+Usage
+
+Use this node to convert rotation about an arbitrary axis into a quaternion which can then be used in further computations or used as an object's rotation input.
+Examples
+
+Here we have a door with a Door Pivot child placed on the hinge side of the door. We can drive the Door Pivot object's Rotation property (a quaternion) with the Axis Angle node's output (also a quaternion). We specify rotation about the Y axis (the green axis), and 0 degrees of rotation: 
+
+By changing the rotation amount to -60 degrees, we rotate the object 60 degrees counterclockwise. 
+
+}
+
+
+
+FrooxEngine.LogiX.Math.Quaternions.EulerAngles_:#####################################################
+{
+The <color=#00FF00>Euler Angles</color> LogiX node converts a a rotation represented as a native quaternion to an ZYX-ordered Euler angle representation. That is, the object is first rotated about its Z axis, then rotated about its Y axis, then rotated about its X axis.
+Usage
+
+Use this node to convert a quaternion into ZYX Euler rotation.
+Examples
+
+Here we specify -60 degrees of rotation about the Y axis using an Axis Angle node, then feed the result to the Euler Angles node: 
+
+In the above example, the output representation is -60 degrees of rotation about the Y axis. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Quaternions.FromEuler_:#######################################################
+{
+The <color=#00FF00>From Euler</color> node converts a float3 representing the three Euler angles into a floatQ.
+}
+
+
+FrooxEngine.LogiX.Math.Quaternions.FromToRotation_:##################################################
+{
+The <color=#00FF00>From To Rotation</color> LogiX node creates a rotation represented as a native quaternion which rotates the first (From) vector to the second (To) vector.
+Usage
+
+This node can be used to apply a rotation so that the From vector, e.g. a vector along the Y axis, follows a target direction (the To vector).
+Examples
+
+Here we want a rotation that rotates a vector along the X axis to a point along a vector halfway between the X and Y axes, or in other words, points the X vector in that direction. 
+
+The resulting rotation is 45 degrees about the Z axis. 
+
+}
+
+
+
+FrooxEngine.LogiX.Math.Quaternions.InverseRotation_:##################################################
+{
+The <color=#00FF00>Inverse Rotation</color> LogiX node creates a rotation represented as a native quaternion which is the opposite of the rotation represented by its input quaternion.
+Usage
+
+This node can be used to apply an inverse rotation.
+Examples
+
+Here we want a rotation that that is the opposite of a 45 degree rotation about the X axis.
+
+Inverse Rotation Example.jpg 
+
+The resulting rotation is 45 degrees about the -X axis, which is equivalent to a rotation -45 degrees about the X axis. 
+}
+
+
+
+FrooxEngine.LogiX.Math.Quaternions.LookRotation_:####################################################
+{
+The <color=#00FF00>Look Rotation</color> LogiX node creates a rotation represented as a native quaternion which will rotate an object such that its Z axis points in the direction of the Forward vector, and its Y axis points in the direction of the component of the Up vector that doesn't point in the direction Forward vector. More technically, the object's X axis will point in the direction of the cross-product of the Forward and Up vectors.
+Usage
+
+This node can be used to turn an object to face another object, while keeping its "top" generally facing in the same direction.
+Examples
+
+The Z axis of an object is generally considered its "forward" axis and its Y axis is its "up" axis. For example, suppose we had an avatar whose nose was pointing in the Z axis ("forward"), with the top of its head in the Y axis ("up"). However, now we want the avatar to rotate its head so that its nose was pointing along the X axis while still remaining with the top of its head pointing up.
+
+Look Rotation example.jpg
+
+The required head rotation is 90 degrees about the Y axis. 
+}
+
+
+
+
+FrooxEngine.LogiX.Math.Quaternions.ToAxisAngle_:######################################################
+{
+The <color=#00FF00>To Axis Angle</color> LogiX node converts a rotation represented as a native quaternion to an axis-angle representation. The first output is the axis about which to rotate, and the second output is the angle in degrees to rotate clockwise (positive) or counterclockwise (negative) about the axis by.
+
+Note that there are two valid axis-angle representations of a rotation: positive rotation about an axis, and negative rotation about the opposite axis. Which is chosen by To Axis Angle is effectively random.
+Usage
+
+Use this node to convert a quaternion into rotation about a specific axis.
+Examples
+
+Here we specify -60 degrees of rotation about the Y axis using an Axis Angle node, then feed the result to the To Axis Angle node:
+
+To Axis Angle and Euler Angles example.jpeg
+
+In the above example, the output representation is 60 degrees of rotation about the -Y axis, which is equivalent to -60 degrees of rotation about the +Y axis. 
+}
+
+
