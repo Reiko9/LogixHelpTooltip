@@ -1,0 +1,31 @@
+FrooxEngine.LogiX.References.ReferenceTarget`1:#########################################################
+{
+The <color=#00FF00> -&gt; </color> node outputs the SyncRef reference target of the input Reference.
+Usage
+
+This node is often required when making a reference typed field from a slot or component interface available to LogiX nodes. For example when a Slot reference interface is extracted with the LogiX tooltip, the parent field must be input to this node before the Slot data it holds can be used by nodes which have a Slot type input. This is because the parent field is of type SyncRef<Slot>, rather than Slot itself. 
+}
+
+
+FrooxEngine.LogiX.References.AllocatingUser:############################################################
+{
+The <color=#00FF00>AllocatingUser</color> node outputs the User who caused the input Element to be loaded.
+
+Usage
+
+The default output is null. Any slot or component can be provided as inputs for this node. 
+}
+
+
+FrooxEngine.LogiX.References.ReferenceID:###############################################################
+{
+The <color=#00FF00>RefID</color> node outputs the raw RefID for the input Element.
+Usage
+
+In general it is not recommended for most users ever to use this node, see Things to Avoid.
+
+The update notes regarding the implementation of this node were as follows (lightly edited for clarity):
+
+    Please note that RefID is an opaque, non-persistent value (meaning its structure and meaning can change at any time, including between sessions). It's STRONGLY recommended not to work with them directly, but rather interact with typed references and nodes to extract desired data instead. If you rely on particular structure or meaning of RefID, your creations WILL break. If functionality is missing, make a request.
+}
+
