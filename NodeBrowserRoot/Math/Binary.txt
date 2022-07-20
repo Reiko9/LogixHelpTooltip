@@ -1,0 +1,38 @@
+FrooxEngine.LogiX.Math.Binary.AdderNode:#####################################################
+{
+The <color=#00FF00>Adder</color> node can be used to simulate the behavior of a hardware full adder circuit. It accepts two input bits plus a carry-in and returns the addition result plus a carry-out. 
+}
+
+
+FrooxEngine.LogiX.Math.Binary.BooleanCounter:#################################################
+{
+The <color=#00FF00>Boolean Counter</color> node counts the number of true/false values among the input boolean values. 
+}
+
+Math.Binary.ExtractBits_:#############################################################################
+{
+Converts an integer into its binary form by providing a boolean output for each bit.
+}
+Math.Binary.ComposeBits_:#############################################################################
+{
+Converts boolean values into an integer by providing a boolean input for each bit.
+}
+Math.Binary.HalfAsUShort:#############################################################################
+Math.Binary.FloatAsUInt
+Math.Binary.DoubleAsULong
+{
+Converts a floating point number into its binary representation by providing an integer output.
+
+Can be combined with the extract bits node to read out the individual bits of a floating point number.
+
+If you would like to know more about the binary representation of floating point numbers search IEEE 754 on the internet.
+}
+Math.Binary.UShortAsHalf:#############################################################################
+Math.Binary.UIntAsFloat
+Math.Binary.ULongAsDouble
+{
+Creates a floating point number from the binary representation of an integer.
+
+If you would like to know more about the binary representation of floating point numbers search IEEE 754 on the internet.
+}
+
