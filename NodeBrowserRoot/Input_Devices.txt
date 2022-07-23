@@ -1,0 +1,573 @@
+FrooxEngine.LogiX.Input.GeneralHeadset:#################################################################
+{
+'General Headset' LogiX node
+Inputs
+  	User 	User
+Outputs
+  	Float 	BatteryLevel
+  	Bool 	IsBatteryCharging
+
+The <color=#00FF00>General Headset</color> node returns generic information about the input user's current headset.
+
+}
+
+########Controllers########################
+FrooxEngine.LogiX.Input.CosmosController:###############################################################
+{
+The <color=#00FF00>Cosmos Controller</color> provides more controller data than the Standard Controller (LogiX node) specifically for HTC VIVE Cosmos controllers.
+Usage
+
+The Active output indicates whether the User is using Cosmos.
+
+
+The BatteryLevel output output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output indicates whether the controller battery is currently charging.
+
+
+The Menu output
+
+
+The ButtonBY output
+
+
+The ButtonAX output
+
+
+The GripClick output
+
+
+The Joystick output
+
+
+The JoystickTouch output
+
+
+The JoystickClick output
+
+
+The Trigger output
+
+
+The TriggerTouch output
+
+
+The TriggerClick output
+
+
+The Bumper output 
+}
+
+
+
+FrooxEngine.LogiX.Input.HPReverbController:#############################################################
+{
+The <color=#00FF00>HPReverb Controller</color> provides more controller data than the Standard Controller (LogiX node) specifically for second generation Windows Mixed Reality (WMR) controllers compatible with the HP Reverb G2 headset.
+Usage
+
+The IsActive output indicates whether the User is using 2nd generation WMR controllers.
+
+
+The BatteryLevel output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output is intended to indicate whether the controller is currently charging. This output cannot be used as 2nd generation WMR controllers use replacable batteries and therefore cannot be charged while in use.
+
+
+The AppMenu output
+
+
+The ButtonYB output
+
+
+The ButtonXA output
+
+
+The Grip output indicates how far the grip/grab button is pressed.
+
+
+The GripTouch output
+
+
+The GripClick output indicates whether the grip/grab button is fully pressed.
+
+
+The Joystick output indicates the current position of the joystick. X and Y values are in the range -1 to 1. X indicates left/right location, Y indicates forward/back. The resting joystick position is [0,0].
+
+
+The JoystickClick output indicates whether the joystick is pressed down.
+
+
+The Trigger output indicates how far the trigger button is pressed down. This corresponds to the button labelled Primary on the graphic below. The value is in the range 0 to 1 with 1 being reached somewhat before the button is fully pressed.
+
+
+The TriggerClick output is indicates whether the trigger button is pressed to the point of registering as a button click. This is reached somewhat before the button is fully pressed. 
+}
+
+
+
+
+FrooxEngine.LogiX.Input.IndexController:###############################################################
+{
+The <color=#00FF00>Index Controller</color> provides more controller data than the Standard Controller (LogiX node) specifically for Valve Index controllers.
+Usage
+
+The IsActive output indicates whether the User is using Index controllers.
+
+
+The BatteryLevel output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output indicates whether the controller is currently charging.
+
+
+The ButtonA output
+
+
+The ButtonB output
+
+
+The ButtonA_Touch output
+
+
+The ButtonB_Touch output
+
+
+The Grip output
+
+
+The GripTouch output
+
+
+The GripClick output
+
+
+The Joystick output
+
+
+The JoystickTouch output
+
+
+The JoystickClick output
+
+
+The Trigger output
+
+
+The TriggerTouch output
+
+
+The TriggerClick output
+
+
+The Touchpad output
+
+
+The TouchpadTouch output
+
+
+The TouchpadPress output
+
+
+The TouchpadForce output 
+}
+
+
+
+FrooxEngine.LogiX.Input.StandardController:############################################################
+{
+The <color=#00FF00>Standard Controller</color> provides access to standard data available from all supported VR controller types.
+Usage
+
+The IsActive output indicates whether the User is using VR controllers.
+
+
+The BatteryLevel output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output is intended indicates whether the controller is currently charging. This is only functional with Index and Vive controllers.
+
+
+The Type output indicates which type of VR controllers the User is using.
+
+
+The Primary output indicates whether the primary button is pressed. This corresponds to the trigger button on most controllers and is used to activate / user the interaction lasers.
+
+
+The Secondary output indicates whether the secondary button is pressed.
+
+
+The Grab output indicates whether the grab/grip button is pressed.
+
+
+The Menu output indicates whether the menu button is pressed.
+
+
+The Strength output indicates how far the primary button is pressed down. The value is in the range 0 to 1.
+
+
+The Axis on Windows Mixed Reality controllers indicates the touch location on the capacitative touchpad. The X and Y values are in the range -1 to 1. X indicates left/right location, Y indicates forward/back. 
+}
+
+
+
+
+
+FrooxEngine.LogiX.Input.TouchController:###############################################################
+{
+The <color=#00FF00>Touch Controller</color> provides more controller data than the Standard Controller (LogiX node) specifically for Oculus controllers.
+Usage
+
+The IsActive output indicates whether the User is using Oculus (Meta) Touch controllers.
+
+
+The BatteryLevel output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output indicates whether the controller is currently charging.
+
+
+The Start output
+
+
+The ButtonYB output
+
+
+The ButtonXA output
+
+
+The ButtonYB_Touch output
+
+
+The ButtonXA_Touch output
+
+
+The ThumbRestTouch output
+
+
+The Grip output
+
+
+The GripClick output
+
+
+The Joystick output
+
+
+The JoystickTouch output
+
+
+The JoystickClick output
+
+
+The Trigger output
+
+
+The TriggerTouch output
+
+
+The Model output
+
+
+The TriggerClick output 
+}
+
+
+
+FrooxEngine.LogiX.Input.ViveController:################################################################
+{
+<color=#00FF00>Vive Controller</color>
+
+Usage
+
+The IsActive output indicates whether the User is using HTC VIVE controllers.
+
+
+The BatteryLevel output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output indicates whether the controller is currently charging.
+
+
+The Grip output
+
+
+The App output
+
+
+The Trigger output
+
+
+The TriggerHair output
+
+
+The TriggerClick output
+
+
+The Touchpad output
+
+
+The TouchpadTouch output
+
+
+The TouchpadClick output 
+}
+
+
+FrooxEngine.LogiX.Input.WindowsMR_Controller:##########################################################
+{
+The <color=#00FF00>Windows MR Controller</color> provides more controller data than the Standard Controller (LogiX node) specifically for first generation Windows Mixed Reality (WMR) controllers.
+Usage
+
+The IsActive output indicates whether the User is using WMR controllers.
+
+
+The BatteryLevel output provides the estimated remaining battery charge. The value is in the range 0 to 1 with precision to two decimal places.
+
+
+The IsBatteryCharging output is intended to indicate whether the controller is currently charging. This output cannot be used as WMR controllers use replacable batteries and therefore cannot be charged while in use.
+
+
+The Grip output indicates whether the grip button is pressed. This corresponds to the button labelled Grab on the graphic below.
+
+
+The App output indicates whether the app button is pressed. This corresponds to the button which opens the Dash / Context menu on the graphic below.
+
+
+The Joystick output indicates the current position of the joystick. X and Y values are in the range -1 to 1. X indicates left/right location, Y indicates forward/back. The resting joystick position is [0,0].
+
+
+The JoystickClick output indicates whether the joystick is pressed down.
+
+
+The Trigger output indicates how far the trigger button is pressed down. This corresponds to the button labelled Primary on the graphic below. The value is in the range 0 to 1 with 1 being reached somewhat before the button is fully pressed.
+
+
+The TriggerHair output is intended to indicate whether the trigger is lightly pressed. In this case it seems to be functionally equivalent to TriggerClick.
+
+
+The TriggerClick output is indicates whether the trigger button is pressed to the point of registering as a button click. This is reached somewhat before the button is fully pressed.
+
+
+The Touchpad output indicates the touch location on the capacitative touchpad. The X and Y values are in the range -1 to 1. X indicates left/right location, Y indicates forward/back.
+
+
+The TouchpadTouch output indicates whether the capacitative touchpad is currently touched.
+
+
+The TouchpadClick output indicates whether the capacitative touchpad is currently pressed. 
+}
+
+
+
+##########Haptics###############
+
+FrooxEngine.LogiX.Input.TriggerHapticsInHierarchy:#####################################################
+{
+The <color=#00FF00>Trigger Haptics In Hierarchy</color> node causes all haptic feedback devices (typically controller vibration) under the input TargetHierarchy to activate. Haptics will not activate if an affected user has Controller Vibration unchecked in their settings menu. 
+
+Usage
+
+Haptic activation is extremely short in duration so for prolonged vibration this node needs to be repeatedly triggered. Activation intensity is modulated by the RelativeIntensity input.
+}
+
+
+
+FrooxEngine.LogiX.Input.TriggerHapticsOnController:####################################################
+{
+The <color=#00FF00>Trigger Haptics On Controller</color> node causes controller haptic feedback (vibration) activate on the input Controller. Haptics will not activate if an affected user has Controller Vibration unchecked in their settings menu.
+
+
+Usage
+
+Haptic activation is extremely short in duration so for prolonged vibration this node needs to be repeatedly triggered. Activation intensity is modulated by the RelativeIntensity input.
+}
+
+
+
+#########Keyboard#############
+FrooxEngine.LogiX.Input.KeyHeld:#######################################################################
+{
+The <color=#00FF00>Key Held</color> node reports whether the input Key is being held down.
+Usage
+
+This node only reports on inputs via a user's hardware keyboard. It does not respond to key presses on the Neos software keyboard. Additionally inputs from a hardware keyboard will not be recognised by this node if a user is editing an input field.
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+FrooxEngine.LogiX.Input.KeyPressed:####################################################################
+{
+The <color=#00FF00>Key Pressed</color> node reports whether the input Key has just been pressed.
+Usage
+
+This node only reports on inputs via a user's hardware keyboard. It does not respond to key presses on the Neos software keyboard. Additionally inputs from a hardware keyboard will not be recognised by this node if a user is editing an input field.
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the indicated Key is pressed.
+
+}
+
+
+
+FrooxEngine.LogiX.Input.KeyReleased:###################################################################
+{
+The <color=#00FF00>Key Released</color> node reports whether the input Key has just been released.
+Usage
+
+This node only reports on inputs via a user's hardware keyboard. It does not respond to key presses on the Neos software keyboard. Additionally inputs from a hardware keyboard will not be recognised by this node if a user is editing an input field.
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the indicated Key is released. 
+}
+
+
+
+FrooxEngine.LogiX.Input.TypeDelta:#####################################################################
+{
+The <color=#00FF00>Type Delta</color> node outputs the keys which were pressed on a user's keyboard during the last frame.
+Usage
+
+This node only reports on inputs via a user's hardware keyboard. It does not respond to key presses on the Neos software keyboard. Additionally inputs from a hardware keyboard will not be recognised by this node if a user is editing an input field.
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has any specific output value for single frame.
+}
+
+
+#########Mouse######################
+FrooxEngine.LogiX.Input.DesktopMousePosition:##########################################################
+{
+The <color=#00FF00>Desktop Mouse Position</color> node outputs the current pixel position of the mouse cursor on the user's desktop.
+Examples
+
+In the output Float2, the X value corresponds to the mouse horizontal position and Y corresponds to the mouse vertical position relative to the user's primary desktop monitor. Both values start at 0 when the cursor is at the top left corner of a user's screen. Note that, if the mouse input is being captured by Neos, the value will correspond to the middle of the Neos window.
+
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+
+FrooxEngine.LogiX.Input.LeftMouseButtonHeld:###########################################################
+{
+The <color=#00FF00>Left Mouse Button Held</color> node reports whether the user's left mouse button is pressed down.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware.
+}
+
+
+FrooxEngine.LogiX.Input.LeftMouseButtonReleased:#######################################################
+{
+The <color=#00FF00>Left Mouse Button Released</color> node reports whether the user's left mouse button has just been released.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the left mouse button is released. 
+}
+
+FrooxEngine.LogiX.Input.LeftMousePressed:##############################################################
+{
+The <color=#00FF00>Left Mouse Pressed</color> node reports whether the user's left mouse button has just been pressed.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the left mouse button is pressed. 
+}
+
+
+FrooxEngine.LogiX.Input.MiddleMouseButtonHeld:#########################################################
+{
+The <color=#00FF00>Middle Mouse Button Held</color> node reports whether the user's middle mouse button is pressed down.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+
+
+FrooxEngine.LogiX.Input.MiddleMouseButtonReleased:#####################################################
+{
+The <color=#00FF00>Middle Mouse Button Released</color> node reports whether the user's middle mouse button has just been released.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the left mouse button is released.
+
+}
+
+
+FrooxEngine.LogiX.Input.MiddleMousePressed:############################################################
+{
+The <color=#00FF00>Middle Mouse Pressed</color> node reports whether the user's middle mouse button has just been pressed.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the middle mouse button is pressed. 
+}
+
+
+FrooxEngine.LogiX.Input.MouseMovementDelta:############################################################
+{
+The <color=#00FF00>Mouse Movement Delta</color> node outputs the change in the user's mouse position (in screen pixel units) during the last frame.
+Usage
+
+The output X value corresponds to horizontal movement, Y corresponds to vertical movement. Positive X values indicate a move to the right, negative values indicate movement to the left. Positive Y values indicate a move upwards, negative values indicate downward movement.
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+FrooxEngine.LogiX.Input.MousePosition:#################################################################
+{
+The <color=#00FF00>Mouse Position</color> node outputs the current pixel position of the mouse cursor relative to the Neos application window.
+Usage
+
+In the output Float2, the X value corresponds to the mouse horizontal position and Y corresponds to the mouse vertical position. Both values start at 0 when the cursor is at the bottom left corner of a user's Neos application window. Note that, if the mouse input is being captured by Neos, the value will correspond to the middle of the Neos window.
+
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+
+FrooxEngine.LogiX.Input.MouseScrollWheelDelta:#########################################################
+{
+The <color=#00FF00>Mouse Scroll Wheel Delta</color> node outputs the number of 'ticks' that the mouse scroll wheel moved through during the last frame.
+Usage
+
+The output value is a whole number float value. Positive values correspond to the mouse wheel being pushed forwards, negative values correspond to the wheel being rolled back.
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+FrooxEngine.LogiX.Input.RightMouseButtonHeld:##########################################################
+{
+The <color=#00FF00>Right Mouse Button Held</color> node reports whether the user's right mouse button is pressed down.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. 
+}
+
+
+
+FrooxEngine.LogiX.Input.RightMouseButtonReleased:######################################################
+{
+The <color=#00FF00>Right Mouse Button Released</color> node reports whether the user's right mouse button has just been released.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the right mouse button is released. 
+}
+
+
+
+FrooxEngine.LogiX.Input.RightMousePressed:##############################################################
+{
+The Right Mouse Pressed node reports whether the user's right mouse button has just been pressed.
+Usage
+
+The output of this node is local, and thus potentially different, for each user. Hence each user only sees the value relevant to their system hardware. This node only has the value True for a single frame when the right mouse button is pressed. 
+}
+
+
+
+
+
