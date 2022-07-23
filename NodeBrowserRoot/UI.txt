@@ -1,0 +1,49 @@
+FrooxEngine.LogiX.UI.ClearFocus:########################################################################
+{
+The <color=#00FF00>Clear Focus</color> node closes the Neos software keyboard and finishes editing of any TextEditor when an impulse is received at Focus
+Usage
+
+The OnDone output fires an impulse when any open editing has finished as a result of an impulse recieved at Focus. An impulse is fired regardless of whether any editing was in progress.
+
+
+Focused TextEditors are only closed for the user who owns the impulse.
+}
+
+FrooxEngine.LogiX.UI.DefocusFocusable:##################################################################
+{
+The <color=#00FF00>Defocus</color> node closes the Neos software keyboard and stops editing the Target TextEditor.
+Usage
+
+The OnDone output fires an impulse when the Target has been successfully defocused as a result of an impulse received at Defocus. An impulse is still fired even if the Target was not focused. No impulse is fired if there is no valid input Target.
+
+
+The TextEditor is only defocused for the user who owns the impulse. If a TextEditor other than the Target is focused it will not be defocused if this node receives an impulse. 
+}
+
+
+FrooxEngine.LogiX.UI.FocusFocusable:####################################################################
+{
+The <color=#00FF00>Focus</color> node opens the the Neos software keyboard for editing the Target TextEditor.
+Usage
+
+The OnDone fires an impulse when the Target has been successfully focused. An impulse will not be fired if there is no valid Target input.
+
+
+The TextEditor is focused only for the user who owns the impulse. 
+}
+
+
+
+
+FrooxEngine.LogiX.UI.HasLocalFocus:#####################################################################
+{
+The <color=#00FF00>Has Local Focus</color> node reports whether the local user has the input Target TextEditor focused for editing.
+Usage
+
+The output value is local, i.e. different for each user. 
+}
+
+
+
+
+
