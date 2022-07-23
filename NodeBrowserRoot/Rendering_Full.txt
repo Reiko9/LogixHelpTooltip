@@ -1,0 +1,106 @@
+FrooxEngine.LogiX.Rendering.BakeReflectionProbe:########################################################
+{
+The <color=#00FF00>Bake Cubemap</color> node will (re-)bake the cubemap for the input Probe when an impulse is received at Bake.
+Usage
+
+The OnBakeStart output fires an impulse when the baking process initiates. This is the passthrough output for impulses received at Bake. Note that the baked cubemap asset Uri will not yet be available from BakedCubemapURL for the impulse chain initiated by OnBakeStart.
+
+
+The OnBakeFail output fires an impulse if the baking process fails. Note that the baking process simply does not start (rather than failing) if there is no valid input Probe.
+
+
+The OnBakeCompleted output fires an impulse when the baking process finishes. The baked cubemap asset Uri is available from BakedCubemapURL for the impulse chain initiated by OnBakeCompleted. 
+}
+
+
+FrooxEngine.LogiX.Rendering.BakeReflectionProbes:#######################################################
+{
+The <color=#00FF00>Bake Reflection Probes</color> node will (re-)bake the cubemaps for all ReflectionProbe components under the input Root slot's heirarchy when an impulse is received at Bake.
+Usage
+
+The Root input defines the slot hierarchy which will be searched for ReflectionProbe components to bake. Default is the world root slot.
+
+
+The BakeInactive input determines whether disabled ReflectionProbe components, or ones present on inactive slots, will be baked. Default is false.
+
+
+The FilterWithTag input determines can be used to only bake ReflectionProbes on slots with an exactly matching tag. This is empty by default which results in no tag-based filtering.
+
+
+The DelayBeforeBake input determines the delay between baking successive ReflectionProbes in seconds. Default is 0.25 seconds.
+
+
+The OnBakeBatchStart output fires an impulse when baking starts. No impulse will be fired if there is no valid (or empty) Root input, however it is not required that there be any valid ReflectionProbes to bake for an impulse to be fired.
+
+
+The OnBakeBatchStart output fires an impulse immediately before the batch baking starts. No impulse will be fired if there is no valid (or empty) Root input, however it is not required that there be any valid ReflectionProbes to bake for an impulse to be fired.
+
+
+The OnBeforeProbeBake output fires an impulse immediately before baking begins for each ReflectionProbe.
+
+
+The OnProbeBaked output fires an impulse after each individual ReflectionProbe has been baked.
+
+
+The OnBakeBatchFinished output fires an impulse after all valid ReflectionProbes have been baked.
+
+
+The IsBaking output indicates whether a batch baking operation is in progress.
+
+
+The CurrentProbe output provides the ReflectionProbe component which is currently being processed. This value is only available during the impulse chains started from OnBeforeProbeBake and OnProbeBaked.
+
+
+The CurrentProbeIndex output provides the index of the ReflectionProble currently being processed. This value is 0 for the first probe baked in the batch, 1 for the next one and so on. The value from this output is 0 during the impulse chain started from OnBakeBatchStart and equal to the maximum index during the impulse chain started from OnBakeBatchFinished. The value will be correct for the specific ReflectionProbe processed during the impulse chains started from OnBeforeProbeBake and OnProbeBaked.
+
+
+The CurrentProbeCount output provides the total number of ReflectionProbes which will be baked during the batch. This value is available during the impulse chains started from OnBeforeProbeBake, OnProbeBaked, and OnBakeBatchFinished.
+
+
+Note that the node will not initate another baking batch if one is currently in progress.
+}
+
+
+
+FrooxEngine.LogiX.Rendering.RenderToTextureAsset:#######################################################
+{
+The <color=#00FF00>Render To Texture Asset</color> node will generate a texture using the provided camera when an impulse is received.
+Usage
+
+Upon receiving an impulse, the node will capture an image from the perspective of the provided camera, respecting the configuration of that camera. The output Uri can be written into the URL field of a StaticTexture2D component. This data is only available for the duration of the impulse chain fired from OnRendered.
+
+
+The Format input refers to the file extension of the rendered image, by default this is 'webp'. Other commonly used formats include 'png', 'jpg', and 'tiff'.
+
+
+The Resolution input refers to the width and height of the rendered image in pixels.
+
+
+The Quality input currently only refers to the quality level of the webp format. This input ranges from 1 to 100, anything above 100 will result in a lossless image. 
+}
+
+
+
+FrooxEngine.LogiX.Rendering.SampleColor:################################################################
+{
+The <color=#00FF00>Sample Color</color> outputs the visible color sampled in a line along the input Direction vector from the input Origin when an impulse is received at Sample.
+Usage
+
+The color is sampled after applying all effects of lighting, shadows, emissives, alpha blending of materials etc. along the sampling direction.
+
+The Reference input is the slot in whose local coordinate space the Origin and Direction vectors are interpreted. This is the root slot by default, meaning the global coordinate space is used.
+
+
+The NearClip input sets a lower bound on the distance at which objects will be included in the sampling. Anything closer to the input Origin than the NearClip value will be ignored.
+
+
+The FarClip input sets an upper bound on the distance at which objects will be included in the sampling. Anything further from the input Origin than the FarClip value will be ignored.
+
+
+The OnSampleStart output fires an impulse when the sampling operation begins. This is the impulse passthrough output for the Sample input. Note that the Color output will not yet have the sampled color value!
+
+
+The OnSampled output fires an impulse when the sampling operation completes. The sampled color will be available from the Color output for the duration of the impulse chain stared by OnSampled. Note that other transient values available during the impulse chain which arrives at Sample and continues from OnSampleStart may not be available during the impulse chain initiated from OnSampled.
+
+}
+
