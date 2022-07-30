@@ -1,0 +1,215 @@
+FrooxEngine.LogiX.String.Capitalize:######################################################################
+{
+The <color=#00FF00>Capitalize</color> node outputs the input Str with the first character capitalized.
+Usage
+
+This node makes no change to the input Str unless the first character is lower-case and it has a valid upper-case variant. 
+}
+
+FrooxEngine.LogiX.String.Contains:#########################################################################
+{
+The <color=#00FF00>Contains</color> node outputs true if the input Str contains at least one exactly matching instance of the input Substring, otherwise false.
+Usage
+
+The output will be false if either (or both) of the inputs are empty strings or null. 
+}
+
+
+
+FrooxEngine.LogiX.String.EndsWith:#########################################################################
+{
+The <color=#00FF00>Ends With</color> node outputs true if the Str ends with a substring which exactly matches the input Substring, otherwise false.
+Usage
+
+The output will be false if either (or both) of the inputs are empty strings or null. 
+}
+
+
+
+FrooxEngine.LogiX.String.EscapeString:#####################################################################
+{
+The <color=#00FF00>Escape String</color> node escapes the provided text using the C# regex escape method.
+
+Note: This implementation escapes whitespace. 
+}
+
+
+FrooxEngine.LogiX.String.FormatString:#####################################################################
+{
+The <color=#00FF00>Format</color> node generates the output Str by inserting the input parameters into specified points in the input Format string.
+Usage
+
+The node initially spawns with one parameter input. Use the + or - buttons on the node add or remove parameter inputs.
+
+Parameter inputs are inserted into the Format string at positions specified by curly braces '{}'. For example, if the first parameter input Parameters.0 is a string with the value "World" and the Format string is "Hello {0}!", the output Str will be "Hello World!".
+
+The output will be null if a pair of curly braces is present without a valid parameter value e.g. "{}" or "{1}" if there is only a Parameters.[0] input.
+
+There are many additional options which can be used to control how parameter inputs are formatted. For these more advanced options, much of the C# documentation for the Format method is applicable. For example there are many options for formatting numeric data as detailed here. For standard time & date formatting, here For custom numeric formatting, here and custom date/time formatting, here.
+}
+
+
+
+FrooxEngine.LogiX.String.IndexOfString:####################################################################
+{
+The <color=#00FF00>Index Of String</color> node outputs the position index within the Str where a substring exactly matching the input Part is present.
+Usage
+
+The StartIndex defines the position within the input Str where searching for the Part begins. The default value is 0.
+
+
+The SearchFromEnd input determines in which direction the search proceeds from the StartIndex. If false (the default) searching is left-to-right, otherwise it is right-to-left if true.
+
+
+The default output is -1. This may occur in the event that the Str or Part is null or an empty string, or if the Part cannot be found given the current inputs.
+
+Note that the StartIndex needs to be set to a larger value (generally the length of the Str - 1) since the reversed search still proceeds from this index! 
+}
+
+
+FrooxEngine.LogiX.String.IsStringEmpty:####################################################################
+{
+The <color=#00FF00>Is String Empty</color> node outputs true if the intput string A is either null or an empty string, otherwise false. 
+}
+
+
+
+FrooxEngine.LogiX.String.NewLine:##########################################################################
+{
+The <color=#00FF00>New Line</color> node outputs a newline correct for the current operating system environment.
+
+}
+
+
+
+FrooxEngine.LogiX.String.ReplaceFirstSubstring:############################################################
+{
+The <color=#00FF00>Replace First Substring</color> node outputs the input Str with the first instance of the SearchFor substring replaced with the ReplaceWith string.
+Usage
+
+The StartIndex determines which position in the input Str searching for the SearchFor substring should begin. Default is 0.
+
+
+If no instance of the SearchFor substring is found after the input StartIndex, the output of this node is identical to the Str input.
+
+If you need to replace every instance of a substring, use Replace Substring (LogiX node) instead. 
+}
+
+
+FrooxEngine.LogiX.String.ReplaceSubstring:#################################################################
+{
+The <color=#00FF00>Replace Substring</color> node outputs the input Str with every instance of the SearchFor substring replaced with the ReplaceWith string.
+Usage
+
+If no instance of the SearchFor substring is found, the output of this node is identical to the Str input. 
+}
+
+
+FrooxEngine.LogiX.String.ReverseString:####################################################################
+{
+The <color=#00FF00>Reverse String</color> node outputs the input A string with all character positions inverted.
+}
+
+
+FrooxEngine.LogiX.String.StartsWith:#######################################################################
+{
+The <color=#00FF00>Starts With</color> node outputs true if the Str starts with a substring which exactly matches the input Substring, otherwise false.
+Usage
+
+The output will be false if either (or both) of the inputs are empty strings or null. 
+}
+
+
+
+FrooxEngine.LogiX.String.StringInsert:#####################################################################
+{
+The <color=#00FF00>String Insert<color=#00FF00> node outputs the Str input with the Value string inserted at the StartIndex position.
+Usage
+
+If the StartIndex is out of the range of values possible for the input Str (i.e negative values or values greater than the length of Str - 1) the output is null. 
+}
+
+
+
+FrooxEngine.LogiX.String.StringJoin:#######################################################################
+{
+The <color=#00FF00>String Join</color> node outputs the input operand strings separated by the Separator input.
+
+Usage
+
+The default Separator is an empty string (i.e. no separation).
+
+
+The node's default output is an empty string. 
+}
+
+
+
+
+FrooxEngine.LogiX.String.StringLength:#####################################################################
+{
+The <color=#00FF00>String Length</color> node outputs the number of characters in input string A. 
+}
+
+
+
+FrooxEngine.LogiX.String.StringRemove:#####################################################################
+{
+<color=#00FF00>String Remove</color>
+
+Usage
+Inputs
+
+Str: The input string.
+
+StartIndex: The zero-based starting character position of a substring in Str. Negative start indices are treated as if they were 0.
+
+Length: The number of characters to remove in the string. If this input is not populated, the default is the length of Str. Negative lengths are treated as if they were 0.
+Outputs
+
+*: The input Str minus the Length that begins at StartIndex in Str. If StartIndex-Length exceeds the bounds of the input Str, the output of Str will be nulled. 
+
+}
+
+
+
+FrooxEngine.LogiX.String.Substring:########################################################################
+{
+<color=#00FF00>Substring</color>
+
+Usage
+Inputs
+
+Str: The input string.
+
+StartIndex: The zero-based starting character position of a substring in Str. Negative start indices are treated as if they were 0.
+
+Length: The number of characters in the substring. If this input is not populated, the default is the length of Str. Negative lengths are treated as if they were 0.
+Outputs
+
+*: The substring of length Length that begins at StartIndex in Str. If StartIndex+Length exceeds the bounds of the input Str, the output is truncated to the end of Str. 
+}
+
+
+
+FrooxEngine.LogiX.String.TrimString:#######################################################################
+{
+The <color=#00FF00>Trim String</color> node outputs the input A string with any whitespace removed from the beginning and end of the input.
+}
+
+
+FrooxEngine.LogiX.String.UnescapeString:###################################################################
+{
+The <color=#00FF00>Unescape String</color> node replaces escaped characters in the input with their unescaped counterparts. This uses the C# regex unescape call.
+
+Due to the permissiveness of the unescape method, this is valid for unescaping json string fields, and some forms of string literals in programing languages such as C, C#, and javascript.
+
+Each language may have escape sequences (or may lack escape sequences) for this conversion to be safe, please check with your specific language specification. 
+}
+
+
+
+
+
+
+
