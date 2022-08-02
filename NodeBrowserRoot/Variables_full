@@ -1,0 +1,214 @@
+FrooxEngine.LogiX.Data.ClearDynamicVariables:##############################################################
+{
+The <color=#00FF00>Clear Dynamic Variables</color> node will attempt to delete all DynamicField<T>, DynamicReference<T>, DynamicReferenceVariable<T>, and DynamicValueVariable<T> components bound to a DynamicVariableSpace with the input SpaceName when an impulse is received at Clear.
+Usage
+
+The Target input specifies where in the world hierarchy the node should start searching for a DynamicVariableSpace, by default this is the root slot. The node searches for a DynamicVariableSpace with the input SpaceName starting with the Target slot, if no exact match is found it will then perform an upward search of the world hierarchy.
+
+
+The OnNotFound output will fire an impulse if an impulse is received at Clear but the node is unable to find a DynamicVariableSpace with the input SpaceName.
+
+
+The OnCleared output will fire an impulse if a matching DynamicVariableSpace is found. Under this condition, this output will fire regardless of whether any dynamic variable components were deleted.
+
+
+The ClearedCount output provides the number of components which were deleted. This data is only available for the duration of the impulse chain fired from OnCleared. 
+}
+
+
+
+FrooxEngine.LogiX.Data.ClearDynamicVariablesOfType`1[T]:###################################################
+{
+Clear <color=#00FF00>Dynamic Variables Of Type`1</color> (Logix node)
+
+The Clear Dynamic Variables node will attempt to delete all DynamicField<T> and DynamicValueVariable<T> components (for value types) or DynamicReference<T> and DynamicReferenceVariable<T> components (for reference types) of the same type as the node which are bound to a DynamicVariableSpace with matching SpaceName in the Target slot's hierarchy.
+Usage
+
+The Target input specifies where in the world hierarchy the node should start searching for a DynamicVariableSpace, by default this is the root slot. The node searches for a DynamicVariableSpace with the input SpaceName starting with the Target slot, if no exact match is found it will then perform an upward search of the world hierarchy.
+
+
+The OnNotFound output will fire an impulse if an impulse is received at Clear but the node is unable to find a DynamicVariableSpace with the input SpaceName.
+
+
+The OnCleared output will fire an impulse if a matching DynamicVariableSpace is found. Under this condition, this output will fire regardless of whether any dynamic variable components were deleted.
+
+
+The ClearedCount output provides the number of components which were deleted. This data is only available for the duration of the impulse chain fired from OnCleared.
+
+
+When spawning this node from the node browser, it is possible to select one of a number of types for the node - only components of matching types will be deleted by this node when an impulse is received.
+
+}
+
+
+
+
+FrooxEngine.LogiX.Data.CreateDynamicVariable`1[T]:#########################################################
+{
+<color=#00FF00>Create Dynamic Variable`1</color> (LogiX node)
+
+Introduction
+
+The Create Dynamic Variable`1 node attempts to create a Dynamic Variable of the specified Type on the slot of the nearest DynamicVariableSpace to the Target Slot.
+
+As usual, precautions related to the duplication and reparenting of dynamic variables apply, as described on the Dynamic Variables page.
+Usage
+
+Depending on the type of InitialValue, this component will attach a DynamicValueVariable`1 or DynamicReferenceVariable`1 component to the slot containing the nearest DynamicVariableSpace.
+
+InitialValue is shown as being a T value for demonstration purposes, however it will be composed of the type selected in the LogiX browser, or specified in the Component Attacher.
+
+When using the Component Attacher, you may specify any valid FrooxEngine or BaseX type by following the instructions on the Creating a custom LogiX Node page.
+
+CreateDirectlyOnTarget overrides the default functionality of this node, and creates the Dynamic Variable directly on the Target slot, instead of the slot of the nearest DynamicVariableSpace.
+
+CreateNonPersistent causes the resultant Dynamic Variable to be created as a non-persistent component, which will not be saved when the object or world is reloaded.
+
+}
+
+
+
+
+FrooxEngine.LogiX.Data.DeleteDynamicVariable`[T]:#########################################################
+{
+The <color=#00FF00>Delete Dynamic Variable`1</color> node will attempt to delete DynamicField<T> and DynamicValueVariable<T> components (for value types) or DynamicReference<T> and DynamicReferenceVariable<T> components (for reference types) of the same type as the node with an exactly matching VariableName.
+Usage
+
+The Target input specifies where in the world hierarchy the node should start searching for dynamic variables bound to a DynamicVariableSpace, by default this is the root slot. The node searches for a DynamicVariableSpace with matching variables starting with the Target slot, if no exact match is found it will then perform an upward search of the world hierarchy.
+
+
+The OnCleared output will fire an impulse if a DynamicVariableSpace with a matching dynamic variable is found.
+
+
+The OnNotFound output will fire an impulse if an impulse is received at Delete but the node is unable to find a DynamicVariableSpace with matching dynamic variable.
+
+
+When spawning this node from the node browser, it is possible to select one of a number of types for the node - only components of matching types will be deleted by this node when an impulse is received. 
+}
+
+
+
+FrooxEngine.LogiX.Data.DynamicVariableInputWithEvents`1[T]:###############################################
+{
+Needs documented
+}
+
+
+
+FrooxEngine.LogiX.Data.DynamicVariableInput`1[T]:#########################################################
+{
+
+<color=#00FF00>Dynamic Variable Input`1</color>
+'Dynamic Variable Input`1' LogiX node
+Inputs
+Outputs
+  	Dummy 	Value
+  	Bool 	FoundValue
+
+The Dynamic Variable Input`1 node attempts to read the value of the given Dynamic Variable of the specified Type from the Slot that the node is packed into. The name of the dynamic variable is entered into the text field of the node. Value is shown as being a value for demonstration purposes, however it will be composed of the type selected in the LogiX browser, or specified in the component window.
+
+When using the Components browser, you may specify any valid FrooxEngine or BaseX type by creating a component, and unpacking it to create a visual.
+
+}
+
+
+
+FrooxEngine.LogiX.Data.ReadCloudVariable`1[T]:############################################################
+{
+
+<color=#00FF00>Read Cloud Variable`1</color>
+'Read Cloud Variable`1' LogiX node
+Inputs
+  	Impulse 	Read
+  	String 	Path
+  	String 	VariableOwnerId
+Outputs
+  	Impulse 	OnReadRequest
+  	Impulse 	OnRead
+  	Impulse 	OnFail
+  	Float 	Value
+
+The Read Cloud Variable`1 node is used to read a Value from an existing cloud variable specified by Path for the user specified in VariableOwnerId
+
+}
+
+
+FrooxEngine.LogiX.Data.ReadDynamicVariable`1[T]:##########################################################
+{
+The <color=#00FF00>Read Dynamic Variable`1</color> node attempts to read the value of a Dynamic Variable of the specified Type from the Source Slot. Value is shown as being a Dummy value for display purposes, however it will be composed of the type selected in the LogiX browser, or specified in the component window.
+
+When using the Components browser, you may specify any valid FrooxEngine or BaseX type by creating a component, and unpacking it to create a visual.
+Usage
+
+Inputs:
+Name 	Type 	Description
+
+[Source] <color=#00FF00>Slot</color> The slot where the search for the variable begins. The default is the slot that this component is in.
+
+[VariableName] <color=#00FF00>String</color> 	The name of the variable to read. If prefixed by a name with a slash, the string before the slash is the space name. The default is a blank name.
+
+
+Outputs
+Name 	Type 	Description
+
+[Value] color=#00FF00>Dummy</color> 	The value of the variable. If the VariableName (excluding the space) is empty, or the Source is null then this will be the default value for variables of this type: null for reference types and strings, zero for numeric types, false for booleans, identity for quaternions and matrices.
+
+[FoundValue] 	<color=#00FF00>Bool</color> 	Whether the variable was found. If the VariableName (excluding the space) is empty, or the Source is null then this will be false. 
+
+}
+
+
+FrooxEngine.LogiX.Data.WriteCloudVariable`1[T]:###########################################################
+{
+The <color=#00FF00>Write Cloud Variable`1</color> node is used to write the specified Value to an existing cloud variable specified by Path
+}
+
+
+
+
+FrooxEngine.LogiX.Data.WriteDynamicVariable`1[T]:########################################################
+{
+The <color=#00FF00>Write Dynamic Variable`1</color> node attempts to write the value of a Dynamic Variable of the specified Type in the Target Slot, or in the node itself if no slot is specified. Value is shown as being a Category:Types:Dummy value for demonstration purposes, however it will be composed of the type selected in the LogiX browser, or specified in the component window.
+
+When using the Components browser, you may specify any valid FrooxEngine or BaseX type by creating a component, and unpacking it to create a visual.
+
+Usage
+
+Inputs:
+Name 	Type 	Description
+[Write] 	<color=#00FF00>Impulse</color> 	The impulse to start the write.
+
+[Target] 	olor=#00FF00>Slot</color> The slot where the search for the variable begins. If not specified, the slot is that of the node itself.
+
+[VariableName] 	<color=#00FF00>String</color> 	The name of the variable to write. If prefixed by a name with a slash, the string before the slash is the space name.
+
+Outputs:
+Name 	Type 	Description
+[OnSuccess] 	<color=#00FF00>Impulse</color> 	An impulse output when the write is successful.
+
+[OnFailed] 	<color=#00FF00>Impulse</color> 	An impulse output when the write is unsuccessful. This   
+                                                happens when the variable could not be found.
+}
+
+
+FrooxEngine.LogiX.Data.WriteOrCreateDynamicVariable`1[T]:#################################################
+{
+Needs documented
+}
+
+
+
+#############./Storage######################
+
+
+
+
+
+
+
+
+
+
+
+
+
