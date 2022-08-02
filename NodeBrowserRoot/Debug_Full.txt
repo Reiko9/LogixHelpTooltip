@@ -1,0 +1,194 @@
+FrooxEngine.LogiX.Debug.DebugAxes:#########################################################################
+{
+The <color=#00FF00>Debug Axes</color> node generates a temporary set of axes with the specified properties when an impulse is received at Display.
+Usage
+
+The Position determines the global position where the axis origin will be.
+
+
+The Rotation determines the global rotation of the axes.
+
+
+The Length determines the length of the axis arrow visuals.
+
+
+The RightColor sets the color of the X axis visual.
+
+
+The UpColor sets the color of the Y axis visual.
+
+
+The ForwardColor sets the color of the Z axis visual.
+
+
+The Duration determines the number of seconds that the axes are visible.
+
+
+The OnDisplay output fires an impulse when the axes are successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+}
+
+
+FrooxEngine.LogiX.Debug.DebugBox:##########################################################################
+{
+The <color=#00FF00>Debug Box</color> node generates a temporary box visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Point input determines the global position of the box visual center point.
+
+
+The Size input controls the X, Y, and Z dimensions of the spawned box visual.
+
+
+The Orientation input controls the rotation of the box visual.
+
+
+The Color input determines the color of the box visual.
+
+
+The Duration input determines the number of seconds that the box visual persists.
+
+
+The OnDisplay output fires an impulse when the box is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires. 
+}
+
+
+FrooxEngine.LogiX.Debug.DebugLine:#########################################################################
+{
+The <color=#00FF00>Debug Line</color> node generates a temporary line with the specified properties when an impulse is received at Display.
+Usage
+
+The Point0 determines the global position of one line endpoint.
+
+
+The Point1 determines the global position of the other line endpoint.
+
+
+The Color determines the color of the line visual.
+
+
+The Radius determines the radius of the line visual.
+
+
+The Duration determines the number of seconds that the line visual persist.
+
+
+The OnDisplay output fires an impulse when the line is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+
+}
+
+FrooxEngine.LogiX.Debug.DebugSphere:######################################################################
+{
+The <color=#00FF00>Debug Sphere</color> node generates a temporary sphere visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Point input determines the global position of the sphere visual center point.
+
+
+The Radius input determines the radius of the sphere visual.
+
+
+The Color input determines the color of the sphere visual.
+
+
+The Duration input determines the number of seconds that the sphere visual persists.
+
+
+The OnDisplay output fires an impulse when the sphere is successfully displayed.
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires. 
+}
+
+
+FrooxEngine.LogiX.Debug.DebugText:########################################################################
+{
+The <color=#00FF00>Debug Text</color> node generates a temporary text visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Position input determines the global position of the text visual center point. This defaults to being centered on the Debug Text node itself.
+
+The Text input determines the content of the text visual. Rich text parsing is enabled.
+
+The Size determines the size of the text visual. A value of 1 is recommended over the default which is very small.
+
+The Color determines the color of the text visual.
+
+The Duration input determines the number of seconds that the text visual persists.
+
+The OnDisplay output fires an impulse when the text is successfully displayed.
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires. 
+}
+
+
+FrooxEngine.LogiX.Debug.DebugTriangle:####################################################################
+{
+The <color=#00FF00>Debug Triangle</color> node generates a temporary triangle visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Point0, Point1, and Point2 inputs determine the global positions of the triangle vertices.
+
+
+The Color input determines the color of the triangle visual.
+
+
+The Duration input determines the number of seconds that the triangle visual persists.
+
+
+The OnDisplay output fires an impulse when the triangle is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+
+}
+
+
+
+
+FrooxEngine.LogiX.Debug.DebugVector:######################################################################
+{
+The <color=#00FF00>Debug Vector</color> node generates an arrow visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Position input determines the global position of the arrow origin (tail).
+
+
+The Vector input determines the global direction vector along which the arrow points. The values are not normalized before generating the visual.
+
+
+The RadiusRatio input is a scaling factor which affects the radius and arrow head size of the displayed visual.
+
+
+The Color input determines the color of the box visual.
+
+
+The Duration input determines the number of seconds that the box visual persists.
+
+
+The OnDisplay output fires an impulse when the vector arrow is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+
+}
+
+
+
+FrooxEngine.LogiX.Debug.EstimatedMasterClockError:#######################################################
+{
+The <color=#00FF00>Estimated Master Clock Error</color> node returns the estimated error of the master clock. 
+}
+
+
+
+
+
+
