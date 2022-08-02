@@ -1,0 +1,145 @@
+FrooxEngine.LogiX.WorldNodes.FocusWorld:###################################################################
+{
+The <color=#00FF00>Focus World</color> node focuses the world corresponding to the input URL if it is already open.
+
+Usage
+
+When an impulse is received at the Focus input, and a valid URL is provided, the user is swapped to the world linked to the URL. This requires that the user have the world open at the time. If the CloseCurrent value is True (False by default) the world that the user leaves is closed after the user changes focus. This can result in loss of unsaved changes! The form of URL required is that found in the URL field of a world orb WorldOrb component. 
+
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.OpenWorld:####################################################################
+{
+The <color=#00FF00>Open World</color> node starts a new session for the world corresponding to the URL input.
+
+Usage
+
+When an impulse is received at the Open input this node starts a new session of the world corresponding to the input URL. The correct form of URL is that found under the URL field of a world orb WorldOrb component. If successful, the opened world will be focused for the user unless AutoFocus is False (True by default). A new session will be started, even if the user is already present in a session of that world, if GetExisting is False (True by default). The usual loading indicator will show while the world loads unless LoadingIndicator is False (True by default). If MakePrivate is True the world access level is set to private (i.e. only invited users can join) (False by default). If the enum WorldRelation input is 'Replace' the newly opened world will be focused for the user and the old world will be closed without saving if they have the priviledges to do so - this will override AutoFocus = False.
+
+When the OnWorldReady impulse fires, the SessionURL and SessionId outputs provide their respective values only for the duration of time taken for any impulse chain initiated by OnWorldReady to complete. 
+
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldAccessLevel:#############################################################
+{
+The <color=#00FF00>World Access Level</color> node outputs the category of people (e.g. Friends) which are able to join the current world.
+
+Usage
+
+Output levels correspond to the radio setting under 'Who can join this world?' in the Session menu of the dash. Private = Nobody / Invited Users; LAN = LAN users; Friends = Friends; Registered Users = Registered Users; Anyone = Anyone.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldAwayKickEnabled:#########################################################
+{
+<color=#00FF00>World Away Kick Enabled</color> (LogiX node)
+
+World Away Kick Enabled
+'World Away Kick Enabled' LogiX node
+Inputs
+Outputs
+  	Bool 	Enabled
+
+The World Away Kick Enabled node returns whether the current session's auto-kick option is enabled. 
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldAwayKickMinutes:#########################################################
+{
+The <color=#00FF00>World Away Kick</color> Minutes node returns the number of minutes required for the current session's auto-kick to trigger.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldDescription:#############################################################
+{
+The <color=#00FF00>World Description</color> node outputs the description metadata for the current world.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldHideFromListing:#########################################################
+{
+The <color=#00FF00>World Hide From Listing</color> node returns whether the current session is in hidden mode. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldMaxUsers:################################################################
+{
+The <color=#00FF00>World Max Users</color> node outputs the maxiumum number of users able to join the world session. 
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldMobileFriendly:##########################################################
+{
+The <color=#00FF00>World Mobile Friendly</color> node outputs whether the current world is tagged as 'Mobile Friendly'.
+
+Usage
+
+Note: the Mobile Friendly property is set voluntarily by users, so does not guarantee that the world will actually run well on weaker/mobile hardware. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldName:####################################################################
+{
+The <color=#00FF00>World Name</color> node outputs the name of the current world.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSaved:##################################################################
+{
+The <color=#00FF00>World Saved</color> node fires an impulse whenever the current world is saved.
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSessionID:##############################################################
+{
+The <color=#00FF00>World Session ID</color> node outputs the session ID for the current world session.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSessionURL:#############################################################
+{
+The <color=#00FF00>World Session URL</color> node outputs the session URL for the current world session.
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSessionWebURL:##########################################################
+{
+The <color=#00FF00>World Session Web URL</color> node outputs the web session URL for the current world session. 
+
+Usage
+
+Attempting to open the provided URL in a web browser should attempt to open the target Neos session.
+Examples
+
+Sending a value from World Session Web URL to a web server to render on a web page, would allow users who browse the web page to auto-startup Neos with the Neos client attempting to connect to the target server. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldURL:####################################################################
+{
+The <color=#00FF00>World URL</color> node outputs the world URL for the current world.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldUserCount:##############################################################
+{
+The <color=#00FF00>World User Count</color> node outputs the number of users currently in the world. 
+}
+
+
+
+
+
+
