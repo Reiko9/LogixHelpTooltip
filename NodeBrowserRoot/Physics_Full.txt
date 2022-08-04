@@ -1,0 +1,332 @@
+FrooxEngine.LogiX.Physics.ApplyCharacterForce:#############################################################
+{
+The <color=#00FF00>Apply Character Force</color> node changes the linear velocity of the input Character CharacterController (Component) proportional to the input Force when an impulse is received at Apply.
+Usage
+
+The IgnoreMass input determines whether the Mass field on any associated collider (must be on the same Slot as the Character and must have Type CharacterController) is taken into account when calculating the resulting velocity. If False, the MassScaling Enum value on the Character will also be taken into account and the effective mass value scaled by the Character Slot's global scale. Default is False.
+
+
+The OnDone output fires an impulse when the velocity of the input CharacterController has been changed as a result of an impulse received at Apply. No impulse will be fired if there is no valid CharacterController input.
+
+
+If IgnoreMass is False, the change in velocity of the CharacterController is the input Force multiplied by the local user's frame update time divided by the CharacterCollider's effective mass. If IgnoreMass is True, the change in velocity of the CharacterController is the input Force multiplied by the local user's frame update time.
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component. For an explanation, see Frooxius' comment on GitHub
+}
+
+
+
+FrooxEngine.LogiX.Physics.ApplyCharacterImpulse:###########################################################
+{
+The <color=#00FF00>Apply Character Impulse</color> node changes the linear velocity of the input Character CharacterController (Component) proportional to the value of the input Impulse when an impulse is received at Apply.
+Usage
+
+The IgnoreMass input determines whether the Mass field on any associated collider (must be on the same Slot as the Character and must have Type CharacterController) is taken into account when calculating the resulting velocity. If true, the MassScaling Enum value on the Character will also be taken into account and the effective mass value scaled by the Character Slot's global scale. Default is False.
+
+
+The OnDone output fires an impulse when the velocity of the input CharacterController has been changed as a result of an impulse received at Apply. No impulse will be fired if there is no valid CharacterController input.
+
+
+If IgnoreMass is False, the change in velocity of the Character is the input Impulse divided by the CharacterCollider's effective mass. If IgnoreMass is True, the change in velocity of the Character is the input Impulse.
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component. For an explanation, see Frooxius' comment on GitHub 
+}
+
+
+
+FrooxEngine.LogiX.Physics.AsCharacterController:###########################################################
+{
+The <color=#00FF00>As Character Controller</color> node attempts to output the CharacterController (Component) associated with the input Collider.
+Usage
+
+Output is null unless the input is a valid character collider. 
+}
+
+
+FrooxEngine.LogiX.Physics.CharacterControllerUser:#########################################################
+{
+The <color=#00FF00>Character Controller User</color> node attempts to output the user referenced in the SimulatingUser field of the input CharacterController.
+Usage
+
+Output is null unless a valid user reference is available. 
+}
+
+
+FrooxEngine.LogiX.Physics.CharacterGravity:################################################################
+{
+The <color=#00FF00>Character Gravity</color> node outputs the Gravity vector for the input Character CharacterController (Component).
+Usage
+
+The Gravity output provides the current Gravity value.
+
+
+The ActualGravity output provides the Gravity value from the previous update.
+
+
+Default values are [0;0;0] for both outputs if there is no valid input CharacterController. 
+}
+
+
+
+
+FrooxEngine.LogiX.Physics.CharacterGroundCollider:#########################################################
+{
+The <color=#00FF00>Character Ground Collider</color> node outputs a reference to the collider the user of the input Character CharacterController (Component) is standing on.
+Usage
+
+Output is null if there is no valid input or the relevant user is not standing on a surface. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.CharacterLinearVelocity:#########################################################
+{
+The <color=#00FF00>Character Linear Velocity</color> node outputs the linear velocity of the input Character CharacterController (Component) in global coordinate space. 
+}
+
+
+##########################################################################################################
+FrooxEngine.LogiX.Physics.FindCharacterControllerFromSlot
+FrooxEngine.LogiX.Physics.FindCharacterControllerFromUser
+{
+The <color=#00FF00>Find Character Controller</color> node attempts to find and output a CharacterController (Component) from either the input user or slot.
+Usage
+
+This node has two versions which work slightly differently but to the same effect:
+
+    The User variant of this node outputs the CharacterController associated with the input user's currently selected locomotion module.
+    The Slot variant of this node attempts to output the closest CharacterController component from the input slot or its parent slots.
+        Failing this, it attempts to output the CharacterController associated with its active user's currently selected locomotion module.
+
+If the User in question here is using a Locomotion Module that lacks a CharacterController such as NoClip this node will output null.
+
+The Default output is null. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.HitUVCoordinate:################################################################
+{
+The <color=#00FF00>Hit UV Coordinate</color> node outputs the UV coordinate corresponding to the input HitPoint on the HitTriangleIndex for the input HitCollider mesh collider.
+Usage
+
+The HitCollider must be a MeshCollider (Component) otherwise only default output values are used.
+
+
+The UV output provides the calculated UV coordinates, [0;0] by default.
+
+
+The IsValidUV outputs true if valid HitCollider and HitTriangleIndex values are provided, otherwise false.
+
+
+This node is primarily to be used in conjuction with Raycast One (LogiX node) or Raycaster (LogiX node). 
+}
+
+
+
+FrooxEngine.LogiX.Physics.IsCharacterController:##########################################################
+{
+The <color=#00FF00>Is Character Controller</color> node outputs true if the input Collider is a CharacterController (Component), otherwise false. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.IsCharacterOnGround:############################################################
+{
+The <color=#00FF00>Is Character On Ground</color> node ouputs true if the input Character CharacterController (Component) is standing on a collider, otherwise false. 
+}
+
+
+FrooxEngine.LogiX.Physics.OnCollisionEnd:#################################################################
+{
+The <color=#00FF00>On Collision End</color> node fires an impulse from OnEvent when the Other collider stops colliding with the input Collider.
+Usage
+
+The Other output provides the collider which stopped colliding with the input Collider. This value is available for the duration of the impulse chain started from OnEvent.
+
+
+Note that, in general, collisions where neither collider is a CharacterController (Component) will generate an impulse from OnEvent for each user in a session. This usually requires filtering the impulses such that only the ones for relevant users propagate to downstream nodes. For collisions where the Other collider is a CharacterController an impulse will only be fired for the CharacterCollider's SimulatingUser. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.OnCollisionStart:###############################################################
+{
+The <color=#00FF00>On Collision Start</color> node fires an impulse from OnEvent when the Other collider starts colliding with the input Collider.
+Usage
+
+The Other output provides the collider which started colliding with the input Collider. This value is available for the duration of the impulse chain started from OnEvent.
+
+
+Note that, in general, collisions where neither collider is a CharacterController (Component) will generate an impulse from OnEvent for each user in a session. This usually requires filtering the impulses such that only the ones for relevant users propagate to downstream nodes. For collisions where the Other collider is a CharacterController an impulse will only be fired for the CharacterCollider's SimulatingUser. 
+}
+
+
+
+
+FrooxEngine.LogiX.Physics.OnCollisionStay:################################################################
+{
+The <color=#00FF00>On Collision Stay</color> node fires an impulse from OnEvent every frame while the Other collider is colliding with the input Collider.
+Usage
+
+The Other output provides the collider which is colliding with the input Collider. This value is available for the duration of the impulse chain started from OnEvent.
+
+
+The OnEvent impulses from On Collision Stay start the frame after an impulse would be fired by On Collision Start (LogiX node), i.e. the frame after the Collider and Other start collding.
+
+Note that, in general, collisions where neither collider is a CharacterController (Component) will generate an impulse from OnEvent for each user in a session. This usually requires filtering the impulses such that only the ones for relevant users propagate to downstream nodes. For collisions where the Other collider is a CharacterController an impulse will only be fired for the CharacterCollider's SimulatingUser.
+}
+
+
+FrooxEngine.LogiX.Physics.RaycastOne:#####################################################################
+{
+The <color=#00FF00>Raycast One</color> node performs a raycast when an impulse is received at Raycast. Properties of the raycast are controlled by the various inputs and information about the first collider hit are provided by the node outputs. 
+
+Usage
+Inputs
+
+The Origin defines the point from which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. Default is [0;0;0].
+
+
+The Direction defines the direction vector along which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. This input requires a value to be set as the default is [0;0;0].
+
+
+The MaxDistance controls the maximum length of the raycast. The actual length of the raycast is affected by both this input and the global scale of the input Root slot. Default value is very large (~3.4×1038), so setting this is recommended.
+
+
+The HitTriggers determines whether collider components with the collider Type field set as Trigger or HapticTrigger are considered valid hit targets. Default is false.
+
+
+The UsersOnly determines whether colliders which do not have an active user are considered valid hit targets. Defaults to false, in which case all colliders are considered valid hit targets (depending on other factors). However, if set to true, only colliders with an active user (i.e. are parented under a user's slot hierarchy) are considered valid hit targets.
+
+
+The DebugDuration input determines how long the raycast debug visual persists. This value is in seconds however if set to 0 (the default) the visual will persist for 1 frame. If set to a negative value no debug visual is drawn.
+
+
+The Root input defines the slot relative to whose local coordinate space the Origin, Direction, and MaxDistance are calcluated.
+Outputs
+
+The OnHit output fires an impulse if a valid target collider is hit when a ray is cast.
+
+
+The OnMiss output fires an impulse if no valid targets are hit when a ray is cast.
+
+
+The HitCollider output provides the first valid target collider hit along the path of the raycast. This value is only available for the duration of the impulse chain started from OnHit. Default is null.
+
+
+The HitDistance output provides the global distance between the raycast origin and the HitPoint. This value is only available for the duration of the impulse chain started from OnHit. Default is 0.
+
+
+The HitPoint output provides the global coordinates of the point where raycast first intersects with the HitCollider. This value is only available for the duration of the impulse chain started from OnHit. Default is [0;0;0].
+
+
+The HitNormal output provides the normal vector for the intersection of the raycast and the HitCollider.
+
+
+The HitTriangleIndex outputs the index of the mesh triangle which was hit in the case that the HitCollider is a MeshCollider (Component).
+Notes
+
+Colliders will generally be valid hit targets for raycasts unless their Type enum field is set to Trigger, HapticTrigger, or HapticSampler, though see details for the HitTriggers input. Colliders will not be valid targets if the IgnoreRaycasts bool is set to false on the collider component.
+Examples
+
+    Neos VR: BasicTooltip with RayCastOne by ProbablePrime
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.Raycaster:######################################################################
+{
+The <color=#00FF00>Raycaster</color> node generates a raycast with the input properties which is updated every frame update. Details about the current hit target collider (if there is one) are available from the outputs. 
+
+Usage
+Inputs
+
+The Origin defines the point from which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. Default is [0;0;0].
+
+
+The Direction defines the direction vector along which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. This input requires an value to be set as the default is [0;0;0].
+
+
+The MaxDistance controls the maximum length of the raycast. The actual length of the raycast is affected by both this input and the global scale of the input Root slot. Default value is very large (~3.4×1038), so setting this is recommended.
+
+
+The HitTriggers determines whether collider components with the collider Type field set as Trigger or HapticTrigger are considered valid hit targets. Default is false.
+
+
+The UsersOnly determines whether colliders which do not have an active user are considered valid hit targets. Defaults to false, in which case all colliders are considered valid hit targets (depending on other factors). However, if set to true, only colliders with an active user (i.e. are parented under a user's slot hierarchy) are considered valid hit targets.
+
+
+The Root input defines the slot relative to whose local coordinate space the Origin, Direction, and MaxDistance are calcluated.
+Outputs
+
+The HasHit input outputs whether the raycast has a valid hit target currently.
+
+
+The HitCollider output provides the first valid target collider hit along the path of the raycast. Default is null.
+
+
+The HitDistance output provides the global distance between the raycast origin and the HitPoint. Default is 0.
+
+
+The HitPoint output provides the global coordinates of the point where raycast first intersects with the HitCollider. Default is [0;0;0].
+
+
+The HitNormal output provides the normal vector for the intersection of the raycast and the HitCollider.
+
+
+The HitTriangleIndex outputs the index of the mesh triangle which was hit in the case that the HitCollider is a MeshCollider (Component).
+Notes
+
+Colliders will generally be valid hit targets for raycasts unless their Type enum field is set to Trigger, HapticTrigger, or HapticSampler, though see details for the HitTriggers input. Colliders will not be valid targets if the IgnoreRaycasts bool is set to true on the collider component. 
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.SetCharacterGravity:############################################################
+{
+The <color=#00FF00>Set Character Gravity</color> node overwrites the Gravity field value on the input Character CharacterController (Component) with the input Gravity vector.
+Usage
+
+The Gravity input defaults to [0;0;0] which corresponds to no gravity.
+
+
+The OnDone output fires an impulse when the Gravity field value of the input Character has been set as a result of an impulse received at Apply. No impulse will be fired if there is no valid Character input.
+
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component.
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.SetCharacterVelocity:###########################################################
+{
+The <color=#00FF00>Set Character Velocity</color> node overwrites the linear velocity of the input Character CharacterController (Component) with the input Velocity when an impulse is received at Apply.
+Usage
+
+The Velocity default is [0;0;0].
+
+
+The OnDone output fires an impulse when the linear velocity of the input Character has been set as a result of an impulse received at Apply. No impulse will be fired if there is no valid Character input.
+
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component. For an explanation, see Frooxius' comment on GitHub 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
