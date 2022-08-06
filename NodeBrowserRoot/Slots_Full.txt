@@ -1,0 +1,439 @@
+FrooxEngine.LogiX.WorldModel.ChildrenCount:################################################################
+{
+The <color=#00FF00>Children Count</color> node outputs the number of slots which are direct children of the input Instance slot.
+Usage
+
+Slot indexing in Neos starts at 0. Child order can be specified by changing the OrderOffset field each slot in the inspector panel or using the Set Slot Order Offset node.
+Examples
+
+This node is extremely useful for iterating over all child slots of a parent without requiring foreknowledge of how many child slots there will be. Simply connect the output of this node to the Count input of a For node. An operation can then be run for each child slot by using a Get Child and providing the For node's Iteration output to the Get Child ChildIndex.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.DestroySlot:##################################################################
+{
+The <color=#00FF00>Destroy Slot</color> node deletes the Instance input slot (and all child slots) when an impulse is received at DoDestroy.
+Usage
+
+The PreserveAssets input determines whether any assets (audio, meshes, images etc.) saved under the Instance or child slots will be kept when the deletion occurs. If True, any assets in use by other parts of the world hierarchy will be moved to a child slot under the world's Assets slot. False by default.
+
+
+The SendDestroyingEvent determines whether any On Destroying nodes under the Instance slot's hierarchy will be triggered before slots are deleted. True by default.
+
+
+The OnDone output fires an impulse when the Instance slot has been successfully destroyed after an impulse was received at DoDestroy. No impulse is fired if there is no valid Instance input.
+Examples
+
+This node can be used to respawn users if their user root slot is destroyed. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.DestroySlotChildren:##########################################################
+{
+The <color=#00FF00>Destroy Slot Children</color> node deletes all child slots of the Instance input slot when an impulse is received at DoDestroy.
+Usage
+
+The PreserveAssets input determines whether any assets (audio, meshes, images etc.) saved under the destroyed slots will be kept when the deletion occurs. If True, any assets in use by other parts of the world hierarchy will be moved to a child slot under the world's Assets slot. False by default.
+
+
+The OnDone output fires an impulse when the Instance slot's children have been successfully destroyed after an impulse was received at DoDestroy. No impulse is be fired if there is no valid Instance input, however an impulse is still fired if a valid Instance slot has no children.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.DuplicateSlot:################################################################
+{
+The <color=#00FF00>Duplicate Slot</color> node creates a copy of the Template input slot when an impulse is received at DoDuplicate.
+
+As usual, precautions related to the duplication and reparenting of dynamic variables apply, as described on the Dynamic Variables page.
+Usage
+
+The OnDuplicated output fires an impulse when the Template slot has been successfully duplicated. No impulse is fired if there is no valid Template.
+
+
+The Duplicate output provides the newly created slot. This data is only available for the duration of the impulse chain started from OnDuplicated.
+
+
+The Duplicate slot shares the same parent slot as the Template.
+Examples
+
+This node is commonly used when one wants to spawn an item when an event occurs. Place a template object under an inactive parent slot and duplicate the template. Often one needs to reparent the duplicate immediately using a Set Parent (LogiX node). If the Template slot is itself set as active, but it is inactive due to a parent slot being inactive, the duplicate will be active after reparenting under another active slot. 
+}
+
+
+
+
+FrooxEngine.LogiX.WorldModel.FindChildByName:##############################################################
+{
+The <color=#00FF00>Find Child By Name</color> node attempts to find a slot which is a child of the Instance input slot which has a name matching the input Name.
+Usage
+
+The default for Instance is null, which will not match anything.
+
+The default for Name is null, which will not match anything.
+
+The MatchSubstring input determines whether slots whose names contain the input Name will be considered valid matches. True by default.
+
+
+The SearchDepth input determines how many levels of the slot hierarchy the node will search for child slots. A depth of 0 searches only the Instance slot's direct children. A positive depth searches only that many levels of children below the direct children. A negative depth searches through all children without limit. 0 by default.
+
+
+The IgnoreCase input determines whether slot names which do not exactly match the upper/lower case of the Name input will be considered valid. True by default.
+
+
+The FoundChild output is the first slot found whose name matches the input Name. Output is null if no valid match is found.
+
+
+The search proceeds first from the Instance input slot's direct children (in increasing index order), then to the next level or children if allowed by the SearchDepth input, and so on. A SearchDepth of 0 (default) searches only the Instance input slot's direct children, a depth of 1 allows searching of the Instance slot's children's children etc. A SearchDepth value of -1 allows searching to unlimited depth.
+
+Note: finding slots using this node is more demanding than simply getting a child slot via its index using Get Child (LogiX node), so consider whether it is absolutely required. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.FindChildByTag:###############################################################
+{
+
+The <color=#00FF00>Find Child By Tag</color> node attempts to find a child slot of the Instance input slot with a tag matching the input Tag.
+Usage
+
+The SearchDepth input determines how many levels of the slot hierarchy the node will search for child slots. 0 by default (i.e. searches only the Instance slot's direct children).
+
+
+The FoundChild is the first slot found whose tag exactly matches the input Tag. Output is null if no valid match is found.
+
+
+The search proceeds from the Instance input slot's direct children (in increasing index order) to deeper levels if allowed by the SearchDepth input. A SearchDepth of 0 (default) searches only the Instance input slot's direct children, a depth of 1 allows searching of the Instance slot's children's children etc. A SearchDepth value of -1 allows searching to unlimited depth.
+
+Note: finding slots using this node is more demanding than simply getting a child slot via its index using Get Child (LogiX node), so consider whether it is absolutely required.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.FindParentByName:############################################################
+{
+The <color=#00FF00>Find Parent By Name</color> node attempts to find a slot which is a parent of the Instance input slot which has a name matching the input Name.
+Usage
+
+The MatchSubstring input determines whether slots whose names contain the input Name will be considered valid matches. True by default.
+
+
+The SearchDepth input determines how many levels of the slot hierarchy the node will search for parent slots. 0 by default (i.e. searches only the Instance slot's direct parent).
+
+
+The IgnoreCase input determines whether slot names which do not exactly match the upper/lower case of the Name input will be considered valid. True by default.
+
+
+The FoundParent output is the first slot found whose name matches the input Name. Output is null if no valid match is found.
+
+
+The search proceeds from the Instance input slot's direct parent to higher levels if allowed by the SearchDepth input. A SearchDepth of 0 (default) searches only the Instance input slot's direct parent, a depth of 1 allows searching of the Instance slot's parent's parent etc. A SearchDepth value of -1 allows searching to unlimited depth. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.FindParentByTag:#############################################################
+{
+The <color=#00FF00>Find Parent By Tag</color> node attempts to find a parent slot of the Instance input slot with a tag matching the input Tag.
+Usage
+
+The FoundParent is the first slot found whose tag exactly matches the input Tag. Output is null if no valid match is found.
+
+
+The search proceeds from the Instance input slot's direct parent to higher levels if allowed by the SearchDepth input. A SearchDepth of 0 (default) searches only the Instance input slot's direct parent, a depth of 1 allows searching of the Instance slot's parent's parent etc. A SearchDepth value of -1 allows searching to unlimited depth. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetActiveUser:###############################################################
+{
+The <color=#00FF00>Get Active User</color> node outputs the user whose root slot is a parent of the Instance input slot.
+
+Usage
+
+The default output value is null if no active user is present. This node only finds the closest active user to the Instance slot, i.e. if the Instance slot is parented under user A, but user A is parented under user B, the node will output user A.
+
+This node is generally useful for detecting which user is e.g. equipping an avatar or grabbing an item since these result in the relevant object being parented under a user's slot hierarchy. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetActiveUserRoot:###########################################################
+{
+The <color=#00FF00>Get Active User Root</color> node node outputs the UserRoot for the user whose root slot is a parent of the Instance input slot.
+Usage
+
+The default output value is null if no active user is present. This node only finds the closest active UserRoot to the Instance slot, i.e. if the Instance slot is parented under user A, but user A is parented under user B, the node will output user A's UserRoot.
+
+For nodes which work with the UserRoot datatype see User Root category nodes.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetActiveUserSelf:###########################################################
+{
+The <color=#00FF00>Get Active User Self</color> node 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetChild:####################################################################
+{
+The <color=#00FF00>Get Child</color> node outputs the child slot under the input Instance slot with the input ChildIndex.
+Usage
+
+The default ChildIndex is 0, and the default Instance is null.
+
+Slot indexing starts from 0. The output will be null if no child is found with the specified index, or if Instance is null.
+Examples
+
+This node can be used with Children Count and For to iterate over and perform some function for each child of the Instance slot. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetObjectRoot:###############################################################
+{
+The <color=#00FF00>Get Object Root</color> node attempts to find a parent of the input Instance slot which has an ObjectRoot component.
+Usage
+
+The upward hierarchy search starts with the input Instance slot, i.e. if the input slot has an ObjectRoot component then the output will be the same as the input. The search stops when it finds the closest ObjectRoot to the Instance slot in its parent hierarchy. If no ObjectRoot components are found, the output is the Instance slot. 
+}
+
+FrooxEngine.LogiX.WorldModel.GetParentSlot:###############################################################
+{
+The <color=#00FF00>Get Parent Slot</color> node outputs the direct parent slot of the Instance input slot.
+Usage
+
+Note, attempting to get the parent of the world root slot will result in null output. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlot:#####################################################################
+{
+The <color=#00FF00>Get Slot</color> node outputs the slot which holds the input Component. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotActive:###############################################################
+{
+The <color=#00FF00>Get Slot Active</color> node indicates whether the input Instance slot is active.
+Usage
+
+Slots are considered active if, and only if, they and all of their parent slots are active. If the Instance slot is inactive, or any of its parent slots are inactive, this node will output False. If it is only required to check a slot's own Active property, use the Get Slot Active Self node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotActiveSelf:###########################################################
+{
+The <color=#00FF00>Get Slot Active Self</color> node reports the Active property of the input Instance slot.
+Usage
+
+This node only checks the Active property of the input Instance slot. As such, it will output True if the input Instance slot is set as active even if it is currently inactive due to a parent slot being set as inactive. If it is only required to check whether a slot is currently active in the world, use the Get Slot Active node. 
+}
+
+FrooxEngine.LogiX.WorldModel.GetSlotName:#################################################################
+{
+The <color=#00FF00>Get Slot Name</color> node outputs the name of the input Instance slot. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotOrderOffset:##########################################################
+{
+The <color=#00FF00>Get Slot Order Offset</color> node reports the OrderOffset value of the input Instance slot.
+Usage
+
+The OrderOffset property can be used to manually specify a slot's position in the list of slots under it's immediate parent slot. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotPersistent:###########################################################
+{
+The <color=#00FF00>Get Slot Persistent</color> node indicates whether the input Instance slot is persistent.
+Usage
+
+Slots are considered persistent if, and only if, they and all of their parent slots are persistent. If the Instance slot is non-persistent, or any of its parent slots are non-persistent, this node will output False. If it is only required to check a slot's own Persistent property, use the Get Slot Persistent Self node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotPersistentSelf:#######################################################
+{
+The <color=#00FF00>Get Slot Persistent Self</color> node reports the Persistent property of the input Instance slot.
+Usage
+
+This node only checks the Persistent property of the input Instance slot. As such, it will output True if the input Instance slot is set as persistent even if it is currently non-persistent due to a parent slot being set as non-persistent. If it is only required to check whether a slot is currently persistent in the world, use the Get Slot Persistent node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetTag:######################################################################
+{
+The <color=#00FF00>Get Tag</color> node outputs the tag of the input Instance slot. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.HasTag:######################################################################
+{
+The <color=#00FF00>Has Tag</color> node reports whether the input Instance slot's tag exactly matches the input Tag. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IndexOfChild:################################################################
+{
+The <color=#00FF00>Index Of Child</color> node outputs the index of the input Instance slot under its direct parent.
+Usage
+
+Default output is -1 if there is no valid input Instance slot. If the world root slot is provided as the input it will cause errors (node turns red) with any connected display nodes or displays from downstream calculations. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsChildOf:###################################################################
+{
+The <color=#00FF00>Is Child Of</color> node reports whether the input Instance slot is a child under the input Other slot.
+Usage
+
+The IncludeSelf determines whether the output will be True if the Instance and Other inputs match. False by default (i.e. the Instance is not considered a child of itself).
+
+The output will be True if the Instance input is a child anywhere (e.g. child of a child) under the Other input slot's hierarchy. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.RootSlot:####################################################################
+{
+The <color=#00FF00>Root Slot</color> node outputs the world Root Slot.
+
+In some worlds, users may be under the management of systems which parent a user to a slot which is other than the Root Slot. This is common with Spawn Areas which have the Parent User setting enabled or with World Management systems that create a new slot for each user. When such systems exist it is recommended that your systems respect them. This can be done by using Local User Space (LogiX node) instead. This can be useful for things like:
+
+    Guns
+    Rocket Launchers and other projectiles
+    Gadgets and Tools which re-parent items
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetChildIndex:###############################################################
+{
+The <color=#00FF00>Set Child Index</color> node sets the index of the input Instance slot under it's parent to the input Index when an impulse is received at Set.
+Usage
+
+The Index input value defaults to 0.
+
+
+The OnSet output fires an impulse when the index of the Instance slot is successfully set. Impulses are not fired if there is no valid Instance input or the Index value is less than 0.
+
+
+This node works by changing the OrderOffset values for the Instance slot and all others with indices less than or equal to the Index input value. Slot order will not change apart from moving the Instance input slot, however any previously set custom OrderOffset values for slots with indices less than or equal to the Index input value may be changed. OrderOffset values for slots with indices greater than the input Index will be unchanged.
+
+For more precise control of slot OrderOffset values use Set Slot Order Offset 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetParent:###################################################################
+{
+The <color=#00FF00>Set Parent</color> node reparents the Instance input slot under the NewParent input slot.
+
+As usual, precautions related to the duplication and reparenting of dynamic variables apply, as described on the Dynamic Variables page.
+Usage
+
+The NewParent input defaults to the world root slot.
+
+
+The PreserveGlobalPosition input determines whether the Instance slot's global position will be kept constant during the reparenting event. If False, the Instance slot's local position is preserved instead. Defaults to True.
+
+
+The OnDone output fires an impulse after any reparenting has been successfully performed. This happens regardless of whether the parent of the Instance slot was actually changed. No impulse is fired if there is no valid Instance input.
+
+
+If the Instance has a non-zero OrderOffset value, this is maintained during reparenting. Otherwise the slot's index after reparenting is 1 greater than the highest index among children of the NewParent slot before reparenting, i.e. it is added at the bottom of the list in the slot inspector.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotActiveSelf:###########################################################
+{
+The <color=#00FF00>Set Slot Active Self</color> node sets the Active property of the input Instance slot to the value of the Active input when an impulse is received at Set.
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set unless there is no valid Instance input. This occurs regardless of whether the Active property of the Instance slot was changed.
+
+
+By default this node makes no change to the Active property of the Instance if the Active input value is unspecified. Note that setting the active property of a slot to True will not result in the slot actually becoming active if one of its parents is set as inactive.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotName:#################################################################
+{
+The <color=#00FF00>Set Slot Name</color> node sets the name of the Instance input slot to the value of the Name input when an impulse is received at Set.
+Usage
+
+The Name input defaults to null.
+
+
+The OnDone output fires an impulse after the name of the input Instance is successfully set. This occurs regardless of whether the Instance slot's name was changed as a result. No impulse is fired if there is no valid Instance input. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotOrderOffset:##########################################################
+{
+The <color=#00FF00>Set Slot Order Offset</color> node sets the OrderOffset value of the input Instance slot to the input OrderOffset value when an impulse is received at DoSetOrderOffset.
+Usage
+
+The OrderOffset input defaults to 0.
+
+
+The OnDone output fires an impulse when the Instance slot's OrderOffset value has been successfully set. This occurs regardless of whether the Instance slot's OrderOffset value was actually changed. No impulse is fired if there is no valid Instance input.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotPersistentSelf:#######################################################
+{
+The <color=#00FF00>Set Slot Persistent Self</color> node sets the Persistent property of the input Instance slot to the value of the Active input when an impulse is received at Set.
+Usage
+
+The OnDone output fires an impulse after the Instance input's Persistent property has been set. This occurs regardless of whether the Persistent property of the Instance slot was actually changed. No impulse is fired if there is no valid Instance input.
+
+
+By default this node makes no change to the Persistent property of the Instance if the Active input value is unspecified. Note that setting the Persistent property of a slot to True will not result in the slot actually becoming persistent if one of its parents is set as non-persistent. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetTag:######################################################################
+{
+
+The <color=#00FF00>Set Tag</color> node sets the tag of the Instance slot to the Tag input when an impulse is received at Set.
+Usage
+
+The Tag input defaults to null.
+
+
+The OnSet output fires an impulse when the tag of the Instance slot has been successfully set. This occurs regardless of whether the Instance slot's tag was actually changed. No impulse is fired if there is no valid Instance input. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SlotChildrenEvents:##########################################################
+{
+
+The <color=#00FF00>Slot Children Events</color> node generates impulses when child slots are added or removed from the Instance slot.
+
+Note that currently Slot Children Events does not support the value of the Instance slot changing. [1] 
+
+Usage
+
+The OnUser input can be used to specify which user will own the generated impulses. By default impulses are owned by the user who caused the change. Providing the Local User to this input will result in impulses being fired for all users in the session.
+
+
+The OnChildAdded output fires impulses whenever a child slot is added under the Instance slot.
+
+
+The OnChildRemoved output fires impulses whenever a child slot is removed from under the Instance slot.
+
+
+The Child output provides the slot which was added / removed from under the Instance slot. This value is only available for the duration of the impulse chain started by OnChildAdded or OnChildRemoved. Note that the value will be null if a child slot is destroyed, rather than being reparented away from the Instance slot. 
+
+}
+
