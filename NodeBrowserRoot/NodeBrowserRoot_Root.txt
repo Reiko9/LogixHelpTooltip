@@ -1,0 +1,114 @@
+FrooxEngine.LogiX.CacheNode`1[T]:##########################################################################
+{
+The <color=#00FF00>Cache</color> node can be used for performance optimization. If you have a complex or heavy calculation with result that's read by multiple other nodes, you can place this node at the end. This will make sure that the input is evaluated only once (per evaluation context) and the result reused for the other nodes. In most cases you don't need it and it doesn't change the functionality in any way. At some point in the future this is going to be handled automatically. 
+}
+
+FrooxEngine.LogiX.DelayValueNode`1[T]:#####################################################################
+{
+The <color=#00FF00>Delay Value</color> node outputs the value that the Value input held at a time DelayTime seconds before hand.
+Usage
+
+If the DelayTime input is increased while a valid Value is provided, the output value will freeze at the most recent output value until sufficient delay has accumulated. The output will be frozen for a number of seconds equal to the new DelayTime - previous DelayTime. e.g. if DelayTime is 1 and then it is instantly increased to 10 the output value will be frozen for 9 seconds. If, instead, the DelayTime value is decreased, the delayed value updates to the correct value immediately.
+
+When spawned from the Node Browser this node has a 'dummy' datatype, however it will overload to the correct type if a valid value or reference type input is connected. 
+}
+
+
+FrooxEngine.LogiX.Operators.Demultiplexer`1[T]:############################################################
+{
+The <color=#00FF00>Demultiplex</color> node outputs the input Value at the output with corresponding to the input Index. Every other output is set to the input DefaultValue.
+Usage
+
+The Index value corresponding to each ValueOutput is indicated in square brackets in the output's name.
+
+
+The OutputCount output provides the number of ValueOutputs the node currently supports.
+
+
+This node has a dummy unset datatype when spawned from the node browser. However, it will overload to the correct type when any value or reference typed input is connected. If the Index is less than 0 or greater than OutputCount -1 all outputs will have the DefaultValue.
+
+}
+
+FrooxEngine.LogiX.Display.Display:#########################################################################
+{
+The <color=#00FF00>Display</color> node displays the current value of the Datatype. Create this node by Dragging a Datatype and pressing the Secondary Action Button. 
+}
+
+
+FrooxEngine.LogiX.Display.Display_Color
+FrooxEngine.LogiX.Display.Display_ColorX:##################################################################
+{
+Test Description for datatype Overwrite
+}
+
+
+
+FrooxEngine.LogiX.Display.DisplayImpulse:##################################################################
+{
+The <color=#00FF00>Display Impulse</color> node displays a colourful 'pulse' visual whenever an impulse is received at ImpulseTarget. These can be spawned by dragging a wire out from any impulse output and pressing the Secondary Action Button.
+Usage
+
+The node also displays for the most recent received impulse:
+
+    The session time at which the impulse was received
+    Who the impulse was owned by (i.e. on whose Neos client the impulse chain ran)
+    The total number of impulses received by the node
+    The global index (i.e. how many impulses in total have been received by impulse display nodes in the current session)
+}
+
+
+FrooxEngine.LogiX.ImpulseRelay:############################################################################
+{
+The <color=#00FF00>Impulse Relay</color> node is used to make your LogiX tidy. Instead of the impulse connection graphically going directly from point A to point B, you can insert impulse relays into the connection, and then drag the relays around until the connection path looks nicer.
+
+To insert an impulse relay in an impulse connection, simply grab using the LogiX Tooltip on the connection at the location you want the relay to be inserted.
+Usage
+Examples
+
+In this image, red arrows point to the locations of impulse relays along a long impulse connection. Without these relays, the connection would go directly from the If node on the left to the If node on the right, obscuring some of the logic. 
+}
+
+
+FrooxEngine.LogiX.Operators.Multiplexer`1[T]:#############################################################
+{
+The <color=#00FF00>Multiplex</color> node outputs one of the multiple Operands input values determined by the Index input.
+Usage
+
+The index corresponding to each input is visible in square brackets in the respective input name.
+
+
+The InputCount output provides the current number of inputs.
+
+
+This node initially had an unset dummy datatype when spawned from the node browser. It will overload to the correct datatype when any value or reference typed value is connected. If the Index value is out of range, i.e. it is less than 0 or greater than InputCount -1, the output will either be the type default value (for value types) or null for reference types.
+}
+
+
+FrooxEngine.LogiX.Operators.PickRandom`1[T]:############################################################
+{
+<color=#00FF00>Pick Random</color>
+Outputs randomly from the inputs.
+}
+
+FrooxEngine.LogiX.RelayNode`1[T]:#########################################################################
+{
+The <color=#00FF00>Impulse Relay</color> node contains 1 Input node and 1 Output node. The use of the relay is to create a connection point to help organize your code. 
+}
+
+
+
+FrooxEngine.LogiX.UpdatingRelayNode`1[T]:#################################################################
+{
+<color=#00FF00>Updating</color>
+Usage
+
+Ensure that changes are generated and evaluated every single frame, even if the input nodes don't trigger changes themselves. Can be used to force per-frame updates for some nodes that don't automatically update for performance or implementation reasons, for example GetTag.
+
+Use only when you actually need updates every frame (e.g. using a driver node or On Changes node), as this has performance implications. 
+}
+
+
+
+
+
+
