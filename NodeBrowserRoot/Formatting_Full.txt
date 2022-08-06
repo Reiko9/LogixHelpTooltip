@@ -1,0 +1,26 @@
+FrooxEngine.LogiX.CurrentCulture:##########################################################################
+{
+The <color=#00FF00>Current Culture</color> node outputs information about a user's current locale.
+Usage
+
+This node provides information used when formatting data to strings (with the To String node) or parsing data from strings (using nodes under the Parsing category). The output from Current Culture can be provided to the FormatProvider of compatible nodes, an autocast node will be created upon connection. Locale information defines the default format for dates, times, numbers, currency values, the sorting order of text, casing conventions, and string comparisons for the user's; this can vary between countries and therefore it is possible that outputs from affected nodes may differ for different users depending on their locale. If such variance is undesirable consider using the Invariant Culture node instead.
+Examples
+
+Imagine that the float 3.14 is connected to the V input of a To String node, the string "C2" is connected to the Format input and Current Culture is connected to the FormatProvider input. For users in the en-GB (British English) locale the output from To String will be £3.14. However, for users in the en-US locale the output will be $3.14 while for users in many European countries it would be €3.14. 
+}
+
+
+FrooxEngine.LogiX.InvariantCulture:########################################################################
+{
+The color=#00FF00>Invariant Culture</color> node outputs a fixed locale which will be the same for all users.
+Usage
+
+This node provides information used when formatting data to strings (with the To String node) or parsing data from strings (using nodes under the Parsing category). The output from Invariant Culture can be provided to the FormatProvider of compatible nodes, an autocast node will be created upon connection. Locale information defines the default format for dates, times, numbers, currency values, the sorting order of text, casing conventions, and string comparisons for the user's; using the Invariant Culture node ensures that affected nodes will behave the same for all users regardless of their current locale.
+Examples
+
+It is generally recommended to use this node, rather than the Current Culture node, when parsing data from input files. Different locales have significantly different conventions for formatting numbers which can cause issues e.g. the number 1,000 would be interpreted as 'one thousand' in most English locales but 'one point zero zero zero' in many others. 
+}
+
+
+
+
