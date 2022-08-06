@@ -1,0 +1,127 @@
+FrooxEngine.LogiX.Tools.DequipTooltip:#####################################################################
+{
+
+The <color=#00FF00>Dequip Tooltip</color> node dequips any equipped tooltip from the specified User's hand according to the Node enum input.
+
+
+Usage
+
+This dequips any tooltip, whether equipped by a simple grip or fully equipped (e.g. through the radial context menu Equip button), from the hand specified by the Node input ('Unknown' by default, which does nothing).
+
+OnDequipped only fires and impulse if a tooltip is actually de-equipped as a result of an impulse at Dequip.
+
+NOTE: The incoming impulse must originate from the user who you are requesting to de-equip the tooltip from. If another user fires the impulse it will not work.
+
+}
+
+
+FrooxEngine.LogiX.Tools.EquipTooltip:######################################################################
+{
+The <color=#00FF00>Equip Tooltip</color> node equips the input Tooltip on the input User's hand, specified by the Node input.
+
+Usage
+
+The Node input is 'Unknown' by default which does nothing. If DequipExisting is True (False by default) any equipped tooltip on the hand specified by Node will be deqipped before the input Tooltip is equipped. The OnEquipped output only fires an impulse if a tooltip is successfully equipped as a result of receiving an impulse at Equip.
+
+
+}
+
+
+
+FrooxEngine.LogiX.Tools.GetRawDataTooltipHit:##############################################################
+{
+Needs wiki page written
+}
+
+
+FrooxEngine.LogiX.Tools.GetTooltip:########################################################################
+{
+The <color=#00FF00>Get Tooltip</color> node outputs a reference to the tooltip equipped in the input User's hand (specified by Node).
+
+Usage
+
+The 'Unknown' Node input option does nothing and produces a null output.
+
+}
+
+
+FrooxEngine.LogiX.Tools.HasTooltip:########################################################################
+{
+The <color=#00FF00>Has Tooltip</color> node outputs a boolean value depending on whether the input User has a tooltip equipped in the hand specified by Node.
+
+Usage
+
+The 'Unknown' Node input option always results in a False output from HasEquippedTooltip.
+}
+
+
+
+FrooxEngine.LogiX.Tools.IsTooltipEquipped:#################################################################
+{
+The <color=#00FF00>Is Tooltip Equipped</color> node outputs a boolean value determined by whether the input tooltip is equipped by a user.
+}
+
+
+
+FrooxEngine.LogiX.Tools.IsTooltipInUse:####################################################################
+{
+The <color=#00FF00>Is Tooltip In Use</color> node reports the state of the InUse tooltip property.
+
+Usage
+
+The InUse tooltip property is True when the tooltip primary action is being used, though this is defined differently for different tooltips.
+Examples
+
+This node is intended to be used to block userspace interactions while the tooltip is currently doing something that shouldn't be interrupted (see GitHub issue #732). 
+
+}
+
+
+FrooxEngine.LogiX.Tools.RawDataTooltipEvents:##############################################################
+{
+The <color=#00FF00>Raw Data Tooltip Events</color> node fires impulses when various events (e.g. button presses) affecting the input RawDataTooltip occur.
+Usage
+
+The Equipped output fires an impulse whenever the referenced RawDataTooltip becomes equipped.
+
+The Dequipped output fires an impulse whenever the referenced RawDataTooltip becomes dequipped.
+
+The ToolUpdate output fires an impulse every frame while the referenced RawDataTooltip is equipped.
+
+The PrimaryPressed output fires an impulse whenever the equipping user presses the primary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The PrimaryHeld output fires an impulse every frame while the equipping user holds the primary fire button pressed on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The PrimaryReleased output fires an impulse whenever the equipping user releases the primary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The SecondaryPressed output fires an impulse whenever the equipping user presses the secondary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The SecondaryHeld output fires an impulse every frame while the equipping user holds the secondary fire button pressed on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The SecondaryReleased output fires an impulse whenever the equipping user releases the secondary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+This node is essential for making custom tooltips as LogiX can be made to run based on a user's interactions with the tool. Impulses fired from this node are owned by the user interacting with the RawDataTooltip. 
+}
+
+
+
+
+FrooxEngine.LogiX.Tools.TooltipEquippingSide:#############################################################
+{
+Needs wiki page
+}
+
+
+FrooxEngine.LogiX.Tools.TooltipEquippingSlot:#############################################################
+{
+The <color=#00FF00>Tooltip Equipping Slot</color> node outputs the slot of the CommonTool component for the input Tooltip.
+
+}
+
+
+FrooxEngine.LogiX.Tools.TooltipEvents:####################################################################
+{
+Needs Wiki Page
+}
+
+
