@@ -1080,7 +1080,22 @@ The <color=#00FF00>Invert</color> node inverts the RGB channels of the input col
 }
 
 
-Math.Time.DatetimeMillisecondNode
+FrooxEngine.LogiX.Components.SetComponentEnabled:##########################################################
+{
+The <color=#00FF00>Set Component Enabled</color> node node sets the Enabled property of the input Component to the State input value when an impulse is received at Set.
+Usage
+
+The State input determines what value the target Component's Enabled property is set to. If this is not specified, this node will not change the Enabled value if an impulse is received at Set.
+
+
+The OnDone output fires an impulse when the Enabled property of the input Component has been set as a result of an impulse recieved at Set. An impulse is fired as long as a valid Component input is provided regardless of whether the Enabled property value was actually changed. 
+}
+
+
+FrooxEngine.LogiX.Components.GetComponentEnabled:##########################################################
+{
+The <color=#00FF00>Get Component Enabled</color> node outputs true if the Enabled property of input Component is true, otherwise false. 
+}Math.Time.DatetimeMillisecondNode
 Math.Time.DatetimeSecondNode
 Math.Time.DatetimeMinuteNode
 Math.Time.DatetimeHourNode
@@ -1155,6 +1170,200 @@ Math.Time.UserTime
 {
 Provides the time for a certain user, for example if it's 8 AM in the plugged in user's timezone it will say 8 AM for everyone else too.
 }
+FrooxEngine.LogiX.Debug.DebugAxes:#########################################################################
+{
+The <color=#00FF00>Debug Axes</color> node generates a temporary set of axes with the specified properties when an impulse is received at Display.
+Usage
+
+The Position determines the global position where the axis origin will be.
+
+
+The Rotation determines the global rotation of the axes.
+
+
+The Length determines the length of the axis arrow visuals.
+
+
+The RightColor sets the color of the X axis visual.
+
+
+The UpColor sets the color of the Y axis visual.
+
+
+The ForwardColor sets the color of the Z axis visual.
+
+
+The Duration determines the number of seconds that the axes are visible.
+
+
+The OnDisplay output fires an impulse when the axes are successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+}
+
+
+FrooxEngine.LogiX.Debug.DebugBox:##########################################################################
+{
+The <color=#00FF00>Debug Box</color> node generates a temporary box visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Point input determines the global position of the box visual center point.
+
+
+The Size input controls the X, Y, and Z dimensions of the spawned box visual.
+
+
+The Orientation input controls the rotation of the box visual.
+
+
+The Color input determines the color of the box visual.
+
+
+The Duration input determines the number of seconds that the box visual persists.
+
+
+The OnDisplay output fires an impulse when the box is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires. 
+}
+
+
+FrooxEngine.LogiX.Debug.DebugLine:#########################################################################
+{
+The <color=#00FF00>Debug Line</color> node generates a temporary line with the specified properties when an impulse is received at Display.
+Usage
+
+The Point0 determines the global position of one line endpoint.
+
+
+The Point1 determines the global position of the other line endpoint.
+
+
+The Color determines the color of the line visual.
+
+
+The Radius determines the radius of the line visual.
+
+
+The Duration determines the number of seconds that the line visual persist.
+
+
+The OnDisplay output fires an impulse when the line is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+
+}
+
+FrooxEngine.LogiX.Debug.DebugSphere:######################################################################
+{
+The <color=#00FF00>Debug Sphere</color> node generates a temporary sphere visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Point input determines the global position of the sphere visual center point.
+
+
+The Radius input determines the radius of the sphere visual.
+
+
+The Color input determines the color of the sphere visual.
+
+
+The Duration input determines the number of seconds that the sphere visual persists.
+
+
+The OnDisplay output fires an impulse when the sphere is successfully displayed.
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires. 
+}
+
+
+FrooxEngine.LogiX.Debug.DebugText:########################################################################
+{
+The <color=#00FF00>Debug Text</color> node generates a temporary text visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Position input determines the global position of the text visual center point. This defaults to being centered on the Debug Text node itself.
+
+The Text input determines the content of the text visual. Rich text parsing is enabled.
+
+The Size determines the size of the text visual. A value of 1 is recommended over the default which is very small.
+
+The Color determines the color of the text visual.
+
+The Duration input determines the number of seconds that the text visual persists.
+
+The OnDisplay output fires an impulse when the text is successfully displayed.
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires. 
+}
+
+
+FrooxEngine.LogiX.Debug.DebugTriangle:####################################################################
+{
+The <color=#00FF00>Debug Triangle</color> node generates a temporary triangle visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Point0, Point1, and Point2 inputs determine the global positions of the triangle vertices.
+
+
+The Color input determines the color of the triangle visual.
+
+
+The Duration input determines the number of seconds that the triangle visual persists.
+
+
+The OnDisplay output fires an impulse when the triangle is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+
+}
+
+
+
+
+FrooxEngine.LogiX.Debug.DebugVector:######################################################################
+{
+The <color=#00FF00>Debug Vector</color> node generates an arrow visual with the specified properties when an impulse is received at Display.
+Usage
+
+The Position input determines the global position of the arrow origin (tail).
+
+
+The Vector input determines the global direction vector along which the arrow points. The values are not normalized before generating the visual.
+
+
+The RadiusRatio input is a scaling factor which affects the radius and arrow head size of the displayed visual.
+
+
+The Color input determines the color of the box visual.
+
+
+The Duration input determines the number of seconds that the box visual persists.
+
+
+The OnDisplay output fires an impulse when the vector arrow is successfully displayed.
+
+
+Slots for the debug visuals are produced under a non-persistent slot under the root slot named '_DEBUG'. Children are produced under that slot for each individual user for whom a debug node fires.
+
+}
+
+
+
+FrooxEngine.LogiX.Debug.EstimatedMasterClockError:#######################################################
+{
+The <color=#00FF00>Estimated Master Clock Error</color> node returns the estimated error of the master clock. 
+}
+
+
+
+
+
+
 
 FrooxEngine.LogiX.ProgramFlow.OnActivatedNode:##################################################################################################################################
 {
@@ -1837,6 +2046,32 @@ The While node is useful when looping and the required number of iterations cann
 
 
 
+FrooxEngine.LogiX.CurrentCulture:##########################################################################
+{
+The <color=#00FF00>Current Culture</color> node outputs information about a user's current locale.
+Usage
+
+This node provides information used when formatting data to strings (with the To String node) or parsing data from strings (using nodes under the Parsing category). The output from Current Culture can be provided to the FormatProvider of compatible nodes, an autocast node will be created upon connection. Locale information defines the default format for dates, times, numbers, currency values, the sorting order of text, casing conventions, and string comparisons for the user's; this can vary between countries and therefore it is possible that outputs from affected nodes may differ for different users depending on their locale. If such variance is undesirable consider using the Invariant Culture node instead.
+Examples
+
+Imagine that the float 3.14 is connected to the V input of a To String node, the string "C2" is connected to the Format input and Current Culture is connected to the FormatProvider input. For users in the en-GB (British English) locale the output from To String will be £3.14. However, for users in the en-US locale the output will be $3.14 while for users in many European countries it would be €3.14. 
+}
+
+
+FrooxEngine.LogiX.InvariantCulture:########################################################################
+{
+The color=#00FF00>Invariant Culture</color> node outputs a fixed locale which will be the same for all users.
+Usage
+
+This node provides information used when formatting data to strings (with the To String node) or parsing data from strings (using nodes under the Parsing category). The output from Invariant Culture can be provided to the FormatProvider of compatible nodes, an autocast node will be created upon connection. Locale information defines the default format for dates, times, numbers, currency values, the sorting order of text, casing conventions, and string comparisons for the user's; using the Invariant Culture node ensures that affected nodes will behave the same for all users regardless of their current locale.
+Examples
+
+It is generally recommended to use this node, rather than the Current Culture node, when parsing data from input files. Different locales have significantly different conventions for formatting numbers which can cause issues e.g. the number 1,000 would be interpreted as 'one thousand' in most English locales but 'one point zero zero zero' in many others. 
+}
+
+
+
+
 FrooxEngine.LogiX.Input.GeneralHeadset:#################################################################
 {
 'General Headset' LogiX node
@@ -2410,6 +2645,207 @@ The output of this node is local, and thus potentially different, for each user.
 
 
 
+FrooxEngine.LogiX.Locomotion.GetActiveLocomotionModule:####################################################
+{
+The <color=#00FF00>Get Active Locomotion Module</color> node outputs the input User's current locomotion module.
+Usage
+
+When a user is referenced, you can get the type of Locomotion the user is currently using. 
+}
+
+
+
+FrooxEngine.LogiX.Locomotion.InstallLocomotionModules:#####################################################
+{
+The <color=#00FF00>Install Locomotion Modules</color> node installs locomotion modules under the ModulesRoot slot hierarchy for use by the TargetUser when an impulse is received at Install.
+Usage
+
+The TargetUser input defaults to the local user.
+
+
+The ClearExisting input determines whether all modules previously installed for the TargetUser are removed before installing new modules.
+
+
+The OnInstalled fires an impulse when any locomotion modules under the ModulesRoot have been installed as a result of an impulse received at Install. An impulse will not be fired if there is no valid ModulesRoot input. However, an impulse will be fired as long as there is a ModulesRoot, even if there are no locomtion module components under the hierarchy which can be installed. This impulse continues the impulse chain which arrived at Install.
+
+
+When an impulse is received at Install, the ModulesRoot slot hierarchy is copied under the Locomotion Modules slot under the TargetUser's user root slot. Any locomotion module components under that hierarchy are then registered with that user's Locomotion Controller. This process does not check for duplicates before installing, so pulsing this node with the same ModulesRoot and TargetUser will install multiple copies of the same module. The name of an installed module in the context menu is taken from the name of the slot on which the module is present. 
+}
+
+
+FrooxEngine.LogiX.Physics.OnLocomotionGripEnd:#############################################################
+{
+The <color=#00FF00>On Grip End</color> node fires an impulse when a user stops gripping the input Grip.
+Usage
+
+The Grip input takes a reference to a LocomotionGrip component.
+
+
+The OnEvent output fires an impulse when the Grip stops being gripped by a user. Impulses are owned by the user who released the Grip component.
+
+
+The Module output provides the locomotion module in use by the user who released the Grip component. This value is only available for the duration of the impulse chain started by OnEvent.
+
+
+The GrippingBodyNode output provides a BodyNode enum value indicating which body node the Grip was released by. This will most likely be the Right Hand or Left Hand.
+
+}
+
+
+FrooxEngine.LogiX.Physics.OnGripStart:#####################################################################
+{
+The <color=#00FF00>On Grip Start</color> node fires an impulse when a user starts gripping the input Grip.
+Usage
+
+The Grip input takes a reference to a LocomotionGrip component.
+
+
+The OnEvent output fires an impulse when the Grip starts being gripped by a user. Impulses are owned by the user who gripped the Grip component.
+
+
+The Module output provides the locomotion module in use by the user who gripped the Grip component. This value is only available for the duration of the impulse chain started by OnEvent.
+
+
+The GrippingBodyNode output provides a BodyNode enum value indicating which body node the Grip was gripped by. This will most likely be the Right Hand or Left Hand. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.OnGripStay:######################################################################
+{
+The <color=#00FF00>On Grip Stay</color> node fires an impulse every frame while a user grips the input Grip.
+Usage
+
+The Grip input takes a reference to a LocomotionGrip component.
+
+
+The OnEvent output fires impulses while the Grip is gripped by a user. Impulses are owned by the user gripping the Grip component.
+
+
+The Module output provides the locomotion module in use by the user gripping the Grip component. This value is only available for the duration of the impulse chain started by OnEvent.
+
+
+The GrippingBodyNode output provides a BodyNode enum value indicating which body node the Grip is gripped by. This will most likely be the Right Hand or Left Hand.
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.OnLocomotionGripBegin:###########################################################
+{
+The <color=#00FF00>On Locomotion Grip Begin</color> node fires impulses whenever the active user of the input Locomotion module starts gripping an object.
+Usage
+
+The OnEvent fires an impulse when a locomotion grip starts with the input Locomotion module. Impulses are owned by the user who performed the grip.
+
+
+The GrippedSlot provides the slot which was gripped. This value is only available for the duration of the impulse chain started by OnEvent.
+
+
+The GrippedPoint provides the global position of the point at which the grip occurred.
+
+
+The GrippingHand provides a Chirality enum indicating which hand the grip was performed with.
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.OnLocomotionGripBegin:##########################################################
+{
+The <color=#00FF00>On Locomotion Grip End</color> node fires impulses whenever the active user of the input Locomotion module stops gripping an object.
+Usage
+
+The OnEvent fires an impulse when a locomotion grip stops with the input Locomotion module. Impulses are owned by the user who released the grip.
+
+
+The GrippedSlot provides the slot which was released from being gripped. This value is only available for the duration of the impulse chain started by OnEvent.
+
+
+The GrippedPoint provides the global position of the point at which the grip was released.
+
+
+The GrippingHand provides a Chirality enum indicating which hand the grip was released with.
+
+}
+
+
+FrooxEngine.LogiX.Locomotion.SwitchLocomotionModule:######################################################
+{
+
+The <color=#00FF00>Switch Locomotion Module</color> node switches the TargetUser's active locomotion module to one with a matching ModuleName when an impulse is received at Switch.
+
+Usage
+
+The TargetUser input defaults to the local user.
+
+
+The ModuleName input specifies which locomotion module should be switched to. For the standard locomotion module presets, use the relevant locale strings:
+
+    Locomotion.Noclip.Name
+    Locomotion.Teleport.Name
+    Locomotion.Fly.Name
+    Locomotion.WalkRun.Name
+    Locomotion.WalkRunGripping.Name
+    Locomotion.ZeroG.Name
+    Locomotion.GrabWorld.Name
+    Locomotion.Slide.Name
+
+For custom locomotion modules, use the slot name under which the relevant component is present. e.g. if you have a customized PhysicalLocomotion preset on a slot called "Swim" then use Swim as the input string to ModuleName.
+
+
+The ExactMatch controls whether only modules with exactly matching names will be used. Default is False.
+
+
+The OnSwitched output fires an impulse when the TargetUser's locomotion is successfully switched as a result of an impulse received at Switch. An impulse will be fired as long as a valid match was detected even if it was the same as the user's already active module.
+
+
+The OnNotFound output fires an impulse if no valid matching locomotion module can be found when an impulse is received at Switch. This may fire if:
+
+    the ModuleName is null, empty or just a string composed of whitespace
+    the user has no LocomotionController component (users will normally have one of these!)
+    there is no matching locomotion module given the ModuleName and ExactMatch values
+
+
+Searching for valid locomotion modules is performed on the modules referenced in the TargetUser's LocomotionController (present on their user root slot) in ascending index order. If there are two matches, the one with the lowest index will be used. No impulse will be fired from either OnSwitched or OnNotFound if the TargetUser input is not empty, but null. 
+
+}
+
+
+
+
+FrooxEngine.LogiX.Meta.RemoveAllLogixVisuals:##############################################################
+{
+The <color=#00FF00>Remove All Logix Visuals</color> node packs any LogiX nodes parented under the SearchRoot slot directly under the MoveUnder slot when an impulse is received at Remove. This both removes the node visuals and reparents the node slots.
+Usage
+
+The SearchRoot input defines the hierarchy from which slots containing LogiX components will be moved. Any nodes which are parented under the SearchRoot, or any of its child slots (down to arbitrary depth), will be moved and have visuals hidden. There is no default input.
+
+
+The MoveUnder input slot is the slot under which any slots containing LogiX components will be parented. If this input is unset and an impulse is received at Remove then LogiX node visuals will be hidden without any reparenting.
+
+
+The Traversal input enum value controls how the node graph traversal operates. If set to StopAtOtherNodes, nodes which are not currently parented under the SearchRoot and which are only connected to nodes which are via references (arrow shaped Ref nodes) will not be affected if an impulse is received at Remove. By contrast, if set to Complete, nodes which are linked to nodes parented under the SearchRoot will also be affected (e.g. storage variable nodes which are targets of a Write node. This works the same way as the Traversal setting on the LogiX tooltip (see tutorial by ProbablePrime). Defaults to StopAtOtherNodes.
+
+
+The OnRemoved output fires an impulse when the node has successfully performed it's operation after an impulse is received at Remove. This only requires that there be a valid SearchRoot input, an impulse is still fired even if there are no LogiX nodes parented under the SearchRoot and therefore no changes made.
+
+}
+
+
+
+FrooxEngine.LogiX.Meta.RevealAllLogixVisuals:##############################################################
+{
+The <color=#00FF00>Reveal All Logix Visuals</color> node unpacks and generates visuals for all LogiX nodes parented under the SearchRoot when an impulse is received at Reveal.
+Usage
+
+The OnRevealed output fires an impulse when any LogiX nodes are successfully unpacked as a result of an impulse received at Reveal. This only requires that a valid SearchRoot input slot is present, an impulse is still fired even if no LogiX nodes are actually unpacked.
+
+
+The function of the Traversal input is currently unclear. 
+}
+
+
 FrooxEngine.LogiX.Network.EscapeUriDataString:#############################################################################
 {
 Escapes dissallowed uri characters into uri escapes which allows you to send the output string over the network without issues.
@@ -2543,6 +2979,120 @@ FrooxEngine.LogiX.Network.POST_String:##########################################
 {
 <color=#00FF00>Post String</color> logix node requires you to specify the type of data being send to the server 
 }
+
+
+
+FrooxEngine.LogiX.CacheNode`1[T]:##########################################################################
+{
+The <color=#00FF00>Cache</color> node can be used for performance optimization. If you have a complex or heavy calculation with result that's read by multiple other nodes, you can place this node at the end. This will make sure that the input is evaluated only once (per evaluation context) and the result reused for the other nodes. In most cases you don't need it and it doesn't change the functionality in any way. At some point in the future this is going to be handled automatically. 
+}
+
+FrooxEngine.LogiX.DelayValueNode`1[T]:#####################################################################
+{
+The <color=#00FF00>Delay Value</color> node outputs the value that the Value input held at a time DelayTime seconds before hand.
+Usage
+
+If the DelayTime input is increased while a valid Value is provided, the output value will freeze at the most recent output value until sufficient delay has accumulated. The output will be frozen for a number of seconds equal to the new DelayTime - previous DelayTime. e.g. if DelayTime is 1 and then it is instantly increased to 10 the output value will be frozen for 9 seconds. If, instead, the DelayTime value is decreased, the delayed value updates to the correct value immediately.
+
+When spawned from the Node Browser this node has a 'dummy' datatype, however it will overload to the correct type if a valid value or reference type input is connected. 
+}
+
+
+FrooxEngine.LogiX.Operators.Demultiplexer`1[T]:############################################################
+{
+The <color=#00FF00>Demultiplex</color> node outputs the input Value at the output with corresponding to the input Index. Every other output is set to the input DefaultValue.
+Usage
+
+The Index value corresponding to each ValueOutput is indicated in square brackets in the output's name.
+
+
+The OutputCount output provides the number of ValueOutputs the node currently supports.
+
+
+This node has a dummy unset datatype when spawned from the node browser. However, it will overload to the correct type when any value or reference typed input is connected. If the Index is less than 0 or greater than OutputCount -1 all outputs will have the DefaultValue.
+
+}
+
+FrooxEngine.LogiX.Display.Display:#########################################################################
+{
+The <color=#00FF00>Display</color> node displays the current value of the Datatype. Create this node by Dragging a Datatype and pressing the Secondary Action Button. 
+}
+
+
+FrooxEngine.LogiX.Display.Display_Color
+FrooxEngine.LogiX.Display.Display_ColorX:##################################################################
+{
+Test Description for datatype Overwrite
+}
+
+
+
+FrooxEngine.LogiX.Display.DisplayImpulse:##################################################################
+{
+The <color=#00FF00>Display Impulse</color> node displays a colourful 'pulse' visual whenever an impulse is received at ImpulseTarget. These can be spawned by dragging a wire out from any impulse output and pressing the Secondary Action Button.
+Usage
+
+The node also displays for the most recent received impulse:
+
+    The session time at which the impulse was received
+    Who the impulse was owned by (i.e. on whose Neos client the impulse chain ran)
+    The total number of impulses received by the node
+    The global index (i.e. how many impulses in total have been received by impulse display nodes in the current session)
+}
+
+
+FrooxEngine.LogiX.ImpulseRelay:############################################################################
+{
+The <color=#00FF00>Impulse Relay</color> node is used to make your LogiX tidy. Instead of the impulse connection graphically going directly from point A to point B, you can insert impulse relays into the connection, and then drag the relays around until the connection path looks nicer.
+
+To insert an impulse relay in an impulse connection, simply grab using the LogiX Tooltip on the connection at the location you want the relay to be inserted.
+Usage
+Examples
+
+In this image, red arrows point to the locations of impulse relays along a long impulse connection. Without these relays, the connection would go directly from the If node on the left to the If node on the right, obscuring some of the logic. 
+}
+
+
+FrooxEngine.LogiX.Operators.Multiplexer`1[T]:#############################################################
+{
+The <color=#00FF00>Multiplex</color> node outputs one of the multiple Operands input values determined by the Index input.
+Usage
+
+The index corresponding to each input is visible in square brackets in the respective input name.
+
+
+The InputCount output provides the current number of inputs.
+
+
+This node initially had an unset dummy datatype when spawned from the node browser. It will overload to the correct datatype when any value or reference typed value is connected. If the Index value is out of range, i.e. it is less than 0 or greater than InputCount -1, the output will either be the type default value (for value types) or null for reference types.
+}
+
+
+FrooxEngine.LogiX.Operators.PickRandom`1[T]:############################################################
+{
+<color=#00FF00>Pick Random</color>
+Outputs randomly from the inputs.
+}
+
+FrooxEngine.LogiX.RelayNode`1[T]:#########################################################################
+{
+The <color=#00FF00>Impulse Relay</color> node contains 1 Input node and 1 Output node. The use of the relay is to create a connection point to help organize your code. 
+}
+
+
+
+FrooxEngine.LogiX.UpdatingRelayNode`1[T]:#################################################################
+{
+<color=#00FF00>Updating</color>
+Usage
+
+Ensure that changes are generated and evaluated every single frame, even if the input nodes don't trigger changes themselves. Can be used to force per-frame updates for some nodes that don't automatically update for performance or implementation reasons, for example GetTag.
+
+Use only when you actually need updates every frame (e.g. using a driver node or On Changes node), as this has performance implications. 
+}
+
+
+
 
 
 
@@ -3388,6 +3938,338 @@ The <color=#00FF00>XNOR</color> node performs the logical exclusive NOR (XNOR) o
 
 
 
+FrooxEngine.LogiX.Physics.ApplyCharacterForce:#############################################################
+{
+The <color=#00FF00>Apply Character Force</color> node changes the linear velocity of the input Character CharacterController (Component) proportional to the input Force when an impulse is received at Apply.
+Usage
+
+The IgnoreMass input determines whether the Mass field on any associated collider (must be on the same Slot as the Character and must have Type CharacterController) is taken into account when calculating the resulting velocity. If False, the MassScaling Enum value on the Character will also be taken into account and the effective mass value scaled by the Character Slot's global scale. Default is False.
+
+
+The OnDone output fires an impulse when the velocity of the input CharacterController has been changed as a result of an impulse received at Apply. No impulse will be fired if there is no valid CharacterController input.
+
+
+If IgnoreMass is False, the change in velocity of the CharacterController is the input Force multiplied by the local user's frame update time divided by the CharacterCollider's effective mass. If IgnoreMass is True, the change in velocity of the CharacterController is the input Force multiplied by the local user's frame update time.
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component. For an explanation, see Frooxius' comment on GitHub
+}
+
+
+
+FrooxEngine.LogiX.Physics.ApplyCharacterImpulse:###########################################################
+{
+The <color=#00FF00>Apply Character Impulse</color> node changes the linear velocity of the input Character CharacterController (Component) proportional to the value of the input Impulse when an impulse is received at Apply.
+Usage
+
+The IgnoreMass input determines whether the Mass field on any associated collider (must be on the same Slot as the Character and must have Type CharacterController) is taken into account when calculating the resulting velocity. If true, the MassScaling Enum value on the Character will also be taken into account and the effective mass value scaled by the Character Slot's global scale. Default is False.
+
+
+The OnDone output fires an impulse when the velocity of the input CharacterController has been changed as a result of an impulse received at Apply. No impulse will be fired if there is no valid CharacterController input.
+
+
+If IgnoreMass is False, the change in velocity of the Character is the input Impulse divided by the CharacterCollider's effective mass. If IgnoreMass is True, the change in velocity of the Character is the input Impulse.
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component. For an explanation, see Frooxius' comment on GitHub 
+}
+
+
+
+FrooxEngine.LogiX.Physics.AsCharacterController:###########################################################
+{
+The <color=#00FF00>As Character Controller</color> node attempts to output the CharacterController (Component) associated with the input Collider.
+Usage
+
+Output is null unless the input is a valid character collider. 
+}
+
+
+FrooxEngine.LogiX.Physics.CharacterControllerUser:#########################################################
+{
+The <color=#00FF00>Character Controller User</color> node attempts to output the user referenced in the SimulatingUser field of the input CharacterController.
+Usage
+
+Output is null unless a valid user reference is available. 
+}
+
+
+FrooxEngine.LogiX.Physics.CharacterGravity:################################################################
+{
+The <color=#00FF00>Character Gravity</color> node outputs the Gravity vector for the input Character CharacterController (Component).
+Usage
+
+The Gravity output provides the current Gravity value.
+
+
+The ActualGravity output provides the Gravity value from the previous update.
+
+
+Default values are [0;0;0] for both outputs if there is no valid input CharacterController. 
+}
+
+
+
+
+FrooxEngine.LogiX.Physics.CharacterGroundCollider:#########################################################
+{
+The <color=#00FF00>Character Ground Collider</color> node outputs a reference to the collider the user of the input Character CharacterController (Component) is standing on.
+Usage
+
+Output is null if there is no valid input or the relevant user is not standing on a surface. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.CharacterLinearVelocity:#########################################################
+{
+The <color=#00FF00>Character Linear Velocity</color> node outputs the linear velocity of the input Character CharacterController (Component) in global coordinate space. 
+}
+
+
+##########################################################################################################
+FrooxEngine.LogiX.Physics.FindCharacterControllerFromSlot
+FrooxEngine.LogiX.Physics.FindCharacterControllerFromUser
+{
+The <color=#00FF00>Find Character Controller</color> node attempts to find and output a CharacterController (Component) from either the input user or slot.
+Usage
+
+This node has two versions which work slightly differently but to the same effect:
+
+    The User variant of this node outputs the CharacterController associated with the input user's currently selected locomotion module.
+    The Slot variant of this node attempts to output the closest CharacterController component from the input slot or its parent slots.
+        Failing this, it attempts to output the CharacterController associated with its active user's currently selected locomotion module.
+
+If the User in question here is using a Locomotion Module that lacks a CharacterController such as NoClip this node will output null.
+
+The Default output is null. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.HitUVCoordinate:################################################################
+{
+The <color=#00FF00>Hit UV Coordinate</color> node outputs the UV coordinate corresponding to the input HitPoint on the HitTriangleIndex for the input HitCollider mesh collider.
+Usage
+
+The HitCollider must be a MeshCollider (Component) otherwise only default output values are used.
+
+
+The UV output provides the calculated UV coordinates, [0;0] by default.
+
+
+The IsValidUV outputs true if valid HitCollider and HitTriangleIndex values are provided, otherwise false.
+
+
+This node is primarily to be used in conjuction with Raycast One (LogiX node) or Raycaster (LogiX node). 
+}
+
+
+
+FrooxEngine.LogiX.Physics.IsCharacterController:##########################################################
+{
+The <color=#00FF00>Is Character Controller</color> node outputs true if the input Collider is a CharacterController (Component), otherwise false. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.IsCharacterOnGround:############################################################
+{
+The <color=#00FF00>Is Character On Ground</color> node ouputs true if the input Character CharacterController (Component) is standing on a collider, otherwise false. 
+}
+
+
+FrooxEngine.LogiX.Physics.OnCollisionEnd:#################################################################
+{
+The <color=#00FF00>On Collision End</color> node fires an impulse from OnEvent when the Other collider stops colliding with the input Collider.
+Usage
+
+The Other output provides the collider which stopped colliding with the input Collider. This value is available for the duration of the impulse chain started from OnEvent.
+
+
+Note that, in general, collisions where neither collider is a CharacterController (Component) will generate an impulse from OnEvent for each user in a session. This usually requires filtering the impulses such that only the ones for relevant users propagate to downstream nodes. For collisions where the Other collider is a CharacterController an impulse will only be fired for the CharacterCollider's SimulatingUser. 
+}
+
+
+
+FrooxEngine.LogiX.Physics.OnCollisionStart:###############################################################
+{
+The <color=#00FF00>On Collision Start</color> node fires an impulse from OnEvent when the Other collider starts colliding with the input Collider.
+Usage
+
+The Other output provides the collider which started colliding with the input Collider. This value is available for the duration of the impulse chain started from OnEvent.
+
+
+Note that, in general, collisions where neither collider is a CharacterController (Component) will generate an impulse from OnEvent for each user in a session. This usually requires filtering the impulses such that only the ones for relevant users propagate to downstream nodes. For collisions where the Other collider is a CharacterController an impulse will only be fired for the CharacterCollider's SimulatingUser. 
+}
+
+
+
+
+FrooxEngine.LogiX.Physics.OnCollisionStay:################################################################
+{
+The <color=#00FF00>On Collision Stay</color> node fires an impulse from OnEvent every frame while the Other collider is colliding with the input Collider.
+Usage
+
+The Other output provides the collider which is colliding with the input Collider. This value is available for the duration of the impulse chain started from OnEvent.
+
+
+The OnEvent impulses from On Collision Stay start the frame after an impulse would be fired by On Collision Start (LogiX node), i.e. the frame after the Collider and Other start collding.
+
+Note that, in general, collisions where neither collider is a CharacterController (Component) will generate an impulse from OnEvent for each user in a session. This usually requires filtering the impulses such that only the ones for relevant users propagate to downstream nodes. For collisions where the Other collider is a CharacterController an impulse will only be fired for the CharacterCollider's SimulatingUser.
+}
+
+
+FrooxEngine.LogiX.Physics.RaycastOne:#####################################################################
+{
+The <color=#00FF00>Raycast One</color> node performs a raycast when an impulse is received at Raycast. Properties of the raycast are controlled by the various inputs and information about the first collider hit are provided by the node outputs. 
+
+Usage
+Inputs
+
+The Origin defines the point from which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. Default is [0;0;0].
+
+
+The Direction defines the direction vector along which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. This input requires a value to be set as the default is [0;0;0].
+
+
+The MaxDistance controls the maximum length of the raycast. The actual length of the raycast is affected by both this input and the global scale of the input Root slot. Default value is very large (~3.4×1038), so setting this is recommended.
+
+
+The HitTriggers determines whether collider components with the collider Type field set as Trigger or HapticTrigger are considered valid hit targets. Default is false.
+
+
+The UsersOnly determines whether colliders which do not have an active user are considered valid hit targets. Defaults to false, in which case all colliders are considered valid hit targets (depending on other factors). However, if set to true, only colliders with an active user (i.e. are parented under a user's slot hierarchy) are considered valid hit targets.
+
+
+The DebugDuration input determines how long the raycast debug visual persists. This value is in seconds however if set to 0 (the default) the visual will persist for 1 frame. If set to a negative value no debug visual is drawn.
+
+
+The Root input defines the slot relative to whose local coordinate space the Origin, Direction, and MaxDistance are calcluated.
+Outputs
+
+The OnHit output fires an impulse if a valid target collider is hit when a ray is cast.
+
+
+The OnMiss output fires an impulse if no valid targets are hit when a ray is cast.
+
+
+The HitCollider output provides the first valid target collider hit along the path of the raycast. This value is only available for the duration of the impulse chain started from OnHit. Default is null.
+
+
+The HitDistance output provides the global distance between the raycast origin and the HitPoint. This value is only available for the duration of the impulse chain started from OnHit. Default is 0.
+
+
+The HitPoint output provides the global coordinates of the point where raycast first intersects with the HitCollider. This value is only available for the duration of the impulse chain started from OnHit. Default is [0;0;0].
+
+
+The HitNormal output provides the normal vector for the intersection of the raycast and the HitCollider.
+
+
+The HitTriangleIndex outputs the index of the mesh triangle which was hit in the case that the HitCollider is a MeshCollider (Component).
+Notes
+
+Colliders will generally be valid hit targets for raycasts unless their Type enum field is set to Trigger, HapticTrigger, or HapticSampler, though see details for the HitTriggers input. Colliders will not be valid targets if the IgnoreRaycasts bool is set to false on the collider component.
+Examples
+
+    Neos VR: BasicTooltip with RayCastOne by ProbablePrime
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.Raycaster:######################################################################
+{
+The <color=#00FF00>Raycaster</color> node generates a raycast with the input properties which is updated every frame update. Details about the current hit target collider (if there is one) are available from the outputs. 
+
+Usage
+Inputs
+
+The Origin defines the point from which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. Default is [0;0;0].
+
+
+The Direction defines the direction vector along which the ray is cast. This value is treated as being relative to the local coordinate space of the input Root slot. This input requires an value to be set as the default is [0;0;0].
+
+
+The MaxDistance controls the maximum length of the raycast. The actual length of the raycast is affected by both this input and the global scale of the input Root slot. Default value is very large (~3.4×1038), so setting this is recommended.
+
+
+The HitTriggers determines whether collider components with the collider Type field set as Trigger or HapticTrigger are considered valid hit targets. Default is false.
+
+
+The UsersOnly determines whether colliders which do not have an active user are considered valid hit targets. Defaults to false, in which case all colliders are considered valid hit targets (depending on other factors). However, if set to true, only colliders with an active user (i.e. are parented under a user's slot hierarchy) are considered valid hit targets.
+
+
+The Root input defines the slot relative to whose local coordinate space the Origin, Direction, and MaxDistance are calcluated.
+Outputs
+
+The HasHit input outputs whether the raycast has a valid hit target currently.
+
+
+The HitCollider output provides the first valid target collider hit along the path of the raycast. Default is null.
+
+
+The HitDistance output provides the global distance between the raycast origin and the HitPoint. Default is 0.
+
+
+The HitPoint output provides the global coordinates of the point where raycast first intersects with the HitCollider. Default is [0;0;0].
+
+
+The HitNormal output provides the normal vector for the intersection of the raycast and the HitCollider.
+
+
+The HitTriangleIndex outputs the index of the mesh triangle which was hit in the case that the HitCollider is a MeshCollider (Component).
+Notes
+
+Colliders will generally be valid hit targets for raycasts unless their Type enum field is set to Trigger, HapticTrigger, or HapticSampler, though see details for the HitTriggers input. Colliders will not be valid targets if the IgnoreRaycasts bool is set to true on the collider component. 
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.SetCharacterGravity:############################################################
+{
+The <color=#00FF00>Set Character Gravity</color> node overwrites the Gravity field value on the input Character CharacterController (Component) with the input Gravity vector.
+Usage
+
+The Gravity input defaults to [0;0;0] which corresponds to no gravity.
+
+
+The OnDone output fires an impulse when the Gravity field value of the input Character has been set as a result of an impulse received at Apply. No impulse will be fired if there is no valid Character input.
+
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component.
+
+}
+
+
+
+FrooxEngine.LogiX.Physics.SetCharacterVelocity:###########################################################
+{
+The <color=#00FF00>Set Character Velocity</color> node overwrites the linear velocity of the input Character CharacterController (Component) with the input Velocity when an impulse is received at Apply.
+Usage
+
+The Velocity default is [0;0;0].
+
+
+The OnDone output fires an impulse when the linear velocity of the input Character has been set as a result of an impulse received at Apply. No impulse will be fired if there is no valid Character input.
+
+
+Note that for the input CharacterController to be affected, the impulse received at Apply must be owned by the SimulatingUser set in the referenced CharacterController component. For an explanation, see Frooxius' comment on GitHub 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 FrooxEngine.LogiX.Playback.PlaybackReadState:##########################################################
 {
@@ -3803,6 +4685,445 @@ The OnSampled output fires an impulse when the sampling operation completes. The
 
 }
 
+FrooxEngine.LogiX.WorldModel.ChildrenCount:################################################################
+{
+The <color=#00FF00>Children Count</color> node outputs the number of slots which are direct children of the input Instance slot.
+Usage
+
+Slot indexing in Neos starts at 0. Child order can be specified by changing the OrderOffset field each slot in the inspector panel or using the Set Slot Order Offset node.
+Examples
+
+This node is extremely useful for iterating over all child slots of a parent without requiring foreknowledge of how many child slots there will be. Simply connect the output of this node to the Count input of a For node. An operation can then be run for each child slot by using a Get Child and providing the For node's Iteration output to the Get Child ChildIndex.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.DestroySlot:##################################################################
+{
+The <color=#00FF00>Destroy Slot</color> node deletes the Instance input slot (and all child slots) when an impulse is received at DoDestroy.
+Usage
+
+The PreserveAssets input determines whether any assets (audio, meshes, images etc.) saved under the Instance or child slots will be kept when the deletion occurs. If True, any assets in use by other parts of the world hierarchy will be moved to a child slot under the world's Assets slot. False by default.
+
+
+The SendDestroyingEvent determines whether any On Destroying nodes under the Instance slot's hierarchy will be triggered before slots are deleted. True by default.
+
+
+The OnDone output fires an impulse when the Instance slot has been successfully destroyed after an impulse was received at DoDestroy. No impulse is fired if there is no valid Instance input.
+Examples
+
+This node can be used to respawn users if their user root slot is destroyed. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.DestroySlotChildren:##########################################################
+{
+The <color=#00FF00>Destroy Slot Children</color> node deletes all child slots of the Instance input slot when an impulse is received at DoDestroy.
+Usage
+
+The PreserveAssets input determines whether any assets (audio, meshes, images etc.) saved under the destroyed slots will be kept when the deletion occurs. If True, any assets in use by other parts of the world hierarchy will be moved to a child slot under the world's Assets slot. False by default.
+
+
+The OnDone output fires an impulse when the Instance slot's children have been successfully destroyed after an impulse was received at DoDestroy. No impulse is be fired if there is no valid Instance input, however an impulse is still fired if a valid Instance slot has no children.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.DuplicateSlot:################################################################
+{
+The <color=#00FF00>Duplicate Slot</color> node creates a copy of the Template input slot when an impulse is received at DoDuplicate.
+
+As usual, precautions related to the duplication and reparenting of dynamic variables apply, as described on the Dynamic Variables page.
+Usage
+
+The OnDuplicated output fires an impulse when the Template slot has been successfully duplicated. No impulse is fired if there is no valid Template.
+
+
+The Duplicate output provides the newly created slot. This data is only available for the duration of the impulse chain started from OnDuplicated.
+
+
+The Duplicate slot shares the same parent slot as the Template.
+Examples
+
+This node is commonly used when one wants to spawn an item when an event occurs. Place a template object under an inactive parent slot and duplicate the template. Often one needs to reparent the duplicate immediately using a Set Parent (LogiX node). If the Template slot is itself set as active, but it is inactive due to a parent slot being inactive, the duplicate will be active after reparenting under another active slot. 
+}
+
+
+
+
+FrooxEngine.LogiX.WorldModel.FindChildByName:##############################################################
+{
+The <color=#00FF00>Find Child By Name</color> node attempts to find a slot which is a child of the Instance input slot which has a name matching the input Name.
+Usage
+
+The default for Instance is null, which will not match anything.
+
+The default for Name is null, which will not match anything.
+
+The MatchSubstring input determines whether slots whose names contain the input Name will be considered valid matches. True by default.
+
+
+The SearchDepth input determines how many levels of the slot hierarchy the node will search for child slots. A depth of 0 searches only the Instance slot's direct children. A positive depth searches only that many levels of children below the direct children. A negative depth searches through all children without limit. 0 by default.
+
+
+The IgnoreCase input determines whether slot names which do not exactly match the upper/lower case of the Name input will be considered valid. True by default.
+
+
+The FoundChild output is the first slot found whose name matches the input Name. Output is null if no valid match is found.
+
+
+The search proceeds first from the Instance input slot's direct children (in increasing index order), then to the next level or children if allowed by the SearchDepth input, and so on. A SearchDepth of 0 (default) searches only the Instance input slot's direct children, a depth of 1 allows searching of the Instance slot's children's children etc. A SearchDepth value of -1 allows searching to unlimited depth.
+
+Note: finding slots using this node is more demanding than simply getting a child slot via its index using Get Child (LogiX node), so consider whether it is absolutely required. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.FindChildByTag:###############################################################
+{
+
+The <color=#00FF00>Find Child By Tag</color> node attempts to find a child slot of the Instance input slot with a tag matching the input Tag.
+Usage
+
+The SearchDepth input determines how many levels of the slot hierarchy the node will search for child slots. 0 by default (i.e. searches only the Instance slot's direct children).
+
+
+The FoundChild is the first slot found whose tag exactly matches the input Tag. Output is null if no valid match is found.
+
+
+The search proceeds from the Instance input slot's direct children (in increasing index order) to deeper levels if allowed by the SearchDepth input. A SearchDepth of 0 (default) searches only the Instance input slot's direct children, a depth of 1 allows searching of the Instance slot's children's children etc. A SearchDepth value of -1 allows searching to unlimited depth.
+
+Note: finding slots using this node is more demanding than simply getting a child slot via its index using Get Child (LogiX node), so consider whether it is absolutely required.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.FindParentByName:############################################################
+{
+The <color=#00FF00>Find Parent By Name</color> node attempts to find a slot which is a parent of the Instance input slot which has a name matching the input Name.
+Usage
+
+The MatchSubstring input determines whether slots whose names contain the input Name will be considered valid matches. True by default.
+
+
+The SearchDepth input determines how many levels of the slot hierarchy the node will search for parent slots. 0 by default (i.e. searches only the Instance slot's direct parent).
+
+
+The IgnoreCase input determines whether slot names which do not exactly match the upper/lower case of the Name input will be considered valid. True by default.
+
+
+The FoundParent output is the first slot found whose name matches the input Name. Output is null if no valid match is found.
+
+
+The search proceeds from the Instance input slot's direct parent to higher levels if allowed by the SearchDepth input. A SearchDepth of 0 (default) searches only the Instance input slot's direct parent, a depth of 1 allows searching of the Instance slot's parent's parent etc. A SearchDepth value of -1 allows searching to unlimited depth. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.FindParentByTag:#############################################################
+{
+The <color=#00FF00>Find Parent By Tag</color> node attempts to find a parent slot of the Instance input slot with a tag matching the input Tag.
+Usage
+
+The FoundParent is the first slot found whose tag exactly matches the input Tag. Output is null if no valid match is found.
+
+
+The search proceeds from the Instance input slot's direct parent to higher levels if allowed by the SearchDepth input. A SearchDepth of 0 (default) searches only the Instance input slot's direct parent, a depth of 1 allows searching of the Instance slot's parent's parent etc. A SearchDepth value of -1 allows searching to unlimited depth. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetActiveUser:###############################################################
+{
+The <color=#00FF00>Get Active User</color> node outputs the user whose root slot is a parent of the Instance input slot.
+
+Usage
+
+The default output value is null if no active user is present. This node only finds the closest active user to the Instance slot, i.e. if the Instance slot is parented under user A, but user A is parented under user B, the node will output user A.
+
+This node is generally useful for detecting which user is e.g. equipping an avatar or grabbing an item since these result in the relevant object being parented under a user's slot hierarchy. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetActiveUserRoot:###########################################################
+{
+The <color=#00FF00>Get Active User Root</color> node node outputs the UserRoot for the user whose root slot is a parent of the Instance input slot.
+Usage
+
+The default output value is null if no active user is present. This node only finds the closest active UserRoot to the Instance slot, i.e. if the Instance slot is parented under user A, but user A is parented under user B, the node will output user A's UserRoot.
+
+For nodes which work with the UserRoot datatype see User Root category nodes.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetActiveUserSelf:###########################################################
+{
+The <color=#00FF00>Get Active User Self</color> node 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetChild:####################################################################
+{
+The <color=#00FF00>Get Child</color> node outputs the child slot under the input Instance slot with the input ChildIndex.
+Usage
+
+The default ChildIndex is 0, and the default Instance is null.
+
+Slot indexing starts from 0. The output will be null if no child is found with the specified index, or if Instance is null.
+Examples
+
+This node can be used with Children Count and For to iterate over and perform some function for each child of the Instance slot. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetObjectRoot:###############################################################
+{
+The <color=#00FF00>Get Object Root</color> node attempts to find a parent of the input Instance slot which has an ObjectRoot component.
+Usage
+
+The upward hierarchy search starts with the input Instance slot, i.e. if the input slot has an ObjectRoot component then the output will be the same as the input. The search stops when it finds the closest ObjectRoot to the Instance slot in its parent hierarchy. If no ObjectRoot components are found, the output is the Instance slot. 
+}
+
+FrooxEngine.LogiX.WorldModel.GetParentSlot:###############################################################
+{
+The <color=#00FF00>Get Parent Slot</color> node outputs the direct parent slot of the Instance input slot.
+Usage
+
+Note, attempting to get the parent of the world root slot will result in null output. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlot:#####################################################################
+{
+The <color=#00FF00>Get Slot</color> node outputs the slot which holds the input Component. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotActive:###############################################################
+{
+The <color=#00FF00>Get Slot Active</color> node indicates whether the input Instance slot is active.
+Usage
+
+Slots are considered active if, and only if, they and all of their parent slots are active. If the Instance slot is inactive, or any of its parent slots are inactive, this node will output False. If it is only required to check a slot's own Active property, use the Get Slot Active Self node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotActiveSelf:###########################################################
+{
+The <color=#00FF00>Get Slot Active Self</color> node reports the Active property of the input Instance slot.
+Usage
+
+This node only checks the Active property of the input Instance slot. As such, it will output True if the input Instance slot is set as active even if it is currently inactive due to a parent slot being set as inactive. If it is only required to check whether a slot is currently active in the world, use the Get Slot Active node. 
+}
+
+FrooxEngine.LogiX.WorldModel.GetSlotName:#################################################################
+{
+The <color=#00FF00>Get Slot Name</color> node outputs the name of the input Instance slot. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotOrderOffset:##########################################################
+{
+The <color=#00FF00>Get Slot Order Offset</color> node reports the OrderOffset value of the input Instance slot.
+Usage
+
+The OrderOffset property can be used to manually specify a slot's position in the list of slots under it's immediate parent slot. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotPersistent:###########################################################
+{
+The <color=#00FF00>Get Slot Persistent</color> node indicates whether the input Instance slot is persistent.
+Usage
+
+Slots are considered persistent if, and only if, they and all of their parent slots are persistent. If the Instance slot is non-persistent, or any of its parent slots are non-persistent, this node will output False. If it is only required to check a slot's own Persistent property, use the Get Slot Persistent Self node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetSlotPersistentSelf:#######################################################
+{
+The <color=#00FF00>Get Slot Persistent Self</color> node reports the Persistent property of the input Instance slot.
+Usage
+
+This node only checks the Persistent property of the input Instance slot. As such, it will output True if the input Instance slot is set as persistent even if it is currently non-persistent due to a parent slot being set as non-persistent. If it is only required to check whether a slot is currently persistent in the world, use the Get Slot Persistent node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetTag:######################################################################
+{
+The <color=#00FF00>Get Tag</color> node outputs the tag of the input Instance slot. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.HasTag:######################################################################
+{
+The <color=#00FF00>Has Tag</color> node reports whether the input Instance slot's tag exactly matches the input Tag. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IndexOfChild:################################################################
+{
+The <color=#00FF00>Index Of Child</color> node outputs the index of the input Instance slot under its direct parent.
+Usage
+
+Default output is -1 if there is no valid input Instance slot. If the world root slot is provided as the input it will cause errors (node turns red) with any connected display nodes or displays from downstream calculations. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsChildOf:###################################################################
+{
+The <color=#00FF00>Is Child Of</color> node reports whether the input Instance slot is a child under the input Other slot.
+Usage
+
+The IncludeSelf determines whether the output will be True if the Instance and Other inputs match. False by default (i.e. the Instance is not considered a child of itself).
+
+The output will be True if the Instance input is a child anywhere (e.g. child of a child) under the Other input slot's hierarchy. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.RootSlot:####################################################################
+{
+The <color=#00FF00>Root Slot</color> node outputs the world Root Slot.
+
+In some worlds, users may be under the management of systems which parent a user to a slot which is other than the Root Slot. This is common with Spawn Areas which have the Parent User setting enabled or with World Management systems that create a new slot for each user. When such systems exist it is recommended that your systems respect them. This can be done by using Local User Space (LogiX node) instead. This can be useful for things like:
+
+    Guns
+    Rocket Launchers and other projectiles
+    Gadgets and Tools which re-parent items
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetChildIndex:###############################################################
+{
+The <color=#00FF00>Set Child Index</color> node sets the index of the input Instance slot under it's parent to the input Index when an impulse is received at Set.
+Usage
+
+The Index input value defaults to 0.
+
+
+The OnSet output fires an impulse when the index of the Instance slot is successfully set. Impulses are not fired if there is no valid Instance input or the Index value is less than 0.
+
+
+This node works by changing the OrderOffset values for the Instance slot and all others with indices less than or equal to the Index input value. Slot order will not change apart from moving the Instance input slot, however any previously set custom OrderOffset values for slots with indices less than or equal to the Index input value may be changed. OrderOffset values for slots with indices greater than the input Index will be unchanged.
+
+For more precise control of slot OrderOffset values use Set Slot Order Offset 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetParent:###################################################################
+{
+The <color=#00FF00>Set Parent</color> node reparents the Instance input slot under the NewParent input slot.
+
+As usual, precautions related to the duplication and reparenting of dynamic variables apply, as described on the Dynamic Variables page.
+Usage
+
+The NewParent input defaults to the world root slot.
+
+
+The PreserveGlobalPosition input determines whether the Instance slot's global position will be kept constant during the reparenting event. If False, the Instance slot's local position is preserved instead. Defaults to True.
+
+
+The OnDone output fires an impulse after any reparenting has been successfully performed. This happens regardless of whether the parent of the Instance slot was actually changed. No impulse is fired if there is no valid Instance input.
+
+
+If the Instance has a non-zero OrderOffset value, this is maintained during reparenting. Otherwise the slot's index after reparenting is 1 greater than the highest index among children of the NewParent slot before reparenting, i.e. it is added at the bottom of the list in the slot inspector.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotActiveSelf:###########################################################
+{
+The <color=#00FF00>Set Slot Active Self</color> node sets the Active property of the input Instance slot to the value of the Active input when an impulse is received at Set.
+Usage
+
+The OnDone output fires an impulse after an impulse is received at Set unless there is no valid Instance input. This occurs regardless of whether the Active property of the Instance slot was changed.
+
+
+By default this node makes no change to the Active property of the Instance if the Active input value is unspecified. Note that setting the active property of a slot to True will not result in the slot actually becoming active if one of its parents is set as inactive.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotName:#################################################################
+{
+The <color=#00FF00>Set Slot Name</color> node sets the name of the Instance input slot to the value of the Name input when an impulse is received at Set.
+Usage
+
+The Name input defaults to null.
+
+
+The OnDone output fires an impulse after the name of the input Instance is successfully set. This occurs regardless of whether the Instance slot's name was changed as a result. No impulse is fired if there is no valid Instance input. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotOrderOffset:##########################################################
+{
+The <color=#00FF00>Set Slot Order Offset</color> node sets the OrderOffset value of the input Instance slot to the input OrderOffset value when an impulse is received at DoSetOrderOffset.
+Usage
+
+The OrderOffset input defaults to 0.
+
+
+The OnDone output fires an impulse when the Instance slot's OrderOffset value has been successfully set. This occurs regardless of whether the Instance slot's OrderOffset value was actually changed. No impulse is fired if there is no valid Instance input.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetSlotPersistentSelf:#######################################################
+{
+The <color=#00FF00>Set Slot Persistent Self</color> node sets the Persistent property of the input Instance slot to the value of the Active input when an impulse is received at Set.
+Usage
+
+The OnDone output fires an impulse after the Instance input's Persistent property has been set. This occurs regardless of whether the Persistent property of the Instance slot was actually changed. No impulse is fired if there is no valid Instance input.
+
+
+By default this node makes no change to the Persistent property of the Instance if the Active input value is unspecified. Note that setting the Persistent property of a slot to True will not result in the slot actually becoming persistent if one of its parents is set as non-persistent. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetTag:######################################################################
+{
+
+The <color=#00FF00>Set Tag</color> node sets the tag of the Instance slot to the Tag input when an impulse is received at Set.
+Usage
+
+The Tag input defaults to null.
+
+
+The OnSet output fires an impulse when the tag of the Instance slot has been successfully set. This occurs regardless of whether the Instance slot's tag was actually changed. No impulse is fired if there is no valid Instance input. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SlotChildrenEvents:##########################################################
+{
+
+The <color=#00FF00>Slot Children Events</color> node generates impulses when child slots are added or removed from the Instance slot.
+
+Note that currently Slot Children Events does not support the value of the Instance slot changing. [1] 
+
+Usage
+
+The OnUser input can be used to specify which user will own the generated impulses. By default impulses are owned by the user who caused the change. Providing the Local User to this input will result in impulses being fired for all users in the session.
+
+
+The OnChildAdded output fires impulses whenever a child slot is added under the Instance slot.
+
+
+The OnChildRemoved output fires impulses whenever a child slot is removed from under the Instance slot.
+
+
+The Child output provides the slot which was added / removed from under the Instance slot. This value is only available for the duration of the impulse chain started by OnChildAdded or OnChildRemoved. Note that the value will be null if a child slot is destroyed, rather than being reparented away from the Instance slot. 
+
+}
+
 FrooxEngine.LogiX.String.Capitalize:######################################################################
 {
 The <color=#00FF00>Capitalize</color> node outputs the input Str with the first character capitalized.
@@ -4044,6 +5365,592 @@ Math.Time.TimeSpanFromTicks
 Converts a number (of seconds or days or whatever the node says) into a TimeSpan.
 }
 
+FrooxEngine.LogiX.Tools.DequipTooltip:#####################################################################
+{
+
+The <color=#00FF00>Dequip Tooltip</color> node dequips any equipped tooltip from the specified User's hand according to the Node enum input.
+
+
+Usage
+
+This dequips any tooltip, whether equipped by a simple grip or fully equipped (e.g. through the radial context menu Equip button), from the hand specified by the Node input ('Unknown' by default, which does nothing).
+
+OnDequipped only fires and impulse if a tooltip is actually de-equipped as a result of an impulse at Dequip.
+
+NOTE: The incoming impulse must originate from the user who you are requesting to de-equip the tooltip from. If another user fires the impulse it will not work.
+
+}
+
+
+FrooxEngine.LogiX.Tools.EquipTooltip:######################################################################
+{
+The <color=#00FF00>Equip Tooltip</color> node equips the input Tooltip on the input User's hand, specified by the Node input.
+
+Usage
+
+The Node input is 'Unknown' by default which does nothing. If DequipExisting is True (False by default) any equipped tooltip on the hand specified by Node will be deqipped before the input Tooltip is equipped. The OnEquipped output only fires an impulse if a tooltip is successfully equipped as a result of receiving an impulse at Equip.
+
+
+}
+
+
+
+FrooxEngine.LogiX.Tools.GetRawDataTooltipHit:##############################################################
+{
+Needs wiki page written
+}
+
+
+FrooxEngine.LogiX.Tools.GetTooltip:########################################################################
+{
+The <color=#00FF00>Get Tooltip</color> node outputs a reference to the tooltip equipped in the input User's hand (specified by Node).
+
+Usage
+
+The 'Unknown' Node input option does nothing and produces a null output.
+
+}
+
+
+FrooxEngine.LogiX.Tools.HasTooltip:########################################################################
+{
+The <color=#00FF00>Has Tooltip</color> node outputs a boolean value depending on whether the input User has a tooltip equipped in the hand specified by Node.
+
+Usage
+
+The 'Unknown' Node input option always results in a False output from HasEquippedTooltip.
+}
+
+
+
+FrooxEngine.LogiX.Tools.IsTooltipEquipped:#################################################################
+{
+The <color=#00FF00>Is Tooltip Equipped</color> node outputs a boolean value determined by whether the input tooltip is equipped by a user.
+}
+
+
+
+FrooxEngine.LogiX.Tools.IsTooltipInUse:####################################################################
+{
+The <color=#00FF00>Is Tooltip In Use</color> node reports the state of the InUse tooltip property.
+
+Usage
+
+The InUse tooltip property is True when the tooltip primary action is being used, though this is defined differently for different tooltips.
+Examples
+
+This node is intended to be used to block userspace interactions while the tooltip is currently doing something that shouldn't be interrupted (see GitHub issue #732). 
+
+}
+
+
+FrooxEngine.LogiX.Tools.RawDataTooltipEvents:##############################################################
+{
+The <color=#00FF00>Raw Data Tooltip Events</color> node fires impulses when various events (e.g. button presses) affecting the input RawDataTooltip occur.
+Usage
+
+The Equipped output fires an impulse whenever the referenced RawDataTooltip becomes equipped.
+
+The Dequipped output fires an impulse whenever the referenced RawDataTooltip becomes dequipped.
+
+The ToolUpdate output fires an impulse every frame while the referenced RawDataTooltip is equipped.
+
+The PrimaryPressed output fires an impulse whenever the equipping user presses the primary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The PrimaryHeld output fires an impulse every frame while the equipping user holds the primary fire button pressed on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The PrimaryReleased output fires an impulse whenever the equipping user releases the primary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The SecondaryPressed output fires an impulse whenever the equipping user presses the secondary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The SecondaryHeld output fires an impulse every frame while the equipping user holds the secondary fire button pressed on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+The SecondaryReleased output fires an impulse whenever the equipping user releases the secondary fire button on the controller corresponding to the hand where the RawDataTooltip is equipped.
+
+This node is essential for making custom tooltips as LogiX can be made to run based on a user's interactions with the tool. Impulses fired from this node are owned by the user interacting with the RawDataTooltip. 
+}
+
+
+
+
+FrooxEngine.LogiX.Tools.TooltipEquippingSide:#############################################################
+{
+Needs wiki page
+}
+
+
+FrooxEngine.LogiX.Tools.TooltipEquippingSlot:#############################################################
+{
+The <color=#00FF00>Tooltip Equipping Slot</color> node outputs the slot of the CommonTool component for the input Tooltip.
+
+}
+
+
+FrooxEngine.LogiX.Tools.TooltipEvents:####################################################################
+{
+Needs Wiki Page
+}
+
+
+FrooxEngine.LogiX.Transactions.CurrencyConversion:#########################################################
+{
+The <color=#00FF00>CurrencyConversion</color> node converts the SourceAmount from the SourceCurrency to the TargetCurrency.
+Usage
+
+The TargetAmount output provides the converted currency value. The value is -1 if either the SourceCurrency or TargetCurrency inputs contain unrecognized strings.
+
+
+The Converted output is True if both the input strings were recognized and conversion was performed successfully.
+
+
+Currently SourceCurrency and TargetCurrency only accept the strings 'USD' and 'NCR'. If both are left as defaults, the node uses NCR as the SourceCurrency and USD as the TargetCurrency 
+}
+
+
+FrooxEngine.LogiX.Transactions.TokensEnabled:##############################################################
+{
+This is a LogiX node that produces a local bool output. It will locally output True if you are running the standalone build of Neos, which has token (NCR and KFC) functionality enabled. It will locally output False if you are running the Steam build of Neos, which has token functionality disabled. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetBackward:##################################################################
+{
+The <color=#00FF00>Backward</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's negative Z coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetDown:######################################################################
+{
+The <color=#00FF00>Down/color> node outputs the vector in global coordinate space which is parallel to the Instance slot's negative Y coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetForward:###################################################################
+{
+The <color=#00FF00>Forward</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's positive Z coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GlobalDirectionToLocal:#######################################################
+{
+The <color=#00FF00>Global Direction To Local</color> node takes the input GlobalDirection vector and outputs the equivalent LocalDirection vector relative to the Instance slot's local coordinate space.
+Usage
+
+Note that this node only takes into account the relative rotation between the global and local coordinate spaces when calculating the conversion, the scale of the Instance slot does not affect the output. If scale is important for a calculation use Global Vector To Local. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GlobalPointToLocal:###########################################################
+{
+The <color=#00FF00>Global Point To Local</color> node takes the input GlobalPoint position vector and outputs the equivalent LocalPoint position vector relative to the Instance slot's local coordinate space.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GlobalRotationToLocal:########################################################
+{
+The <color=#00FF00>Global Rotation To Local</color> node takes an input GlobalRotation floatQ and outputs the equivalent LocalRotation floatQ rotation relative to the Instance slot's local coordinate space.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GlobalScaleToLocal:###########################################################
+{
+The <color=#00FF00>Global Scale To Local</color> node takes the input GlobalScale vector and outputs the equivalent LocalScale vector relative to the Instance slot's local coordinate space. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GlobalTransform:###########################################################
+{
+The <color=#00FF00>Global Transform</color> node outputs the Instance slot's GlobalPosition, GlobalRotation, and GlobalScale.
+Usage
+
+Note that the values output by this node differ from those shown in the slot inspector panel because the inspector shows values in local coordinate space. Use Local Transform (LogiX node) to obtain values matching those displayed in the inspector. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GlobalVectorToLocal:##########################################################
+{
+The <color=#00FF00>Global Vector To Local</color> node takes the input GlobalVector vector and outputs the equivalent LocalVector relative to the Instance slot's local coordinate space.
+Usage
+
+Note that this node's output takes into account the scale of the Instance slot when calculating the conversion. If a calculation should be scale-invariant use Global Direction To Local.
+}
+
+FrooxEngine.LogiX.WorldModel.GetLeft:######################################################################
+{
+The <color=#00FF00>Left</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's negative X coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalDirectionToGlobal:#######################################################
+{
+The <color=#00FF00>Local Direction To Global</color> node takes the input LocalDirection vector vector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalDirection vector.
+Usage
+
+Note that this node only takes into account the relative rotation between the global and local coordinate spaces when calculating the conversion, the scale of the Instance slot does not affect the output. If scale is important for a calculation use Local Vector To Global. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalPointToGlobal:###########################################################
+{
+The <color=#00FF00>Local Point To Global</color> node takes the input LocalPoint position vector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalPoint position vector. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalRotationToGlobal:#######################################################
+{
+The <color=#00FF00>Local Rotation To Global</color> node takes an input LocalRotation floatQ relative to the Instance slot's local coordinate space and outputs the equivalent GlobalRotation floatQ.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalScaleToGlobal:##########################################################
+{
+The <color=#00FF00>Local Scale To Global</color> node takes the input LocalScale vector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalScale vector.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalTransform:##############################################################
+{
+The <color=#00FF00>Local Transform</color> node outputs the Instance slot's LocalPosition, LocalRotation, and LocalScale.
+Usage
+
+Note that the values output by this node match those shown in the slot inspector panel because the inspector shows values in local coordinate space. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalVectorToGlobal:#########################################################
+{
+The <color=#00FF00>Local Vector To Global</color> node takes the input LocalVector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalVector .
+Usage
+
+Note that this node's output takes into account the scale of the Instance slot when calculating the conversion. If a calculation should be scale-invariant use Local Direction To Global. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetRight:####################################################################
+{
+The <color=#00FF00>Right</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's positive X coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetBackward:#################################################################
+{
+The <color=#00FF00>Set Backward</color> node rotates the Instance slot such that its negative Z axis becomes parallel to the input global Backward direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetDown:#####################################################################
+{
+The <color=#00FF00>Set Down</color> node rotates the Instance slot such that its negative Y axis becomes parallel to the input global Down direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetForward:##################################################################
+{
+The <color=#00FF00>Set Forward</color> node rotates the Instance slot such that its positive Z axis becomes parallel to the input global Forward direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalPosition:###########################################################
+{
+The <color=#00FF00>Set Global Position</color> node moves the Instance slot to the input global Position when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalPositionRotation:###################################################
+{
+The <color=#00FF00>Set Global Position Rotation</color> node moves and rotates the Instance slot to the input global Position and Rotationwhen an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position and rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalRotation:###########################################################
+{
+The <color=#00FF00>Set Global Rotation</color> node rotates the Instance slot to the input global Rotation when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalScale:##############################################################
+{
+The <color=#00FF00>Set Global Scale</color> node re-scales the Instance slot to the input global Scale when an impulse is received at Set.
+Usage
+
+The default Scale is 1. The default Instance is null.
+
+An impulse is fired from OnDone when the Instance is successfully re-scaled. No impulse will be fired if Instance was null when an impulse is received at Set.
+}
+
+FrooxEngine.LogiX.WorldModel.SetGlobalTransform:##########################################################
+{
+The <color=#00FF00>Set Global Transform</color> node moves, rotates, and re-scales the Instance slot to the input global Position, Rotation and Scale when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalTransformMatrix:####################################################
+{
+The <color=#00FF00>Set Global Transform Matrix</color> node moves, rotates, and re-scales the Instance slot in global coordinate space according to the input TRS Matrix when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetLeft:#####################################################################
+{
+The <color=#00FF00>Set Left</color> node rotates the Instance slot such that its negative X axis becomes parallel to the input global Left direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalPosition:############################################################
+{
+The <color=#00FF00>Set Local Position</color> node moves the Instance slot to the input local Position when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalPositionRotation:####################################################
+{
+The <color=#00FF00>Set Local Position Rotation</color> node moves and rotates the Instance slot to the input local Position and Rotationwhen an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position and rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalRotation:############################################################
+{
+The <color=#00FF00>Set Local Rotation</color> node rotates the Instance slot to the input local Rotation when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalScale:###############################################################
+{
+The <color=#00FF00>Set Local Scale</color> node re-scales the Instance slot to the input local Scale when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance is successfully re-scaled. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalTransform:###########################################################
+{
+The <color=#00FF00>Set Local Transform</color> node moves, rotates, and re-scales the Instance slot to the input local Position, Rotation and Scale when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+FrooxEngine.LogiX.WorldModel.SetRight:####################################################################
+{
+The <color=#00FF00>Set Right</color> node rotates the Instance slot such that its positive X axis becomes parallel to the input global Right direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetTRS:######################################################################
+{
+The <color=#00FF00>Set TRS</color> node moves, rotates, and re-scales the Instance slot in its local coordinate space according to the input TRS matrix when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetUp:#######################################################################
+{
+The <color=#00FF00>Set Up</color> node rotates the Instance slot such that its positive Y axis becomes parallel to the input global Up direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.TransformDirection:##########################################################
+{
+The <color=#00FF00>Transform Direction</color> node takes the input SourceDirection vector in the local coordinate space of the FromSpace slot and outputs the equivalent TargetDirection vector in the ToSpace slot's local coordinate space.
+Usage
+
+Note that this node only takes into account the relative rotation between the two local coordinate spaces when calculating the conversion, the relative scale of the slots does not affect the output. If scale is important for a calculation use Transform Vector. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.TransformPoint:##########################################################
+{
+The <color=#00FF00>Transform Point</color> node takes the SourcePoint position vector in the FromSpace slot's local coordinate space and outputs the equivalent TargetPoint position vector in the ToSpace slot's local coordinate space. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.TransformRotation:###########################################################
+{
+The <color=#00FF00>Transform Rotation</color> node takes the input SourceRotation floatQ in the FromSpace slot's local coordinate space and outputs the equivalent TargetRotation floatQ in the ToSpace slot's local coordinate space.
+}
+
+
+FrooxEngine.LogiX.WorldModel.TransformScale:##############################################################
+{
+The <color=#00FF00>Transform Scale</color> node takes the input SourceScale vector in the FromSpace slot's local coordinate space and outputs the eqivalent TargetScale vector in the ToSpace slot's local coordinate space.
+}
+
+
+FrooxEngine.LogiX.WorldModel.TransformVector:#############################################################
+{
+The <color=#00FF00>Transform Vector</color> node takes the input SourceVector vector in the FromSpace slot's local coordinate space and and outputs the equivalent TargetVector in the ToSpace slot's local coordinate space.
+Usage
+
+Note that this node's output takes into account the relative scale of the FromSpace and ToSpace slots when calculating the conversion. If a calculation should be scale-invariant use Transform Direction. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetUp:#######################################################################
+{
+The <color=#00FF00>Up</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's positive Y coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+############## Bounds ############################
+FrooxEngine.LogiX.Transform.BoundingBoxFromCenterSize:####################################################
+{
+The <color=#00FF00>Bounding Box From Center Size</color> node calculates a BoundingBox with the given xyz Center and xyz Size values.
+Usage
+
+The maximum or minimum value for any particular coordinate will be the Center minus or plus 0.5*Size respectively for that coordinate. 
+}
+
+
+FrooxEngine.LogiX.Transform.BoundingBoxProperties:########################################################
+{
+The <color=#00FF00>Bounding Box Properties</color> node provides several pieces of data about the input Bounds.
+Usage
+
+The Min and Max outputs provide the minimum and maximum extents for the input Bounds on xyz coordinates.
+
+
+The Valid output will be False if Bounds has the special value EmptyBounds, any of the Center coordinates has the special float values NaN or Infinity, or the Size has negative, NaN, or Infinity values. Otherwise True.
+
+
+The Empty output will be True if Bounds has the special value EmptyBounds. This may occur if Bounds is output from Empty Bounding Box (LogiX node) or it is the BoundingBox for a slot which has no elements which would cause it to have a volume (e.g. collider components). Note that calculating a bounding box with center [0,0,0] and size [0,0,0] does not produce an EmptyBounds value. 
+}
+
+
+FrooxEngine.LogiX.Transform.ComputeBoundingBox:###########################################################
+{
+The <color=#00FF00>Compute Bounding Box</color> node calculates a BoundingBox for the Instance slot hierarchy in the local coordinate space of the CoordinateSpace slot.
+Usage
+
+The IncludeInactive input determines whether inactive slots are used for BoundingBox calculation, default is False.
+
+
+The OnlyWithTag input can be used to specify that only slots with a matching tag should be used for BoundingBox calculation, default is empty (i.e. not used).
+
+}
+
+
+
+FrooxEngine.LogiX.Transform.EmptyBoundingBox:#############################################################
+{
+The <color=#00FF00>Empty Bounding Box</color> outputs a BoundingBox with the special value EmptyBounds. 
+}
+
+
+FrooxEngine.LogiX.Transform.EncapsulateBounds:############################################################
+{
+The <color=#00FF00>Encapsulate Bounds</color> node returns calculated bounding box that includes bounding box of Bounds and OtherBounds.
+Usage
+
+Default value of Bounds and OtherBounds is bounding box which is center of [0,0,0], size of [0,0,0].
+
+}
+
+
+
+FrooxEngine.LogiX.Transform.EncapsulatePoint:#############################################################
+{
+The <color=#00FF00>Encapsulate Point</color> node returns calculated bounding box that includes bounding box of Bounds and float3 Point.
+Usage
+
+Default value of Bounds and OtherBounds is bounding box which is center of [0,0,0], size of [0,0,0], and default value of Point is [0,0,0].
+
+}
+
+
+FrooxEngine.LogiX.Transform.TransformBounds:##############################################################
+{
+The <color=#00FF00>Transform Bounding Box</color> node transforms the Bounds from being in to the SourceSpace local coordinate space to being relative to the TargetSpace local coordinate space.
+Usage
+
+The SourceSpace and TargetSpace inputs default to the world root slot, i.e. measuring relative to global coordinate space. 
+}
+
+
+
+
 FrooxEngine.LogiX.UI.ClearFocus:########################################################################
 {
 The <color=#00FF00>Clear Focus</color> node closes the Neos software keyboard and finishes editing of any TextEditor when an impulse is received at Focus
@@ -4088,6 +5995,1219 @@ Usage
 
 The output value is local, i.e. different for each user. 
 }
+
+
+
+
+
+FrooxEngine.LogiX.Undo.BeginUndoBatch:#####################################################################
+{
+The <color=#00FF00>Begin Undo Batch</color> node starts recording a batch of undoable changes when an impulse is received at DoCreate.
+Usage
+
+The Description input determines the text which is displayed in a user's radial menu next to the Undo button for the relevant undo step. Default is null.
+
+
+The OnBegin output continues the impulse chain which triggered DoCreate; any changes which should be included in the same batch undo step should be performed during the impulse chain started from OnBegin.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. Unless the Description input has a non-null value, the text displayed around the Undo button in the radial menu is "(batch action)".
+
+If you wish to perform some undoable changes in the impulse chain started from OnBegin and then later some ones which should not be included in the batch, you can explicitly finish the creation of the batch with End Undo Batch (LogiX node). Note that simply including a node which makes a change (e.g. Set Local Position) downstream of a Begin Undo Batch node does not automatically make it an undoable change - you must still create undo save points in the batch using the other nodes in the Undo category.
+
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateFieldUndoStep:################################################################
+{
+The <color=#00FF00>Create Field Undo Step</color> node creates an Undo Manager entry save point for the Target value field when an impulse is received at Create.
+Usage
+
+The Target input can be set to any value typed slot or component field by connecting LogiX wires as normal. Note that the color of the input will not change from it's dark green color.
+
+
+The ForceNew input determines whether a new Undo Manager entry will be created for the Target field even if another one was already created for the same field in the preceding impulse chain. Default is false.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the Target field value in an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu. 
+}
+
+
+FrooxEngine.LogiX.Undo.CreateReferenceUndoStep:############################################################
+{
+The <color=#00FF00>Create Reference Undo Step</color> node creates an Undo Manager entry save point for the Target reference field when an impulse is received at Create.
+
+     
+
+Usage
+
+The Target input can be set to any reference typed slot or component field by connecting LogiX wires as normal. Note that the color of the input will not change from it's olive green color.
+
+
+The ForceNew input determines whether a new Undo Manager entry will be created for the Target field even if another one was already created for the same field in the preceding impulse chain. Default is false.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the reference held by the Target field in an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu. 
+
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateSpawnUndoStep:################################################################
+{
+The <color=#00FF00>Create Spawn Undo Step</color> node creates an Undo Manager entry for the spawning of the Target slot when an impulse is received at Create.
+Usage
+
+The Description input determines the text which is displayed in a user's radial menu next to the Undo button. Default is null.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. Unless the Description input has a non-null value, the text displayed around the Undo button in the radial menu is "Spawn" + the name of the Target slot. 
+}
+
+
+
+
+FrooxEngine.LogiX.Undo.CreateTransformUndoStep:############################################################
+{
+The <color=#00FF00>Create Transform Undo Step</color> node creates an Undo Manager entry save point for the Target spatial transform values when an impulse is received at Create.
+Usage
+
+The SaveParent input determines whether the Target slot parent is saved as part of the undo entry. Default is true.
+
+
+The SavePosition input determines whether the Target position is saved as part of the undo entry. Default is true.
+
+
+The SaveRotation input determines whether the Target rotation is saved as part of the undo entry. Default is true.
+
+
+The SaveScale input determines whether the Target scale is saved as part of the undo entry. Default is true.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the transform of the Target an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu. The text displayed around the Undo button in the radial menu is "Moved" + the name of the Target slot.
+
+If SaveParent is true, the Target is returned to the same local transform as it held when the undo step was created. If instead SaveParent is false, the Target is returned to the global transform it held when the undo step was created. 
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateTypeFieldUndoStep:###########################################################
+{
+The <color=#00FF00>Create Type Field Undo Step</color> node creates an Undo Manager entry save point for the Target type field when an impulse is received at Create.
+Usage
+
+The ForceNew input determines whether a new Undo Manager entry will be created for the Target field even if another one was already created for the same field in the preceding impulse chain. Default is false.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the Target field in an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu.
+
+Type fields are extremely rare in Neos and, as such, users will almost never need to use this node. For any standard value typed fields use Create Field Undo Step (LogiX node) or for reference typed fields use Create Reference Undo Step (LogiX node). 
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateUndoBatch:###################################################################
+{
+The <color=#00FF00>Create Undo Batch</color> node can be used to create a batch of Undo Manager save points, before then making the relevant changes, when an impulse is received at DoCreate.
+Usage
+
+The Description input determines the text which is displayed in a user's radial menu next to the Undo button for the relevant undo step. Default is null.
+
+
+The Create output fires an impulse immediately after one is received at DoCreate. This impulse chain should be used for creating all undo points which should be included in a batch undo step. This does not need to be explicitly finished using End Undo Batch (LogiX node).
+
+
+The OnCreated output fires an impulse after the impulse chain from Create has finished and the relevant batch undo point created. This impulse chain can be used to make changes to the fields or object transforms for which undo steps were made during the Create impulse chain.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. Unless the Description input has a non-null value, the text displayed around the Undo button in the radial menu is "(batch action)".
+
+The nodes which work best with this method of creating undoable batches are Create Field Undo Step (LogiX node), Create Reference Undo Step (LogiX node), Create Type Field Undo Step (LogiX node), and Create Transform Undo Step (LogiX node). If you need to include Create Spawn Undo Step (LogiX node) or Undoable Destroy (LogiX node) in a batch it is recommended to use Begin Undo Batch (LogiX node) instead. 
+}
+
+
+
+FrooxEngine.LogiX.Undo.EndUndoBatch:######################################################################
+{
+The <color=#00FF00>End Undo Batch</color> node is used to explicitly finish the creation of a batch of undoable changes started by a Begin Undo Batch (LogiX node). 
+}
+
+
+FrooxEngine.LogiX.Undo.UndoableDestroy:###################################################################
+{
+The <color=#00FF00>Undoable Destroy</color> node destroys the Target slot and creates an Undo Manager entry when an impulse is received at Create.
+Usage
+
+The PreserveAssets input determines whether assets held under the destroyed hierarchy which are in use by other slots in the world will be preserved under a new slot under the world Assets slot.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created and the Target destroyed. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. This allows that user to undo the destruction of the Target via their radial context menu. 
+}
+
+
+
+
+FrooxEngine.LogiX.WorldModel.ActiveUserRootUser:###########################################################
+{
+The <color=#00FF00>Active User Root User</color> node gets the User from the given User Root.
+}
+
+FrooxEngine.LogiX.WorldModel.HostUser:#####################################################################
+{
+The <color=#00FF00>Host User</color> node outputs a reference to the User who is hosting the current world session. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsLocalUser:##################################################################
+{
+The <color=#00FF00>Is Local User</color> outputs True if the input User is the local user, otherwise False.
+Usage
+Examples
+
+This can be used to locally enable / disable objects for a specific user by driving the Active property of the relevant slot(s). 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.IsNeosDashOpened:#############################################################
+{
+The <color=#00FF00>Is Neos Dash Opened</color> outputs True if the input User has their Neos Dash menu opened, otherwise False.
+Usage
+Examples
+
+ProbablePrime has a tutorial for displaying a visual when a user has their Neos Dash menu open 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsPlatformDashOpened:#########################################################
+{
+The <color=#00FF00>Is Platform Dash Opened</color> outputs True if the input User has their Platform Dash menu opened (e.g. SteamVR menu), otherwise False.
+Usage
+Examples
+
+ProbablePrime has a tutorial for displaying a visual when a user has their Platform Dash menu open 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserHost:###################################################################
+{
+The <color=#00FF00>Is User Host</color> node outputs a boolean value dependent on whether the input User is the host of the current world session. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserInEditMode:#############################################################
+{
+The <color=#00FF00>Is User In Edit Mode</color> node outputs a boolean value dependent on whether the input User is currently in Edit Mode.
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserInKioskMode:############################################################
+{
+The <color=#00FF00>Is User In Kiosk Mode</color> node outputs True if the input User is in kiosk mode, otherwise False. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPatron:#################################################################
+{
+The <color=#00FF00>Is User Patron</color> node outputs True if the input User supports NeosVR development on Patreon, otherwise False.
+Usage
+
+Note that for this node to correctly output 'True' if the input User is a patron, their Patreon and NeosVR accounts must be linked. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPresent:################################################################
+{
+The <color=#00FF00>Is User Present</color> node outputs True if the input User has the current world session focused and is wearing their headset, otherwise False. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPresentInHeadset:#######################################################
+{
+The <color=#00FF00>Is User Present In Headset</color> node outputs True if the input User has their headset on, otherwise False.
+Usage
+
+This node reports on data from proximity sensors which are only present in some headsets. If not supported by a user's hardware, or heuristics (e.g. detecting movement) cannot be used, the default output is True (this is the case for screen mode users). Note that this node will output False if the input User is not present at all in the current world session. The related Is User Present (LogiX node) reports whether a user both has their headset on and has the current world focused. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPresentInWorld:#########################################################
+{
+The <color=#00FF00>Is User Present In World</color> node outputs True if the input User has the current world session focused, otherwise False.
+
+Usage
+
+This node only checks whether a user has the current world focused, it does not report on whether the user has their headset on or not - that information is available from the Is User Present In Headset (LogiX node). The Is User Present (LogiX node) reports whether a user both has their headset on and has the current world focused.
+}
+
+FrooxEngine.LogiX.WorldModel.IsUserSilenced:###############################################################
+{
+Needs a wiki page
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUser:###################################################################
+{
+The <color=#00FF00>Local User</color> node outputs a reference to the Local User.
+Usage
+
+The output of this node will necessarily be different dependent on which user owns the impulse chain under which the Local User node's output is checked.
+
+Imagine world session hosted by Alice where Bob is also present.
+
+    A button is connected via LogiX such that the Local User's Username at time of firing is written to a String variable.
+    If either user presses the button, their username will be written to the variable.
+    If Alice pushes the button Alice's name is written to the variable.
+    If Bob pushes the button Bob's name is written to the variable.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUserRoot:###############################################################
+{
+The <color=#00FF00>Local User Root</color> node outputs the UserRoot reference for the Local User.
+Usage
+
+The UserRoot datatype output can be used with many nodes in the User Root node category. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUserSlot:###############################################################
+{
+The <color=#00FF00>Local User Slot</color> node outputs the Local User's slot reference in the current world session's slot hierarchy. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUserSpace:##############################################################
+{
+The <color=#00FF00>Local User Space</color> node outputs the slot that the local user is parented under.
+Usage
+
+In some worlds, users may be under the management of systems which parent a user to a slot which is other than the world Root Slot. This is common with Spawn Areas which have the Parent User setting enabled or with World Management systems that create a new slot for each user. When such systems exist it is recommended that your systems respect them.
+
+In many setups this node can be used in place of Root Slot (LogiX node).
+
+Examples include:
+
+    Guns
+    Rockets
+    Projectiles
+    Gadgets and Tools that parent things
+
+Examples
+
+If we have a world hierarchy that looks like this:
+
+    Root
+        Users
+            User ProbablePrime - The actual User
+
+If the user spawns an object from their inventory, let's say a Rocket Launcher, it will be parented to the "Users" slot:
+
+    Root
+        Users
+            User ProbablePrime - The actual User
+            Rocket Launcher
+
+If the Rocket Launcher fires a rocket which needs re-parenting using "Local User Space" then it would be parented to the Users Slot:
+
+    Root
+        Users
+            User ProbablePrime - The actual User
+            Rocket Launcher
+            Rocket
+
+If the Root Slot Node is used instead it would be parented to the Root Slot:
+
+    Root
+        Rocket
+        Users
+            User ProbablePrime - The actual User
+            Rocket Launcher
+
+This can mess with world management systems or culling systems. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserMachineID:###############################################################
+{
+The <color=#00FF00>MachineID</color> node outputs a string containing the machine ID of the input User.
+Usage
+
+A User's MachineID is a randomly generated string created on database (re)initialization for the installed copy of Neos. This is not a reliable way to persistently store an ID for each user since will change if a user performs a database reset. For a permanent ID for a specific user, use the UserID node.
+
+However, even if the user is not registered at the same time, this ID can always be obtained, so it is effective for fallback when the user ID cannot be obtained. 
+}
+
+FrooxEngine.LogiX.WorldModel.UserActiveViewTargettingController:##########################################
+{
+The <color=#00FF00>User Active View Targetting Controller</color> node outputs the User's currently active desktop view targetting controller.
+Usage
+
+Possible output values are:
+
+    FirstPersonTargettingController
+    ThirdPersonTargettingController
+    FreeformTargettingController
+    UI_TargettingController
+
+Default output is null if the input User is null or the relevant user is in VR mode. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserDownloadSpeed:###########################################################
+{
+The <color=#00FF00>User Download Speed</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserFPS:#####################################################################
+{
+The <color=#00FF00>User FPS</color> node outputs the current frames per second (FPS), i.e. their framerate, for the input user.
+
+
+Usage
+
+Many people include text in a custom nametag which is driven by this node to advertise that their PC has low FPS (is a potato). 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserFromID:##################################################################
+{
+The <color=#00FF00>User From ID</color> node outputs a reference to the User in the current session corresponding to the input strings.
+Usage
+
+This will successfully output a user reference even if only one of the inputs is connected or valid. If both are provided, the UserID will be matched in preference over the MachineID. If an invalid UserID is provided, the node will attempt to find a valid match based on MachineID. Default output is null. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserFromUsername:############################################################
+{
+The <color=#00FF00>User From Username</color> node outputs a reference to the User in the current session with matching Username.
+Usage
+
+The IgnoreCase input determines whether the input string must match the Username by case. Default is True, i.e. case matching is not important.
+
+
+The AllowPartialMatch input determines whether partial matches will be accepted. Default is False.
+
+
+The matching process tries to find usernames which start with an identical string to the Username input. If multiple users are possible matches, only one is provided as the User output. Priority is taken by users which joined the world earliest. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserHeadOutputDevice:########################################################
+{
+The <color=#00FF00>User Head Output Device</color> node outputs which HMD platform the input User is using.
+Usage
+
+When supplied a User value via LogiX this node will output the HeadOutputDevice Enum value which corresponds to the headset or system that this User is using. Please see the HeadOutputDevice page for a full list of values. Note that not all headset systems have a value and in some cases there are overlaps. This is especially apparent within the SteamVR based systems such as HTC Vive, Cosmos and the Index.
+
+When using this node within Neos, try to make sure that you're covering for as many potential values as possible. Using this value in a conditional for example could unintentionally lock out a User or prevent the LogiX from progressing if they are using an unusual headset. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserJoined:##################################################################
+{
+The <color=#00FF00>User Joined</color> node fires an impulse from OnJoined when a user joins the current world session. It also outputs a reference to the user who joined.
+Usage
+
+The impulse fired from OnJoined is owned by the world host. For a similar node which will also fire when users are respawned see User Spawn. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserLeft:####################################################################
+{
+The <color=#00FF00>User Left</color> node fires an impulse from OnLeft when a user leaves the current world session. It also outputs a reference to the user who left.
+Usage
+
+The impulse fired from OnLeft is owned by the session host.
+
+
+The LeftUser reference will only be available for the duration of the impulse chain fired from OnLeft.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserPing:####################################################################
+{
+The <color=#00FF00>User Ping</color> node outputs the current ping time for the input user.
+
+Usage
+
+The ping time (in milliseconds) corresponds to the time taken between the user's PC sending a message to the world host server and receiving a response, also called the network latency. Lower values are better, higher values may result in noticeable lag. 
+
+}
+
+FrooxEngine.LogiX.WorldModel.UserPlatform:################################################################
+{
+The <color=#00FF00>User Platform</color> node outputs an Enum corresponding to the input User operating system platform. 
+
+Usage
+
+Possible options are:
+
+    Windows
+    OSX
+    Linux
+    Android
+    Other
+
+Default if User is null is -1. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserPrimaryHand:#############################################################
+{
+The <color=#00FF00>User Primary Hand</color> node outputs the primary hand setting of the input User.
+Usage
+
+Output is either Right or Left if a valid User value is present. Otherwise -1. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserQueuedMessages:##########################################################
+{
+Needs Wiki Page
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserRecordingVoiceMessage:###################################################
+{
+The <color=#00FF00>User Recording Voice Message</color> node outputs True if the input User is recording a voice message to one of their Contacts, otherwise False. Default output is False. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserRootSlot:################################################################
+{
+The <color=#00FF00>User Root Slot</color> node outputs the the input User's root slot in the current world session's slot hierarchy.
+Usage
+
+Default output is null unless a valid User is provided. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserSpawn:###################################################################
+{
+The <color=#00FF00>User Spawn</color> fires an impulse from OnSpawn whenever a user is (re)spawned in a world.
+
+Usage
+
+The impulse from OnSpawn is owned by the host user. It fires both on user join and respawn events. The spawned user is available from the SpawnedUser output for the duration of the impulse chain started from OnSpawn. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserUploadSpeed:#############################################################
+{
+The <color=#00FF00>User Upload Speed</color> node. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserUploadSpeedMax:##########################################################
+{
+The <color=#00FF00>User Upload Speed</color> Max node.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserUploadedBytes:###########################################################
+{
+The <color=#00FF00>User Uploaded Bytes</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserUserRoot:################################################################
+{
+The <color=#00FF00>User User Root</color> node outputs a reference to the user root for the input User.
+Usage
+
+The output UserRoot datatype can be used with many nodes in the User Root category. To instead get a user's root slot in the world slot hierarchy use User Root Slot.
+Examples
+
+Avatar Anchor<<->->->-Anchored User->->->-User User Root->->->-Left Hand Position->->->-Float3 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserUsername:################################################################
+{
+The color=#00FF00>User Username</color> node outputs a string containing the input User username.
+Usage
+
+Note that a user's username can be changed under some circumstances (i.e. contacting the Neos team for support). Thus, usernames should not be used as permanent IDs. For that, use the UserID. Default output is null. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserViewReferenceActive:#####################################################
+{
+The <color=#00FF00>User View Reference Active</color> node outputs True if the desktop view reference is active for the input User, otherwise False.
+Usage
+
+A user's view reference can be active when a user is in desktop mode and using either the UI aligned camera or the freeform camera. This also requires that the user's view reference is some distance from their main avatar. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserViewVoiceActive:#########################################################
+{
+The <color=#00FF00>User View Voice Active</color> node outputs True if the input User's voice is being output from their view visual, otherwise False.
+Usage
+
+The view visual is the remote camera visual which may be active in the desktop UI aligned or freeform camera modes. The output for this node is local for each user since whether the input User's voice is output from the view visual or their avatar is determined locally. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserVoiceMode:###############################################################
+{
+The <color=#00FF00>User Voice Mode</color> node returns an Enum value for the current VoiceMode of the input User.
+
+Usage
+
+Possible values are:
+
+    Mute
+    Whisper
+    Normal
+    Shout
+    Broadcast
+
+Default is Mute if the input User is null. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserVR_Active:###############################################################
+{
+The <color=#00FF00>User VR Active</color> node outputs True if the User is in VR mode, otherwise False.
+Usage
+
+Note that this outputs False even if the user started in VR mode and then switched to desktop mode using the F8 keybind. Updates to this value may not automatically propagate to downstream nodes if the User switches between VR and desktop mode - it may need to be specifically evaluated during an impulse chain. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserUserID:##################################################################
+{
+The <color=#00FF00>UserID</color> node outputs a string corresponding to the input User's UserID.
+Usage
+
+A user's UserID is a permanent ID linked to their user account. It commonly has the form U-Username. 
+}
+
+
+###############User Root############################
+FrooxEngine.LogiX.WorldModel.ControllerSlot:########################################################
+{
+The <color=#00FF00>Controller Slot</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.FeetPosition:##########################################################
+{
+The <color=#00FF00>Feet Position</color> node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.FeetRotation:##########################################################
+{
+The <color=#00FF00>Feet Rotation</color> node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.HandSlot:##############################################################
+{
+The <color=#00FF00>Hand Slot</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HeadFacingDirection:###################################################
+{
+The <color=#00FF00>Head Facing Direction</color> node.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.HeadFacingRotation:####################################################
+{
+The <color=#00FF00>Head Facing Rotation</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HeadPosition:##########################################################
+{
+The <color=#00FF00>Head Position</color> node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.HeadRotation:##########################################################
+{
+The <color=#00FF00>Head Rotation</color> node. 
+}
+
+FrooxEngine.LogiX.WorldModel.HeadSlot:##############################################################
+{
+The <color=#00FF00>Head Slot</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HipsPosition:##########################################################
+{
+The <color=#00FF00>Hips Position</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HipsRotation:##########################################################
+{
+The <color=#00FF00>Hips Rotation</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LeftHandPosition:######################################################
+{
+The <color=#00FF00>Left Hand Position</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LeftHandRotation:######################################################
+{
+No wiki page yet... not like it needs one lol
+}
+
+
+FrooxEngine.LogiX.WorldModel.RightHandPosition:#####################################################
+{
+The <color=#00FF00>Right Hand Position</color> node.
+}
+
+FrooxEngine.LogiX.WorldModel.RightHandRotation:#####################################################
+{
+No wiki page yet... not like it needs one lol
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetFeetPosition:#######################################################
+{
+The <color=#00FF00>Set Feet Position</color> node moves the input UserRoot such that the user's feet position is at the input global Position when an impulse is received at Set.
+Usage
+
+The Position input is interpreted in Global coordinate space with a default value of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully moved as a result of an impulse received at Set (even if the user was already exactly at the target Position). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node effectively teleports the user corresponding to the input UserRoot while preserving their rotation and scale. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetFeetRotation:##########################################################
+{
+The <color=#00FF00>Set Feet Rotation</color> node rotates the input UserRoot such that the user's feet rotation is at the input global Rotation when an impulse is received at Set.
+Usage
+
+The Rotation input is interpreted in Global coordinate space with a default value (in Euler angles) of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully rotated as a result of an impulse received at Set (even if the user was already exactly at the target Rotation). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node rotates the user corresponding to the input UserRoot while preserving their position and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadFacingDirection:#####################################################
+{
+No wiki page..
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadFacingRotation:######################################################
+{
+No wiki page..
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadPosition:#############################################################
+{
+The <color=#00FF00>Set Head Position</color> node moves the input UserRoot such that the user's head position is at the input global Position when an impulse is received at Set.
+Usage
+
+The Position input is interpreted in Global coordinate space with a default value of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully moved as a result of an impulse received at Set (even if the user was already exactly at the target Position). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node effectively teleports the user corresponding to the input UserRoot while preserving their rotation and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadRotation:#############################################################
+{
+The <color=#00FF00>Set Head Rotation</color> node rotates the input UserRoot such that the user's head rotation is at the input global Rotation when an impulse is received at Set.
+Usage
+
+The Rotation input is interpreted in Global coordinate space with a default value (in Euler angles) of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully rotated as a result of an impulse received at Set (even if the user was already exactly at the target Rotation). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node rotates the user corresponding to the input UserRoot while preserving their position and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHipsPosition:#############################################################
+{
+The <color=#00FF00>Set Hips Position</color> node moves the input UserRoot such that the user's hip position is at the input global Position when an impulse is received at Set.
+Usage
+
+The Position input is interpreted in Global coordinate space with a default value of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully moved as a result of an impulse received at Set (even if the user was already exactly at the target Position). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node effectively teleports the user corresponding to the input UserRoot while preserving their rotation and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHipsRotation:#############################################################
+{
+The <color=#00FF00>Set Hips Rotation</color> node rotates the input UserRoot such that the user's hip rotation is at the input global Rotation when an impulse is received at Set.
+Usage
+
+The Rotation input is interpreted in Global coordinate space with a default value (in Euler angles) of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully rotated as a result of an impulse received at Set (even if the user was already exactly at the target Rotation). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node rotates the user corresponding to the input UserRoot while preserving their position and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetUserScale:################################################################
+{
+No Wiki Documentation
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserRootGlobalScale:########################################################
+{
+The <color=#00FF00>User Root Global Scale</color> node.
+}
+
+FrooxEngine.LogiX.Data.ClearDynamicVariables:##############################################################
+{
+The <color=#00FF00>Clear Dynamic Variables</color> node will attempt to delete all DynamicField<T>, DynamicReference<T>, DynamicReferenceVariable<T>, and DynamicValueVariable<T> components bound to a DynamicVariableSpace with the input SpaceName when an impulse is received at Clear.
+Usage
+
+The Target input specifies where in the world hierarchy the node should start searching for a DynamicVariableSpace, by default this is the root slot. The node searches for a DynamicVariableSpace with the input SpaceName starting with the Target slot, if no exact match is found it will then perform an upward search of the world hierarchy.
+
+
+The OnNotFound output will fire an impulse if an impulse is received at Clear but the node is unable to find a DynamicVariableSpace with the input SpaceName.
+
+
+The OnCleared output will fire an impulse if a matching DynamicVariableSpace is found. Under this condition, this output will fire regardless of whether any dynamic variable components were deleted.
+
+
+The ClearedCount output provides the number of components which were deleted. This data is only available for the duration of the impulse chain fired from OnCleared. 
+}
+
+
+
+FrooxEngine.LogiX.Data.ClearDynamicVariablesOfType`1[T]:###################################################
+{
+Clear <color=#00FF00>Dynamic Variables Of Type`1</color> (Logix node)
+
+The Clear Dynamic Variables node will attempt to delete all DynamicField<T> and DynamicValueVariable<T> components (for value types) or DynamicReference<T> and DynamicReferenceVariable<T> components (for reference types) of the same type as the node which are bound to a DynamicVariableSpace with matching SpaceName in the Target slot's hierarchy.
+Usage
+
+The Target input specifies where in the world hierarchy the node should start searching for a DynamicVariableSpace, by default this is the root slot. The node searches for a DynamicVariableSpace with the input SpaceName starting with the Target slot, if no exact match is found it will then perform an upward search of the world hierarchy.
+
+
+The OnNotFound output will fire an impulse if an impulse is received at Clear but the node is unable to find a DynamicVariableSpace with the input SpaceName.
+
+
+The OnCleared output will fire an impulse if a matching DynamicVariableSpace is found. Under this condition, this output will fire regardless of whether any dynamic variable components were deleted.
+
+
+The ClearedCount output provides the number of components which were deleted. This data is only available for the duration of the impulse chain fired from OnCleared.
+
+
+When spawning this node from the node browser, it is possible to select one of a number of types for the node - only components of matching types will be deleted by this node when an impulse is received.
+
+}
+
+
+
+
+FrooxEngine.LogiX.Data.CreateDynamicVariable`1[T]:#########################################################
+{
+<color=#00FF00>Create Dynamic Variable`1</color> (LogiX node)
+
+Introduction
+
+The Create Dynamic Variable`1 node attempts to create a Dynamic Variable of the specified Type on the slot of the nearest DynamicVariableSpace to the Target Slot.
+
+As usual, precautions related to the duplication and reparenting of dynamic variables apply, as described on the Dynamic Variables page.
+Usage
+
+Depending on the type of InitialValue, this component will attach a DynamicValueVariable`1 or DynamicReferenceVariable`1 component to the slot containing the nearest DynamicVariableSpace.
+
+InitialValue is shown as being a T value for demonstration purposes, however it will be composed of the type selected in the LogiX browser, or specified in the Component Attacher.
+
+When using the Component Attacher, you may specify any valid FrooxEngine or BaseX type by following the instructions on the Creating a custom LogiX Node page.
+
+CreateDirectlyOnTarget overrides the default functionality of this node, and creates the Dynamic Variable directly on the Target slot, instead of the slot of the nearest DynamicVariableSpace.
+
+CreateNonPersistent causes the resultant Dynamic Variable to be created as a non-persistent component, which will not be saved when the object or world is reloaded.
+
+}
+
+
+
+
+FrooxEngine.LogiX.Data.DeleteDynamicVariable`[T]:#########################################################
+{
+The <color=#00FF00>Delete Dynamic Variable`1</color> node will attempt to delete DynamicField<T> and DynamicValueVariable<T> components (for value types) or DynamicReference<T> and DynamicReferenceVariable<T> components (for reference types) of the same type as the node with an exactly matching VariableName.
+Usage
+
+The Target input specifies where in the world hierarchy the node should start searching for dynamic variables bound to a DynamicVariableSpace, by default this is the root slot. The node searches for a DynamicVariableSpace with matching variables starting with the Target slot, if no exact match is found it will then perform an upward search of the world hierarchy.
+
+
+The OnCleared output will fire an impulse if a DynamicVariableSpace with a matching dynamic variable is found.
+
+
+The OnNotFound output will fire an impulse if an impulse is received at Delete but the node is unable to find a DynamicVariableSpace with matching dynamic variable.
+
+
+When spawning this node from the node browser, it is possible to select one of a number of types for the node - only components of matching types will be deleted by this node when an impulse is received. 
+}
+
+
+
+FrooxEngine.LogiX.Data.DynamicVariableInputWithEvents`1[T]:###############################################
+{
+Needs documented
+}
+
+
+
+FrooxEngine.LogiX.Data.DynamicVariableInput`1[T]:#########################################################
+{
+
+<color=#00FF00>Dynamic Variable Input`1</color>
+'Dynamic Variable Input`1' LogiX node
+Inputs
+Outputs
+  	Dummy 	Value
+  	Bool 	FoundValue
+
+The Dynamic Variable Input`1 node attempts to read the value of the given Dynamic Variable of the specified Type from the Slot that the node is packed into. The name of the dynamic variable is entered into the text field of the node. Value is shown as being a value for demonstration purposes, however it will be composed of the type selected in the LogiX browser, or specified in the component window.
+
+When using the Components browser, you may specify any valid FrooxEngine or BaseX type by creating a component, and unpacking it to create a visual.
+
+}
+
+
+
+FrooxEngine.LogiX.Data.ReadCloudVariable`1[T]:############################################################
+{
+
+<color=#00FF00>Read Cloud Variable`1</color>
+'Read Cloud Variable`1' LogiX node
+Inputs
+  	Impulse 	Read
+  	String 	Path
+  	String 	VariableOwnerId
+Outputs
+  	Impulse 	OnReadRequest
+  	Impulse 	OnRead
+  	Impulse 	OnFail
+  	Float 	Value
+
+The Read Cloud Variable`1 node is used to read a Value from an existing cloud variable specified by Path for the user specified in VariableOwnerId
+
+}
+
+
+FrooxEngine.LogiX.Data.ReadDynamicVariable`1[T]:##########################################################
+{
+The <color=#00FF00>Read Dynamic Variable`1</color> node attempts to read the value of a Dynamic Variable of the specified Type from the Source Slot. Value is shown as being a Dummy value for display purposes, however it will be composed of the type selected in the LogiX browser, or specified in the component window.
+
+When using the Components browser, you may specify any valid FrooxEngine or BaseX type by creating a component, and unpacking it to create a visual.
+Usage
+
+Inputs:
+Name 	Type 	Description
+
+[Source] <color=#00FF00>Slot</color> The slot where the search for the variable begins. The default is the slot that this component is in.
+
+[VariableName] <color=#00FF00>String</color> 	The name of the variable to read. If prefixed by a name with a slash, the string before the slash is the space name. The default is a blank name.
+
+
+Outputs
+Name 	Type 	Description
+
+[Value] color=#00FF00>Dummy</color> 	The value of the variable. If the VariableName (excluding the space) is empty, or the Source is null then this will be the default value for variables of this type: null for reference types and strings, zero for numeric types, false for booleans, identity for quaternions and matrices.
+
+[FoundValue] 	<color=#00FF00>Bool</color> 	Whether the variable was found. If the VariableName (excluding the space) is empty, or the Source is null then this will be false. 
+
+}
+
+
+FrooxEngine.LogiX.Data.WriteCloudVariable`1[T]:###########################################################
+{
+The <color=#00FF00>Write Cloud Variable`1</color> node is used to write the specified Value to an existing cloud variable specified by Path
+}
+
+
+
+
+FrooxEngine.LogiX.Data.WriteDynamicVariable`1[T]:########################################################
+{
+The <color=#00FF00>Write Dynamic Variable`1</color> node attempts to write the value of a Dynamic Variable of the specified Type in the Target Slot, or in the node itself if no slot is specified. Value is shown as being a Category:Types:Dummy value for demonstration purposes, however it will be composed of the type selected in the LogiX browser, or specified in the component window.
+
+When using the Components browser, you may specify any valid FrooxEngine or BaseX type by creating a component, and unpacking it to create a visual.
+
+Usage
+
+Inputs:
+Name 	Type 	Description
+[Write] 	<color=#00FF00>Impulse</color> 	The impulse to start the write.
+
+[Target] 	olor=#00FF00>Slot</color> The slot where the search for the variable begins. If not specified, the slot is that of the node itself.
+
+[VariableName] 	<color=#00FF00>String</color> 	The name of the variable to write. If prefixed by a name with a slash, the string before the slash is the space name.
+
+Outputs:
+Name 	Type 	Description
+[OnSuccess] 	<color=#00FF00>Impulse</color> 	An impulse output when the write is successful.
+
+[OnFailed] 	<color=#00FF00>Impulse</color> 	An impulse output when the write is unsuccessful. This   
+                                                happens when the variable could not be found.
+}
+
+
+FrooxEngine.LogiX.Data.WriteOrCreateDynamicVariable`1[T]:#################################################
+{
+Needs documented
+}
+
+
+
+#############./Storage######################
+
+
+
+
+
+
+
+
+
+
+
+
+
+FrooxEngine.LogiX.Nodes.Visualization.FlashHighlightHierarchy:#############################################
+{
+The <color=#00FF00>Flash Highlight Hierarchy</color> node temporarily highlights objects under the target HierarchyRoot when an impulse is received at Flash.
+Usage
+
+The ExcludeColliders input determines whether collider components are excluded from being highlighted. Default is false (i.e colliders will be highlighted).
+
+
+The ExcludeMeshes input determines whether meshes referenced by MeshRenderers or SkinnedMeshRenderers are excluded from being highlighted. Default is false (i.e. meshes will be highlighted).
+
+
+The ExcludeDisabled input determines whether deactived collider or renderer components will be excluded from being highlighted. If this input is true, disabled components (or ones under inactive slot hierarches) will not be highlighted. Default is false (i.e. everything will be highlighted).
+
+
+The Duration input controls how long the highlight visual will persist in seconds. Default is 0.5 seconds.
+
+
+The Color input controls the color of the highlight visual. Default is white.
+
+
+The OnDone output fires an impulse when the target hierarchy has been highlighted after an impulse was received at Flash. An impulse will be fired as long as a valid HierarchyRoot is available, regardless of whether any highlight visual was actually displayed.
+
+
+The FlashRoot output provides the new slot on which the components required for the highlight visual are placed. This is only available for the duration of the impulse chain starting from OnDone
+
+
+The highilght visual is produced by spawning a non-persistent slot under the world root called HighlightFlash. This contains an OverlapFresnelMaterial and several Tween<color> components. The material corresponds to the highlight color and the tweens control how the color changes over the duration of the effect. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.FocusWorld:###################################################################
+{
+The <color=#00FF00>Focus World</color> node focuses the world corresponding to the input URL if it is already open.
+
+Usage
+
+When an impulse is received at the Focus input, and a valid URL is provided, the user is swapped to the world linked to the URL. This requires that the user have the world open at the time. If the CloseCurrent value is True (False by default) the world that the user leaves is closed after the user changes focus. This can result in loss of unsaved changes! The form of URL required is that found in the URL field of a world orb WorldOrb component. 
+
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.OpenWorld:####################################################################
+{
+The <color=#00FF00>Open World</color> node starts a new session for the world corresponding to the URL input.
+
+Usage
+
+When an impulse is received at the Open input this node starts a new session of the world corresponding to the input URL. The correct form of URL is that found under the URL field of a world orb WorldOrb component. If successful, the opened world will be focused for the user unless AutoFocus is False (True by default). A new session will be started, even if the user is already present in a session of that world, if GetExisting is False (True by default). The usual loading indicator will show while the world loads unless LoadingIndicator is False (True by default). If MakePrivate is True the world access level is set to private (i.e. only invited users can join) (False by default). If the enum WorldRelation input is 'Replace' the newly opened world will be focused for the user and the old world will be closed without saving if they have the priviledges to do so - this will override AutoFocus = False.
+
+When the OnWorldReady impulse fires, the SessionURL and SessionId outputs provide their respective values only for the duration of time taken for any impulse chain initiated by OnWorldReady to complete. 
+
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldAccessLevel:#############################################################
+{
+The <color=#00FF00>World Access Level</color> node outputs the category of people (e.g. Friends) which are able to join the current world.
+
+Usage
+
+Output levels correspond to the radio setting under 'Who can join this world?' in the Session menu of the dash. Private = Nobody / Invited Users; LAN = LAN users; Friends = Friends; Registered Users = Registered Users; Anyone = Anyone.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldAwayKickEnabled:#########################################################
+{
+<color=#00FF00>World Away Kick Enabled</color> (LogiX node)
+
+World Away Kick Enabled
+'World Away Kick Enabled' LogiX node
+Inputs
+Outputs
+  	Bool 	Enabled
+
+The World Away Kick Enabled node returns whether the current session's auto-kick option is enabled. 
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldAwayKickMinutes:#########################################################
+{
+The <color=#00FF00>World Away Kick</color> Minutes node returns the number of minutes required for the current session's auto-kick to trigger.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldDescription:#############################################################
+{
+The <color=#00FF00>World Description</color> node outputs the description metadata for the current world.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldHideFromListing:#########################################################
+{
+The <color=#00FF00>World Hide From Listing</color> node returns whether the current session is in hidden mode. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldMaxUsers:################################################################
+{
+The <color=#00FF00>World Max Users</color> node outputs the maxiumum number of users able to join the world session. 
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldMobileFriendly:##########################################################
+{
+The <color=#00FF00>World Mobile Friendly</color> node outputs whether the current world is tagged as 'Mobile Friendly'.
+
+Usage
+
+Note: the Mobile Friendly property is set voluntarily by users, so does not guarantee that the world will actually run well on weaker/mobile hardware. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldName:####################################################################
+{
+The <color=#00FF00>World Name</color> node outputs the name of the current world.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSaved:##################################################################
+{
+The <color=#00FF00>World Saved</color> node fires an impulse whenever the current world is saved.
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSessionID:##############################################################
+{
+The <color=#00FF00>World Session ID</color> node outputs the session ID for the current world session.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSessionURL:#############################################################
+{
+The <color=#00FF00>World Session URL</color> node outputs the session URL for the current world session.
+}
+
+
+FrooxEngine.LogiX.WorldNodes.WorldSessionWebURL:##########################################################
+{
+The <color=#00FF00>World Session Web URL</color> node outputs the web session URL for the current world session. 
+
+Usage
+
+Attempting to open the provided URL in a web browser should attempt to open the target Neos session.
+Examples
+
+Sending a value from World Session Web URL to a web server to render on a web page, would allow users who browse the web page to auto-startup Neos with the Neos client attempting to connect to the target server. 
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldURL:####################################################################
+{
+The <color=#00FF00>World URL</color> node outputs the world URL for the current world.
+}
+
+
+
+FrooxEngine.LogiX.WorldNodes.WorldUserCount:##############################################################
+{
+The <color=#00FF00>World User Count</color> node outputs the number of users currently in the world. 
+}
+
 
 
 
