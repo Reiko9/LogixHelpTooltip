@@ -1,0 +1,657 @@
+FrooxEngine.LogiX.WorldModel.ActiveUserRootUser:###########################################################
+{
+The <color=#00FF00>Active User Root User</color> node gets the User from the given User Root.
+}
+
+FrooxEngine.LogiX.WorldModel.HostUser:#####################################################################
+{
+The <color=#00FF00>Host User</color> node outputs a reference to the User who is hosting the current world session. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsLocalUser:##################################################################
+{
+The <color=#00FF00>Is Local User</color> outputs True if the input User is the local user, otherwise False.
+Usage
+Examples
+
+This can be used to locally enable / disable objects for a specific user by driving the Active property of the relevant slot(s). 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.IsNeosDashOpened:#############################################################
+{
+The <color=#00FF00>Is Neos Dash Opened</color> outputs True if the input User has their Neos Dash menu opened, otherwise False.
+Usage
+Examples
+
+ProbablePrime has a tutorial for displaying a visual when a user has their Neos Dash menu open 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsPlatformDashOpened:#########################################################
+{
+The <color=#00FF00>Is Platform Dash Opened</color> outputs True if the input User has their Platform Dash menu opened (e.g. SteamVR menu), otherwise False.
+Usage
+Examples
+
+ProbablePrime has a tutorial for displaying a visual when a user has their Platform Dash menu open 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserHost:###################################################################
+{
+The <color=#00FF00>Is User Host</color> node outputs a boolean value dependent on whether the input User is the host of the current world session. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserInEditMode:#############################################################
+{
+The <color=#00FF00>Is User In Edit Mode</color> node outputs a boolean value dependent on whether the input User is currently in Edit Mode.
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserInKioskMode:############################################################
+{
+The <color=#00FF00>Is User In Kiosk Mode</color> node outputs True if the input User is in kiosk mode, otherwise False. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPatron:#################################################################
+{
+The <color=#00FF00>Is User Patron</color> node outputs True if the input User supports NeosVR development on Patreon, otherwise False.
+Usage
+
+Note that for this node to correctly output 'True' if the input User is a patron, their Patreon and NeosVR accounts must be linked. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPresent:################################################################
+{
+The <color=#00FF00>Is User Present</color> node outputs True if the input User has the current world session focused and is wearing their headset, otherwise False. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPresentInHeadset:#######################################################
+{
+The <color=#00FF00>Is User Present In Headset</color> node outputs True if the input User has their headset on, otherwise False.
+Usage
+
+This node reports on data from proximity sensors which are only present in some headsets. If not supported by a user's hardware, or heuristics (e.g. detecting movement) cannot be used, the default output is True (this is the case for screen mode users). Note that this node will output False if the input User is not present at all in the current world session. The related Is User Present (LogiX node) reports whether a user both has their headset on and has the current world focused. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.IsUserPresentInWorld:#########################################################
+{
+The <color=#00FF00>Is User Present In World</color> node outputs True if the input User has the current world session focused, otherwise False.
+
+Usage
+
+This node only checks whether a user has the current world focused, it does not report on whether the user has their headset on or not - that information is available from the Is User Present In Headset (LogiX node). The Is User Present (LogiX node) reports whether a user both has their headset on and has the current world focused.
+}
+
+FrooxEngine.LogiX.WorldModel.IsUserSilenced:###############################################################
+{
+Needs a wiki page
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUser:###################################################################
+{
+The <color=#00FF00>Local User</color> node outputs a reference to the Local User.
+Usage
+
+The output of this node will necessarily be different dependent on which user owns the impulse chain under which the Local User node's output is checked.
+
+Imagine world session hosted by Alice where Bob is also present.
+
+    A button is connected via LogiX such that the Local User's Username at time of firing is written to a String variable.
+    If either user presses the button, their username will be written to the variable.
+    If Alice pushes the button Alice's name is written to the variable.
+    If Bob pushes the button Bob's name is written to the variable.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUserRoot:###############################################################
+{
+The <color=#00FF00>Local User Root</color> node outputs the UserRoot reference for the Local User.
+Usage
+
+The UserRoot datatype output can be used with many nodes in the User Root node category. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUserSlot:###############################################################
+{
+The <color=#00FF00>Local User Slot</color> node outputs the Local User's slot reference in the current world session's slot hierarchy. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalUserSpace:##############################################################
+{
+The <color=#00FF00>Local User Space</color> node outputs the slot that the local user is parented under.
+Usage
+
+In some worlds, users may be under the management of systems which parent a user to a slot which is other than the world Root Slot. This is common with Spawn Areas which have the Parent User setting enabled or with World Management systems that create a new slot for each user. When such systems exist it is recommended that your systems respect them.
+
+In many setups this node can be used in place of Root Slot (LogiX node).
+
+Examples include:
+
+    Guns
+    Rockets
+    Projectiles
+    Gadgets and Tools that parent things
+
+Examples
+
+If we have a world hierarchy that looks like this:
+
+    Root
+        Users
+            User ProbablePrime - The actual User
+
+If the user spawns an object from their inventory, let's say a Rocket Launcher, it will be parented to the "Users" slot:
+
+    Root
+        Users
+            User ProbablePrime - The actual User
+            Rocket Launcher
+
+If the Rocket Launcher fires a rocket which needs re-parenting using "Local User Space" then it would be parented to the Users Slot:
+
+    Root
+        Users
+            User ProbablePrime - The actual User
+            Rocket Launcher
+            Rocket
+
+If the Root Slot Node is used instead it would be parented to the Root Slot:
+
+    Root
+        Rocket
+        Users
+            User ProbablePrime - The actual User
+            Rocket Launcher
+
+This can mess with world management systems or culling systems. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserMachineID:###############################################################
+{
+The <color=#00FF00>MachineID</color> node outputs a string containing the machine ID of the input User.
+Usage
+
+A User's MachineID is a randomly generated string created on database (re)initialization for the installed copy of Neos. This is not a reliable way to persistently store an ID for each user since will change if a user performs a database reset. For a permanent ID for a specific user, use the UserID node.
+
+However, even if the user is not registered at the same time, this ID can always be obtained, so it is effective for fallback when the user ID cannot be obtained. 
+}
+
+FrooxEngine.LogiX.WorldModel.UserActiveViewTargettingController:##########################################
+{
+The <color=#00FF00>User Active View Targetting Controller</color> node outputs the User's currently active desktop view targetting controller.
+Usage
+
+Possible output values are:
+
+    FirstPersonTargettingController
+    ThirdPersonTargettingController
+    FreeformTargettingController
+    UI_TargettingController
+
+Default output is null if the input User is null or the relevant user is in VR mode. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserDownloadSpeed:###########################################################
+{
+The <color=#00FF00>User Download Speed</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserFPS:#####################################################################
+{
+The <color=#00FF00>User FPS</color> node outputs the current frames per second (FPS), i.e. their framerate, for the input user.
+
+
+Usage
+
+Many people include text in a custom nametag which is driven by this node to advertise that their PC has low FPS (is a potato). 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserFromID:##################################################################
+{
+The <color=#00FF00>User From ID</color> node outputs a reference to the User in the current session corresponding to the input strings.
+Usage
+
+This will successfully output a user reference even if only one of the inputs is connected or valid. If both are provided, the UserID will be matched in preference over the MachineID. If an invalid UserID is provided, the node will attempt to find a valid match based on MachineID. Default output is null. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserFromUsername:############################################################
+{
+The <color=#00FF00>User From Username</color> node outputs a reference to the User in the current session with matching Username.
+Usage
+
+The IgnoreCase input determines whether the input string must match the Username by case. Default is True, i.e. case matching is not important.
+
+
+The AllowPartialMatch input determines whether partial matches will be accepted. Default is False.
+
+
+The matching process tries to find usernames which start with an identical string to the Username input. If multiple users are possible matches, only one is provided as the User output. Priority is taken by users which joined the world earliest. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserHeadOutputDevice:########################################################
+{
+The <color=#00FF00>User Head Output Device</color> node outputs which HMD platform the input User is using.
+Usage
+
+When supplied a User value via LogiX this node will output the HeadOutputDevice Enum value which corresponds to the headset or system that this User is using. Please see the HeadOutputDevice page for a full list of values. Note that not all headset systems have a value and in some cases there are overlaps. This is especially apparent within the SteamVR based systems such as HTC Vive, Cosmos and the Index.
+
+When using this node within Neos, try to make sure that you're covering for as many potential values as possible. Using this value in a conditional for example could unintentionally lock out a User or prevent the LogiX from progressing if they are using an unusual headset. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserJoined:##################################################################
+{
+The <color=#00FF00>User Joined</color> node fires an impulse from OnJoined when a user joins the current world session. It also outputs a reference to the user who joined.
+Usage
+
+The impulse fired from OnJoined is owned by the world host. For a similar node which will also fire when users are respawned see User Spawn. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserLeft:####################################################################
+{
+The <color=#00FF00>User Left</color> node fires an impulse from OnLeft when a user leaves the current world session. It also outputs a reference to the user who left.
+Usage
+
+The impulse fired from OnLeft is owned by the session host.
+
+
+The LeftUser reference will only be available for the duration of the impulse chain fired from OnLeft.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserPing:####################################################################
+{
+The <color=#00FF00>User Ping</color> node outputs the current ping time for the input user.
+
+Usage
+
+The ping time (in milliseconds) corresponds to the time taken between the user's PC sending a message to the world host server and receiving a response, also called the network latency. Lower values are better, higher values may result in noticeable lag. 
+
+}
+
+FrooxEngine.LogiX.WorldModel.UserPlatform:################################################################
+{
+The <color=#00FF00>User Platform</color> node outputs an Enum corresponding to the input User operating system platform. 
+
+Usage
+
+Possible options are:
+
+    Windows
+    OSX
+    Linux
+    Android
+    Other
+
+Default if User is null is -1. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserPrimaryHand:#############################################################
+{
+The <color=#00FF00>User Primary Hand</color> node outputs the primary hand setting of the input User.
+Usage
+
+Output is either Right or Left if a valid User value is present. Otherwise -1. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserQueuedMessages:##########################################################
+{
+Needs Wiki Page
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserRecordingVoiceMessage:###################################################
+{
+The <color=#00FF00>User Recording Voice Message</color> node outputs True if the input User is recording a voice message to one of their Contacts, otherwise False. Default output is False. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserRootSlot:################################################################
+{
+The <color=#00FF00>User Root Slot</color> node outputs the the input User's root slot in the current world session's slot hierarchy.
+Usage
+
+Default output is null unless a valid User is provided. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserSpawn:###################################################################
+{
+The <color=#00FF00>User Spawn</color> fires an impulse from OnSpawn whenever a user is (re)spawned in a world.
+
+Usage
+
+The impulse from OnSpawn is owned by the host user. It fires both on user join and respawn events. The spawned user is available from the SpawnedUser output for the duration of the impulse chain started from OnSpawn. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserUploadSpeed:#############################################################
+{
+The <color=#00FF00>User Upload Speed</color> node. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserUploadSpeedMax:##########################################################
+{
+The <color=#00FF00>User Upload Speed</color> Max node.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserUploadedBytes:###########################################################
+{
+The <color=#00FF00>User Uploaded Bytes</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserUserRoot:################################################################
+{
+The <color=#00FF00>User User Root</color> node outputs a reference to the user root for the input User.
+Usage
+
+The output UserRoot datatype can be used with many nodes in the User Root category. To instead get a user's root slot in the world slot hierarchy use User Root Slot.
+Examples
+
+Avatar Anchor<<->->->-Anchored User->->->-User User Root->->->-Left Hand Position->->->-Float3 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserUsername:################################################################
+{
+The color=#00FF00>User Username</color> node outputs a string containing the input User username.
+Usage
+
+Note that a user's username can be changed under some circumstances (i.e. contacting the Neos team for support). Thus, usernames should not be used as permanent IDs. For that, use the UserID. Default output is null. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserViewReferenceActive:#####################################################
+{
+The <color=#00FF00>User View Reference Active</color> node outputs True if the desktop view reference is active for the input User, otherwise False.
+Usage
+
+A user's view reference can be active when a user is in desktop mode and using either the UI aligned camera or the freeform camera. This also requires that the user's view reference is some distance from their main avatar. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserViewVoiceActive:#########################################################
+{
+The <color=#00FF00>User View Voice Active</color> node outputs True if the input User's voice is being output from their view visual, otherwise False.
+Usage
+
+The view visual is the remote camera visual which may be active in the desktop UI aligned or freeform camera modes. The output for this node is local for each user since whether the input User's voice is output from the view visual or their avatar is determined locally. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserVoiceMode:###############################################################
+{
+The <color=#00FF00>User Voice Mode</color> node returns an Enum value for the current VoiceMode of the input User.
+
+Usage
+
+Possible values are:
+
+    Mute
+    Whisper
+    Normal
+    Shout
+    Broadcast
+
+Default is Mute if the input User is null. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.UserVR_Active:###############################################################
+{
+The <color=#00FF00>User VR Active</color> node outputs True if the User is in VR mode, otherwise False.
+Usage
+
+Note that this outputs False even if the user started in VR mode and then switched to desktop mode using the F8 keybind. Updates to this value may not automatically propagate to downstream nodes if the User switches between VR and desktop mode - it may need to be specifically evaluated during an impulse chain. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserUserID:##################################################################
+{
+The <color=#00FF00>UserID</color> node outputs a string corresponding to the input User's UserID.
+Usage
+
+A user's UserID is a permanent ID linked to their user account. It commonly has the form U-Username. 
+}
+
+
+###############User Root############################
+FrooxEngine.LogiX.WorldModel.ControllerSlot:########################################################
+{
+The <color=#00FF00>Controller Slot</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.FeetPosition:##########################################################
+{
+The <color=#00FF00>Feet Position</color> node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.FeetRotation:##########################################################
+{
+The <color=#00FF00>Feet Rotation</color> node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.HandSlot:##############################################################
+{
+The <color=#00FF00>Hand Slot</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HeadFacingDirection:###################################################
+{
+The <color=#00FF00>Head Facing Direction</color> node.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.HeadFacingRotation:####################################################
+{
+The <color=#00FF00>Head Facing Rotation</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HeadPosition:##########################################################
+{
+The <color=#00FF00>Head Position</color> node. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.HeadRotation:##########################################################
+{
+The <color=#00FF00>Head Rotation</color> node. 
+}
+
+FrooxEngine.LogiX.WorldModel.HeadSlot:##############################################################
+{
+The <color=#00FF00>Head Slot</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HipsPosition:##########################################################
+{
+The <color=#00FF00>Hips Position</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.HipsRotation:##########################################################
+{
+The <color=#00FF00>Hips Rotation</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LeftHandPosition:######################################################
+{
+The <color=#00FF00>Left Hand Position</color> node.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LeftHandRotation:######################################################
+{
+No wiki page yet... not like it needs one lol
+}
+
+
+FrooxEngine.LogiX.WorldModel.RightHandPosition:#####################################################
+{
+The <color=#00FF00>Right Hand Position</color> node.
+}
+
+FrooxEngine.LogiX.WorldModel.RightHandRotation:#####################################################
+{
+No wiki page yet... not like it needs one lol
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetFeetPosition:#######################################################
+{
+The <color=#00FF00>Set Feet Position</color> node moves the input UserRoot such that the user's feet position is at the input global Position when an impulse is received at Set.
+Usage
+
+The Position input is interpreted in Global coordinate space with a default value of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully moved as a result of an impulse received at Set (even if the user was already exactly at the target Position). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node effectively teleports the user corresponding to the input UserRoot while preserving their rotation and scale. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetFeetRotation:##########################################################
+{
+The <color=#00FF00>Set Feet Rotation</color> node rotates the input UserRoot such that the user's feet rotation is at the input global Rotation when an impulse is received at Set.
+Usage
+
+The Rotation input is interpreted in Global coordinate space with a default value (in Euler angles) of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully rotated as a result of an impulse received at Set (even if the user was already exactly at the target Rotation). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node rotates the user corresponding to the input UserRoot while preserving their position and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadFacingDirection:#####################################################
+{
+No wiki page..
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadFacingRotation:######################################################
+{
+No wiki page..
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadPosition:#############################################################
+{
+The <color=#00FF00>Set Head Position</color> node moves the input UserRoot such that the user's head position is at the input global Position when an impulse is received at Set.
+Usage
+
+The Position input is interpreted in Global coordinate space with a default value of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully moved as a result of an impulse received at Set (even if the user was already exactly at the target Position). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node effectively teleports the user corresponding to the input UserRoot while preserving their rotation and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHeadRotation:#############################################################
+{
+The <color=#00FF00>Set Head Rotation</color> node rotates the input UserRoot such that the user's head rotation is at the input global Rotation when an impulse is received at Set.
+Usage
+
+The Rotation input is interpreted in Global coordinate space with a default value (in Euler angles) of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully rotated as a result of an impulse received at Set (even if the user was already exactly at the target Rotation). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node rotates the user corresponding to the input UserRoot while preserving their position and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHipsPosition:#############################################################
+{
+The <color=#00FF00>Set Hips Position</color> node moves the input UserRoot such that the user's hip position is at the input global Position when an impulse is received at Set.
+Usage
+
+The Position input is interpreted in Global coordinate space with a default value of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully moved as a result of an impulse received at Set (even if the user was already exactly at the target Position). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node effectively teleports the user corresponding to the input UserRoot while preserving their rotation and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetHipsRotation:#############################################################
+{
+The <color=#00FF00>Set Hips Rotation</color> node rotates the input UserRoot such that the user's hip rotation is at the input global Rotation when an impulse is received at Set.
+Usage
+
+The Rotation input is interpreted in Global coordinate space with a default value (in Euler angles) of [0;0;0].
+
+
+The OnSet output fires an impulse when the input UserRoot has been successfully rotated as a result of an impulse received at Set (even if the user was already exactly at the target Rotation). An impulse will not be fired if there is no valid UserRoot input.
+
+
+This node rotates the user corresponding to the input UserRoot while preserving their position and scale. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetUserScale:################################################################
+{
+No Wiki Documentation
+}
+
+
+FrooxEngine.LogiX.WorldModel.UserRootGlobalScale:########################################################
+{
+The <color=#00FF00>User Root Global Scale</color> node.
+}
+
