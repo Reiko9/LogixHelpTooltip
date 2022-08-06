@@ -1,0 +1,437 @@
+FrooxEngine.LogiX.WorldModel.GetBackward:##################################################################
+{
+The <color=#00FF00>Backward</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's negative Z coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetDown:######################################################################
+{
+The <color=#00FF00>Down/color> node outputs the vector in global coordinate space which is parallel to the Instance slot's negative Y coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GetForward:###################################################################
+{
+The <color=#00FF00>Forward</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's positive Z coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GlobalDirectionToLocal:#######################################################
+{
+The <color=#00FF00>Global Direction To Local</color> node takes the input GlobalDirection vector and outputs the equivalent LocalDirection vector relative to the Instance slot's local coordinate space.
+Usage
+
+Note that this node only takes into account the relative rotation between the global and local coordinate spaces when calculating the conversion, the scale of the Instance slot does not affect the output. If scale is important for a calculation use Global Vector To Local. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GlobalPointToLocal:###########################################################
+{
+The <color=#00FF00>Global Point To Local</color> node takes the input GlobalPoint position vector and outputs the equivalent LocalPoint position vector relative to the Instance slot's local coordinate space.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GlobalRotationToLocal:########################################################
+{
+The <color=#00FF00>Global Rotation To Local</color> node takes an input GlobalRotation floatQ and outputs the equivalent LocalRotation floatQ rotation relative to the Instance slot's local coordinate space.
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.GlobalScaleToLocal:###########################################################
+{
+The <color=#00FF00>Global Scale To Local</color> node takes the input GlobalScale vector and outputs the equivalent LocalScale vector relative to the Instance slot's local coordinate space. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GlobalTransform:###########################################################
+{
+The <color=#00FF00>Global Transform</color> node outputs the Instance slot's GlobalPosition, GlobalRotation, and GlobalScale.
+Usage
+
+Note that the values output by this node differ from those shown in the slot inspector panel because the inspector shows values in local coordinate space. Use Local Transform (LogiX node) to obtain values matching those displayed in the inspector. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GlobalVectorToLocal:##########################################################
+{
+The <color=#00FF00>Global Vector To Local</color> node takes the input GlobalVector vector and outputs the equivalent LocalVector relative to the Instance slot's local coordinate space.
+Usage
+
+Note that this node's output takes into account the scale of the Instance slot when calculating the conversion. If a calculation should be scale-invariant use Global Direction To Local.
+}
+
+FrooxEngine.LogiX.WorldModel.GetLeft:######################################################################
+{
+The <color=#00FF00>Left</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's negative X coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalDirectionToGlobal:#######################################################
+{
+The <color=#00FF00>Local Direction To Global</color> node takes the input LocalDirection vector vector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalDirection vector.
+Usage
+
+Note that this node only takes into account the relative rotation between the global and local coordinate spaces when calculating the conversion, the scale of the Instance slot does not affect the output. If scale is important for a calculation use Local Vector To Global. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalPointToGlobal:###########################################################
+{
+The <color=#00FF00>Local Point To Global</color> node takes the input LocalPoint position vector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalPoint position vector. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalRotationToGlobal:#######################################################
+{
+The <color=#00FF00>Local Rotation To Global</color> node takes an input LocalRotation floatQ relative to the Instance slot's local coordinate space and outputs the equivalent GlobalRotation floatQ.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalScaleToGlobal:##########################################################
+{
+The <color=#00FF00>Local Scale To Global</color> node takes the input LocalScale vector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalScale vector.
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalTransform:##############################################################
+{
+The <color=#00FF00>Local Transform</color> node outputs the Instance slot's LocalPosition, LocalRotation, and LocalScale.
+Usage
+
+Note that the values output by this node match those shown in the slot inspector panel because the inspector shows values in local coordinate space. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.LocalVectorToGlobal:#########################################################
+{
+The <color=#00FF00>Local Vector To Global</color> node takes the input LocalVector relative to the Instance slot's local coordinate space and outputs the equivalent GlobalVector .
+Usage
+
+Note that this node's output takes into account the scale of the Instance slot when calculating the conversion. If a calculation should be scale-invariant use Local Direction To Global. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetRight:####################################################################
+{
+The <color=#00FF00>Right</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's positive X coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetBackward:#################################################################
+{
+The <color=#00FF00>Set Backward</color> node rotates the Instance slot such that its negative Z axis becomes parallel to the input global Backward direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetDown:#####################################################################
+{
+The <color=#00FF00>Set Down</color> node rotates the Instance slot such that its negative Y axis becomes parallel to the input global Down direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetForward:##################################################################
+{
+The <color=#00FF00>Set Forward</color> node rotates the Instance slot such that its positive Z axis becomes parallel to the input global Forward direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalPosition:###########################################################
+{
+The <color=#00FF00>Set Global Position</color> node moves the Instance slot to the input global Position when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalPositionRotation:###################################################
+{
+The <color=#00FF00>Set Global Position Rotation</color> node moves and rotates the Instance slot to the input global Position and Rotationwhen an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position and rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalRotation:###########################################################
+{
+The <color=#00FF00>Set Global Rotation</color> node rotates the Instance slot to the input global Rotation when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalScale:##############################################################
+{
+The <color=#00FF00>Set Global Scale</color> node re-scales the Instance slot to the input global Scale when an impulse is received at Set.
+Usage
+
+The default Scale is 1. The default Instance is null.
+
+An impulse is fired from OnDone when the Instance is successfully re-scaled. No impulse will be fired if Instance was null when an impulse is received at Set.
+}
+
+FrooxEngine.LogiX.WorldModel.SetGlobalTransform:##########################################################
+{
+The <color=#00FF00>Set Global Transform</color> node moves, rotates, and re-scales the Instance slot to the input global Position, Rotation and Scale when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetGlobalTransformMatrix:####################################################
+{
+The <color=#00FF00>Set Global Transform Matrix</color> node moves, rotates, and re-scales the Instance slot in global coordinate space according to the input TRS Matrix when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetLeft:#####################################################################
+{
+The <color=#00FF00>Set Left</color> node rotates the Instance slot such that its negative X axis becomes parallel to the input global Left direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalPosition:############################################################
+{
+The <color=#00FF00>Set Local Position</color> node moves the Instance slot to the input local Position when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalPositionRotation:####################################################
+{
+The <color=#00FF00>Set Local Position Rotation</color> node moves and rotates the Instance slot to the input local Position and Rotationwhen an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position and rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalRotation:############################################################
+{
+The <color=#00FF00>Set Local Rotation</color> node rotates the Instance slot to the input local Rotation when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance rotation is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalScale:###############################################################
+{
+The <color=#00FF00>Set Local Scale</color> node re-scales the Instance slot to the input local Scale when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance is successfully re-scaled. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetLocalTransform:###########################################################
+{
+The <color=#00FF00>Set Local Transform</color> node moves, rotates, and re-scales the Instance slot to the input local Position, Rotation and Scale when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+FrooxEngine.LogiX.WorldModel.SetRight:####################################################################
+{
+The <color=#00FF00>Set Right</color> node rotates the Instance slot such that its positive X axis becomes parallel to the input global Right direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set.
+}
+
+
+FrooxEngine.LogiX.WorldModel.SetTRS:######################################################################
+{
+The <color=#00FF00>Set TRS</color> node moves, rotates, and re-scales the Instance slot in its local coordinate space according to the input TRS matrix when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance transform is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.SetUp:#######################################################################
+{
+The <color=#00FF00>Set Up</color> node rotates the Instance slot such that its positive Y axis becomes parallel to the input global Up direction vector when an impulse is received at Set.
+Usage
+
+An impulse is fired from OnDone when the Instance position is successfully changed. No impulse will be fired if there is no valid Instance when an impulse is received at Set. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.TransformDirection:##########################################################
+{
+The <color=#00FF00>Transform Direction</color> node takes the input SourceDirection vector in the local coordinate space of the FromSpace slot and outputs the equivalent TargetDirection vector in the ToSpace slot's local coordinate space.
+Usage
+
+Note that this node only takes into account the relative rotation between the two local coordinate spaces when calculating the conversion, the relative scale of the slots does not affect the output. If scale is important for a calculation use Transform Vector. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.TransformPoint:##########################################################
+{
+The <color=#00FF00>Transform Point</color> node takes the SourcePoint position vector in the FromSpace slot's local coordinate space and outputs the equivalent TargetPoint position vector in the ToSpace slot's local coordinate space. 
+}
+
+
+
+FrooxEngine.LogiX.WorldModel.TransformRotation:###########################################################
+{
+The <color=#00FF00>Transform Rotation</color> node takes the input SourceRotation floatQ in the FromSpace slot's local coordinate space and outputs the equivalent TargetRotation floatQ in the ToSpace slot's local coordinate space.
+}
+
+
+FrooxEngine.LogiX.WorldModel.TransformScale:##############################################################
+{
+The <color=#00FF00>Transform Scale</color> node takes the input SourceScale vector in the FromSpace slot's local coordinate space and outputs the eqivalent TargetScale vector in the ToSpace slot's local coordinate space.
+}
+
+
+FrooxEngine.LogiX.WorldModel.TransformVector:#############################################################
+{
+The <color=#00FF00>Transform Vector</color> node takes the input SourceVector vector in the FromSpace slot's local coordinate space and and outputs the equivalent TargetVector in the ToSpace slot's local coordinate space.
+Usage
+
+Note that this node's output takes into account the relative scale of the FromSpace and ToSpace slots when calculating the conversion. If a calculation should be scale-invariant use Transform Direction. 
+}
+
+
+FrooxEngine.LogiX.WorldModel.GetUp:#######################################################################
+{
+The <color=#00FF00>Up</color> node outputs the vector in global coordinate space which is parallel to the Instance slot's positive Y coordinate vector.
+Usage
+
+The output vector is normalized such that its magnitude is 1. 
+}
+
+
+############## Bounds ############################
+FrooxEngine.LogiX.Transform.BoundingBoxFromCenterSize:####################################################
+{
+The <color=#00FF00>Bounding Box From Center Size</color> node calculates a BoundingBox with the given xyz Center and xyz Size values.
+Usage
+
+The maximum or minimum value for any particular coordinate will be the Center minus or plus 0.5*Size respectively for that coordinate. 
+}
+
+
+FrooxEngine.LogiX.Transform.BoundingBoxProperties:########################################################
+{
+The <color=#00FF00>Bounding Box Properties</color> node provides several pieces of data about the input Bounds.
+Usage
+
+The Min and Max outputs provide the minimum and maximum extents for the input Bounds on xyz coordinates.
+
+
+The Valid output will be False if Bounds has the special value EmptyBounds, any of the Center coordinates has the special float values NaN or Infinity, or the Size has negative, NaN, or Infinity values. Otherwise True.
+
+
+The Empty output will be True if Bounds has the special value EmptyBounds. This may occur if Bounds is output from Empty Bounding Box (LogiX node) or it is the BoundingBox for a slot which has no elements which would cause it to have a volume (e.g. collider components). Note that calculating a bounding box with center [0,0,0] and size [0,0,0] does not produce an EmptyBounds value. 
+}
+
+
+FrooxEngine.LogiX.Transform.ComputeBoundingBox:###########################################################
+{
+The <color=#00FF00>Compute Bounding Box</color> node calculates a BoundingBox for the Instance slot hierarchy in the local coordinate space of the CoordinateSpace slot.
+Usage
+
+The IncludeInactive input determines whether inactive slots are used for BoundingBox calculation, default is False.
+
+
+The OnlyWithTag input can be used to specify that only slots with a matching tag should be used for BoundingBox calculation, default is empty (i.e. not used).
+
+}
+
+
+
+FrooxEngine.LogiX.Transform.EmptyBoundingBox:#############################################################
+{
+The <color=#00FF00>Empty Bounding Box</color> outputs a BoundingBox with the special value EmptyBounds. 
+}
+
+
+FrooxEngine.LogiX.Transform.EncapsulateBounds:############################################################
+{
+The <color=#00FF00>Encapsulate Bounds</color> node returns calculated bounding box that includes bounding box of Bounds and OtherBounds.
+Usage
+
+Default value of Bounds and OtherBounds is bounding box which is center of [0,0,0], size of [0,0,0].
+
+}
+
+
+
+FrooxEngine.LogiX.Transform.EncapsulatePoint:#############################################################
+{
+The <color=#00FF00>Encapsulate Point</color> node returns calculated bounding box that includes bounding box of Bounds and float3 Point.
+Usage
+
+Default value of Bounds and OtherBounds is bounding box which is center of [0,0,0], size of [0,0,0], and default value of Point is [0,0,0].
+
+}
+
+
+FrooxEngine.LogiX.Transform.TransformBounds:##############################################################
+{
+The <color=#00FF00>Transform Bounding Box</color> node transforms the Bounds from being in to the SourceSpace local coordinate space to being relative to the TargetSpace local coordinate space.
+Usage
+
+The SourceSpace and TargetSpace inputs default to the world root slot, i.e. measuring relative to global coordinate space. 
+}
+
+
+
+
