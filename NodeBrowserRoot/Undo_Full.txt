@@ -1,0 +1,166 @@
+FrooxEngine.LogiX.Undo.BeginUndoBatch:#####################################################################
+{
+The <color=#00FF00>Begin Undo Batch</color> node starts recording a batch of undoable changes when an impulse is received at DoCreate.
+Usage
+
+The Description input determines the text which is displayed in a user's radial menu next to the Undo button for the relevant undo step. Default is null.
+
+
+The OnBegin output continues the impulse chain which triggered DoCreate; any changes which should be included in the same batch undo step should be performed during the impulse chain started from OnBegin.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. Unless the Description input has a non-null value, the text displayed around the Undo button in the radial menu is "(batch action)".
+
+If you wish to perform some undoable changes in the impulse chain started from OnBegin and then later some ones which should not be included in the batch, you can explicitly finish the creation of the batch with End Undo Batch (LogiX node). Note that simply including a node which makes a change (e.g. Set Local Position) downstream of a Begin Undo Batch node does not automatically make it an undoable change - you must still create undo save points in the batch using the other nodes in the Undo category.
+
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateFieldUndoStep:################################################################
+{
+The <color=#00FF00>Create Field Undo Step</color> node creates an Undo Manager entry save point for the Target value field when an impulse is received at Create.
+Usage
+
+The Target input can be set to any value typed slot or component field by connecting LogiX wires as normal. Note that the color of the input will not change from it's dark green color.
+
+
+The ForceNew input determines whether a new Undo Manager entry will be created for the Target field even if another one was already created for the same field in the preceding impulse chain. Default is false.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the Target field value in an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu. 
+}
+
+
+FrooxEngine.LogiX.Undo.CreateReferenceUndoStep:############################################################
+{
+The <color=#00FF00>Create Reference Undo Step</color> node creates an Undo Manager entry save point for the Target reference field when an impulse is received at Create.
+
+     
+
+Usage
+
+The Target input can be set to any reference typed slot or component field by connecting LogiX wires as normal. Note that the color of the input will not change from it's olive green color.
+
+
+The ForceNew input determines whether a new Undo Manager entry will be created for the Target field even if another one was already created for the same field in the preceding impulse chain. Default is false.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the reference held by the Target field in an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu. 
+
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateSpawnUndoStep:################################################################
+{
+The <color=#00FF00>Create Spawn Undo Step</color> node creates an Undo Manager entry for the spawning of the Target slot when an impulse is received at Create.
+Usage
+
+The Description input determines the text which is displayed in a user's radial menu next to the Undo button. Default is null.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. Unless the Description input has a non-null value, the text displayed around the Undo button in the radial menu is "Spawn" + the name of the Target slot. 
+}
+
+
+
+
+FrooxEngine.LogiX.Undo.CreateTransformUndoStep:############################################################
+{
+The <color=#00FF00>Create Transform Undo Step</color> node creates an Undo Manager entry save point for the Target spatial transform values when an impulse is received at Create.
+Usage
+
+The SaveParent input determines whether the Target slot parent is saved as part of the undo entry. Default is true.
+
+
+The SavePosition input determines whether the Target position is saved as part of the undo entry. Default is true.
+
+
+The SaveRotation input determines whether the Target rotation is saved as part of the undo entry. Default is true.
+
+
+The SaveScale input determines whether the Target scale is saved as part of the undo entry. Default is true.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the transform of the Target an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu. The text displayed around the Undo button in the radial menu is "Moved" + the name of the Target slot.
+
+If SaveParent is true, the Target is returned to the same local transform as it held when the undo step was created. If instead SaveParent is false, the Target is returned to the global transform it held when the undo step was created. 
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateTypeFieldUndoStep:###########################################################
+{
+The <color=#00FF00>Create Type Field Undo Step</color> node creates an Undo Manager entry save point for the Target type field when an impulse is received at Create.
+Usage
+
+The ForceNew input determines whether a new Undo Manager entry will be created for the Target field even if another one was already created for the same field in the preceding impulse chain. Default is false.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. If this node is placed before any other nodes which alter the Target field in an impulse chain, then the effects of those nodes will be undone if the user performs the Undo action from their radial context menu.
+
+Type fields are extremely rare in Neos and, as such, users will almost never need to use this node. For any standard value typed fields use Create Field Undo Step (LogiX node) or for reference typed fields use Create Reference Undo Step (LogiX node). 
+}
+
+
+
+FrooxEngine.LogiX.Undo.CreateUndoBatch:###################################################################
+{
+The <color=#00FF00>Create Undo Batch</color> node can be used to create a batch of Undo Manager save points, before then making the relevant changes, when an impulse is received at DoCreate.
+Usage
+
+The Description input determines the text which is displayed in a user's radial menu next to the Undo button for the relevant undo step. Default is null.
+
+
+The Create output fires an impulse immediately after one is received at DoCreate. This impulse chain should be used for creating all undo points which should be included in a batch undo step. This does not need to be explicitly finished using End Undo Batch (LogiX node).
+
+
+The OnCreated output fires an impulse after the impulse chain from Create has finished and the relevant batch undo point created. This impulse chain can be used to make changes to the fields or object transforms for which undo steps were made during the Create impulse chain.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. Unless the Description input has a non-null value, the text displayed around the Undo button in the radial menu is "(batch action)".
+
+The nodes which work best with this method of creating undoable batches are Create Field Undo Step (LogiX node), Create Reference Undo Step (LogiX node), Create Type Field Undo Step (LogiX node), and Create Transform Undo Step (LogiX node). If you need to include Create Spawn Undo Step (LogiX node) or Undoable Destroy (LogiX node) in a batch it is recommended to use Begin Undo Batch (LogiX node) instead. 
+}
+
+
+
+FrooxEngine.LogiX.Undo.EndUndoBatch:######################################################################
+{
+The <color=#00FF00>End Undo Batch</color> node is used to explicitly finish the creation of a batch of undoable changes started by a Begin Undo Batch (LogiX node). 
+}
+
+
+FrooxEngine.LogiX.Undo.UndoableDestroy:###################################################################
+{
+The <color=#00FF00>Undoable Destroy</color> node destroys the Target slot and creates an Undo Manager entry when an impulse is received at Create.
+Usage
+
+The PreserveAssets input determines whether assets held under the destroyed hierarchy which are in use by other slots in the world will be preserved under a new slot under the world Assets slot.
+
+
+The OnCreated output fires an impulse when the Undo Manager entry has been successfully created and the Target destroyed. No impulse will be fired if there is no valid Target set.
+
+
+The Undo Manager entry is created for the owner of the impulse received at Create. This allows that user to undo the destruction of the Target via their radial context menu. 
+}
+
+
+
+
