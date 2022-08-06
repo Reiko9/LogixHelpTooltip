@@ -1,0 +1,32 @@
+FrooxEngine.LogiX.Meta.RemoveAllLogixVisuals:##############################################################
+{
+The <color=#00FF00>Remove All Logix Visuals</color> node packs any LogiX nodes parented under the SearchRoot slot directly under the MoveUnder slot when an impulse is received at Remove. This both removes the node visuals and reparents the node slots.
+Usage
+
+The SearchRoot input defines the hierarchy from which slots containing LogiX components will be moved. Any nodes which are parented under the SearchRoot, or any of its child slots (down to arbitrary depth), will be moved and have visuals hidden. There is no default input.
+
+
+The MoveUnder input slot is the slot under which any slots containing LogiX components will be parented. If this input is unset and an impulse is received at Remove then LogiX node visuals will be hidden without any reparenting.
+
+
+The Traversal input enum value controls how the node graph traversal operates. If set to StopAtOtherNodes, nodes which are not currently parented under the SearchRoot and which are only connected to nodes which are via references (arrow shaped Ref nodes) will not be affected if an impulse is received at Remove. By contrast, if set to Complete, nodes which are linked to nodes parented under the SearchRoot will also be affected (e.g. storage variable nodes which are targets of a Write node. This works the same way as the Traversal setting on the LogiX tooltip (see tutorial by ProbablePrime). Defaults to StopAtOtherNodes.
+
+
+The OnRemoved output fires an impulse when the node has successfully performed it's operation after an impulse is received at Remove. This only requires that there be a valid SearchRoot input, an impulse is still fired even if there are no LogiX nodes parented under the SearchRoot and therefore no changes made.
+
+}
+
+
+
+FrooxEngine.LogiX.Meta.RevealAllLogixVisuals:##############################################################
+{
+The <color=#00FF00>Reveal All Logix Visuals</color> node unpacks and generates visuals for all LogiX nodes parented under the SearchRoot when an impulse is received at Reveal.
+Usage
+
+The OnRevealed output fires an impulse when any LogiX nodes are successfully unpacked as a result of an impulse received at Reveal. This only requires that a valid SearchRoot input slot is present, an impulse is still fired even if no LogiX nodes are actually unpacked.
+
+
+The function of the Traversal input is currently unclear. 
+}
+
+
