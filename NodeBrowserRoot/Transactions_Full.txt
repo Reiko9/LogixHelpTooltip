@@ -1,0 +1,22 @@
+FrooxEngine.LogiX.Transactions.CurrencyConversion:#########################################################
+{
+The <color=#00FF00>CurrencyConversion</color> node converts the SourceAmount from the SourceCurrency to the TargetCurrency.
+Usage
+
+The TargetAmount output provides the converted currency value. The value is -1 if either the SourceCurrency or TargetCurrency inputs contain unrecognized strings.
+
+
+The Converted output is True if both the input strings were recognized and conversion was performed successfully.
+
+
+Currently SourceCurrency and TargetCurrency only accept the strings 'USD' and 'NCR'. If both are left as defaults, the node uses NCR as the SourceCurrency and USD as the TargetCurrency 
+}
+
+
+FrooxEngine.LogiX.Transactions.TokensEnabled:##############################################################
+{
+This is a LogiX node that produces a local bool output. It will locally output True if you are running the standalone build of Neos, which has token (NCR and KFC) functionality enabled. It will locally output False if you are running the Steam build of Neos, which has token functionality disabled. 
+}
+
+
+
