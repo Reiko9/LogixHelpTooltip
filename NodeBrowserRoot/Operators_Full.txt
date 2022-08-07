@@ -84,7 +84,7 @@ The outputs will be True if, and only if, all inputs are True - otherwise it wil
 it performs the operation in a bitwise manner. 
 }
 
-
+FrooxEngine.LogiX.Operators.ConditionalOperator`1[T]
 FrooxEngine.LogiX.Operators.Conditional_Float:##################################################################################################################################
 {
 The <color=#00FF00>?:</color> node outputs either the OnTrue or OnFalse input values depending on the value of the Condition input. 
